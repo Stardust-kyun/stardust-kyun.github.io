@@ -7,8 +7,7 @@
 }
 
 @font-face {
-	font-family: "Roboto", monospace;
-	src: url(fonts/RobotoMono-Regular.ttf)
+	src: url(fonts/Roboto-Regular.ttf)
 }
 
 html,
@@ -22,7 +21,7 @@ html {
 }
 
 body {
-	font-family: "Roboto", monospace;
+	font-family: "Roboto";
 	position: absolute;
 	top: 0;
 	bottom: 0;
