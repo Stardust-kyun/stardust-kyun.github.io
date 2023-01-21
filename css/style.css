@@ -41,16 +41,6 @@ a:link, a:visited, a:active {
 	color: var(--ln);
 }
 
-h1 {
-	margin: 0 20px;
-	font-size: 40px;
-	line-height: 60px;
-}
-
-h1, h2 {
-	display: inline;
-}
-
 hr {
 	border: 2px solid var(--bg3);
 }
@@ -72,11 +62,25 @@ hr {
 	text-decoration: underline;
 }
 
-.tag, .postdate {
-	margin: 14px 20px;
+.header {
+	margin: 0 20px;
+	display: table;
+	width: 100%;
+}
+
+.header h1 {
+	display: table-cell;
+	font-size: 40px;
+	line-height: 60px;
+	width: 80%;
+}
+
+.header h2 {
+	display: table-cell;
 	font-size: 25px;
-	line-height: 40px;
-	float: right;
+	line-height: 60px;
+	width: 20%;
+	padding: 0 40px 0 0;
 }
 
 .list, .body {
