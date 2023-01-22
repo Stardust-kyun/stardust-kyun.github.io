@@ -62,47 +62,89 @@ hr {
 	text-decoration: underline;
 }
 
-.header {
-	margin: 0 20px;
-	display: table;
-	width: 100%;
+@media screen and (min-width: 636px) {
+	.header {
+		margin: 0 20px;
+		display: table;
+		width: 100%;
+	}
+	
+	.header h1 {
+		display: table-cell;
+		font-size: 40px;
+		line-height: 60px;
+		width: 80%;
+	}
+	
+	.header h2 {
+		display: table-cell;
+		font-size: 25px;
+		line-height: 60px;
+		width: 20%;
+		padding: 0 40px 0 0;
+	}
+	
+	.list, .body {
+		margin: 0 40px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	.date {
+		float: right;
+	}
+	
+	.footer {
+		padding: 0;
+		display: table;
+		width: 100%;
+	}
+	
+	.footer a {
+		font-size: 25px;
+		line-height: 40px;
+		display: table-cell;
+		text-align: center;
+		width: 33%;
+	}	
 }
 
-.header h1 {
-	display: table-cell;
-	font-size: 40px;
-	line-height: 60px;
-	width: 80%;
-}
-
-.header h2 {
-	display: table-cell;
-	font-size: 25px;
-	line-height: 60px;
-	width: 20%;
-	padding: 0 40px 0 0;
-}
-
-.list, .body {
-	margin: 0 40px;
-	font-size: 20px;
-	line-height: 30px;
-}
-
-.date {
-	float: right;
-}
-
-.footer {
-	padding: 0;
-	display: table;
-	width: 100%;
-}
-
-.footer a {
-	font-size: 25px;
-	line-height: 40px;
-	display: table-cell;
-	text-align: center;
-	width: 33%;
+@media screen and (max-width: 635px) {
+	.header {
+		margin: 0 20px;
+	}
+/*
+	.header h1 {
+		font-size: 40px;
+		line-height: 60px;
+	}
+	
+	.header h2 {
+		font-size: 25px;
+		line-height: 60px;
+	}
+*/
+	.list, .body {
+		margin: 0 40px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	.date {
+		float: right;
+	}
+	
+	.footer {
+		padding: 0;
+		display: table;
+		width: 100%;
+	}
+	
+	.footer a {
+		font-size: 22px;
+		line-height: 30px;
+		display: table-cell;
+		text-align: center;
+		width: 33%;
+	}
 }
