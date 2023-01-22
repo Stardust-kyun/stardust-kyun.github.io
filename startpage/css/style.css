@@ -1,0 +1,71 @@
+:root {
+	--bg: #151515;
+	--bg2: #171717;
+	--bg3: #1a1a1a;
+	--fg: #b3b3b3;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url(../../fonts/Roboto-Regular.ttf)
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100vh
+}
+
+body {
+	font-family: "Roboto";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: var(--bg);
+	color: var(--fg) !important;
+}
+
+a {
+	color: var(--fg);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 20px;
+	font-size: 30px;
+	line-height: 50px;
+}
+
+#box {
+	background: var(--bg2);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--bg3);
+}
+
+#time {
+	font-size: 60px;
+	margin-left: 15px;
+	line-height: 80px;
+}
+
+.links {
+	column-count: 3;
+}
