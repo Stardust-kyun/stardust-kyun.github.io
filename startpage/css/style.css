@@ -7,7 +7,7 @@
 
 @font-face {
 	font-family: "Roboto";
-	src: url(../../fonts/Roboto-Regular.ttf)
+	src: local("Roboto"), url(../../fonts/Roboto-Regular.ttf)
 }
 
 html,
@@ -17,18 +17,15 @@ body {
 }
 
 html {
-	height: 100vh
+	height: 100vh;
 }
 
 body {
 	font-family: "Roboto";
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
 	background-color: var(--bg);
-	color: var(--fg) !important;
+	color: var(--fg);
+	display: flex;
+	height: 100vh;
 }
 
 a {
@@ -50,14 +47,13 @@ ul {
 
 #box {
 	background: var(--bg2);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	padding: 20px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: var(--bg3);
+	display: inline-flex;
+	flex-direction: column;
+	margin: auto;
 }
 
 #time {
