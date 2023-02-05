@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>First Post</title>
+		<link rel="stylesheet" href="css/long.css"/>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+	</head>
+	<body>
+		<div id="box">
+			<div class="header">
+				<h1>Desktop Icons</h1>
+				<h2 class="postdate">02/05/22</h2>
+			</div>
+			<hr/>
+			<div class="body">
+				<a>This post is to document how I added desktop icons to my AwesomeWM rice and some of the hiccups I ran into.</a>
+				<br/><br/>
+				<a>To start off, there are a couple of file managers that support desktop icons, namely PCManFM and Nemo. I use Nemo as my file manager, and would recommend using it far more than PCManFM. Nemo comes with the command <code>nemo-desktop</code>, which is the same desktop Cinnamon uses. Luckily, it can also be used on any window manager with a few tweaks.</a>
+				<br/><br/>
+				<a>When running <code>nemo-desktop</code> initially, desktop icons will need to be enabled and will not appear otherwise. To enable them, run <code>gsettings set org.nemo.desktop show-desktop-icons true</code>. For ease of use, add <code>nemo-desktop</code> to your window manager's autostart script.</a>
+				<br/><br/>
+				<a>Unlike most window managers, AwesomeWM treats clients like <code>nemo-desktop</code> as any other client. Because of this, it will "occupy" tags and by default be confined to a single tag, not visible on others. To fix this, I used the following hacks:</a>
+				<pre>
+				<code>
+screen.connect_signal("request::desktop_decoration", function(s)
+	awful.tag({ "1", "2", "3", "4", "5", "6", " " }, s, awful.layout.layouts[1])
+end)</code>
+				</pre>
+				<pre>
+				<code>
+ruled.client.append_rule {
+    id = "desktop",
+    rule_any = {
+        class = {
+        "Nemo-desktop"
+        }
+    },
+    properties = { sticky = true, tag = " " }
+}</code>
+				</pre>
+				<a>To avoid a tag appearing "occupied," I created another tag called <code>" "</code> exclusively for <code>nemo-desktop</code>. When using a taglist without a background or icons, like mine, it's unnoticeable. A rule is also added to make <code>nemo-desktop</code> sticky and therefore visible on all desktops.</a>
+				<br/><br/>
+				<a>Lastly, since <code>nemo-desktop</code> covers the root window, your wallpaper may be hidden. There are two options to fix this:</a>
+				<br/><br/>
+				<li>Set your wallpaper through nemo, which is fine for a single rice setup but makes it more annoying to change your wallpaper.</li>
+				<li>Make <code>nemo-desktop</code> transparent by making this element transparent in your gtk theme:</li>
+				<pre>
+				<code>
+notebook stack:only-child {
+    background: transparent;
+}</code>
+				</pre>
+				<a>The only other thing to keep in mind is that <code>nemo-desktop</code> uses its own root menu, which means that you won't be able to use your own root menu for whatever wm you're using. This isn't a problem for me since I like the root menu and it integrates well with Nemo, but it may be different for you.</a>
+				<br/><br/>
+				<a>- Stardust</a>
+			</div>
+			<hr/>
+			<div class="footer">
+				<a href="https://stardust-kyun.github.io/" target="_self" class="link">Home</a>
+				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="link">Blog</a>
+			</div>
+		</div>
+	</body>
+</html>

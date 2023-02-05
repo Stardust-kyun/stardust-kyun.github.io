@@ -8,26 +8,11 @@
 
 @font-face {
 	font-family: "Roboto";
-	src: url(../fonts/Roboto-Regular.ttf)
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-
-html {
-	height: 100vh
+	src: url(../../fonts/Roboto-Regular.ttf)
 }
 
 body {
 	font-family: "Roboto";
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
 	background-color: var(--bg);
 	color: var(--fg) !important;
 }
@@ -45,6 +30,16 @@ hr {
 	border: 2px solid var(--bg3);
 }
 
+pre {
+	background-color: var(--bg3);
+	padding: 0px 20px;
+	white-space: pre-wrap;
+}
+
+code {
+	background-color: var(--bg3);
+}
+
 .link:hover {
 	text-decoration: underline;
 }
@@ -52,15 +47,15 @@ hr {
 #box {
 	background: var(--bg2);
 	position: absolute;
-	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%);
 	padding: 20px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: var(--bg3);
 	min-width: 445px;
 	max-width: 750px;
+	margin-top: 20px;
 }	
 
 .image {
