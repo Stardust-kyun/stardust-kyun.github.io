@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>First Post</title>
-		<link rel="stylesheet" href="css/long.css"/>
+		<link rel="stylesheet" href="../css/style.css"/>
+		<link rel="stylesheet" href="../css/long.css"/>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 	</head>
 	<body>
@@ -18,7 +19,12 @@
 				<br/><br/>
 				<a>To start off, there are a couple of file managers that support desktop icons, namely PCManFM and Nemo. I use Nemo as my file manager, and would recommend using it far more than PCManFM. Nemo comes with the command <code>nemo-desktop</code>, which is the same desktop Cinnamon uses. Luckily, it can also be used on any window manager with a few tweaks.</a>
 				<br/><br/>
-				<a>When running <code>nemo-desktop</code> initially, desktop icons will need to be enabled and will not appear otherwise. To enable them, run <code>gsettings set org.nemo.desktop show-desktop-icons true</code>. For ease of use, add <code>nemo-desktop</code> to your window manager's autostart script.</a>
+				<a>When running <code>nemo-desktop</code> initially, desktop icons will need to be enabled and will not appear otherwise. To enable them, run the following command:
+				<pre>
+				<code>
+gsettings set org.nemo.desktop show-desktop-icons true</code>
+				</pre>
+				For ease of use, add <code>nemo-desktop</code> to your window manager's autostart script.</a>
 				<br/><br/>
 				<a>Unlike most window managers, AwesomeWM treats clients like <code>nemo-desktop</code> as any other client. Because of this, it will "occupy" tags and by default be confined to a single tag, not visible on others. To fix this, I used the following hacks:</a>
 				<pre>
