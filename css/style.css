@@ -48,6 +48,11 @@ pre {
 	white-space: pre-wrap;
 }
 
+code {
+	background-color: var(--bg3);
+	padding: 0px 4px;
+}
+
 #box {
 	background: var(--bg2);
 	border-style: solid;
