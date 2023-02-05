@@ -8,7 +8,7 @@
 
 @font-face {
 	font-family: "Roboto";
-	src: url(../fonts/Roboto-Regular.ttf)
+	src: url(../fonts/Roboto-Regular.ttf);
 }
 
 html,
@@ -18,7 +18,7 @@ body {
 }
 
 html {
-	height: 100vh
+	height: 100vh;
 }
 
 body {
@@ -48,10 +48,6 @@ pre {
 	white-space: pre-wrap;
 }
 
-.link:hover {
-	text-decoration: underline;
-}
-
 #box {
 	background: var(--bg2);
 	border-style: solid;
@@ -63,6 +59,10 @@ pre {
 	flex-direction: column;
 	margin: auto;
 	padding: 20px;
+}
+
+.link:hover {
+	text-decoration: underline;
 }
 
 .image {
