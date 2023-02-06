@@ -23,24 +23,19 @@
 
 				<a>When running <code>nemo-desktop</code> initially, desktop icons will not appear and need to be enabled. To enable them run the following command:</a>
 
-				<pre><code>gsettings set org.nemo.desktop show-desktop-icons true</code></pre>
+<pre><code>gsettings set org.nemo.desktop show-desktop-icons true</code></pre>
 
 				For ease of use I suggest adding <code>nemo-desktop</code> to your window manager's autostart script. Additionally, <code>nemo-desktop</code> may not start due to the following line in <code>/usr/share/applications/nemo-autostart.desktop</code>, so you may need to remove it:</a>
 
-				<pre><code>OnlyShowIn=X-Cinnamon;</code></pre>
+<pre><code>OnlyShowIn=X-Cinnamon;</code></pre>
 
 				<a>Unlike most window managers, AwesomeWM treats clients like <code>nemo-desktop</code> as any other client. Because of this <code>nemo-desktop</code> will "occupy" tags, by default be confined to a single tag, and not be visible on others. To fix this I used the following hacks:</a>
 
-				<pre>
-				<code>
-screen.connect_signal("request::desktop_decoration", function(s)
+<pre><code>screen.connect_signal("request::desktop_decoration", function(s)
 	awful.tag({ "1", "2", "3", "4", "5", "6", " " }, s, awful.layout.layouts[1])
-end)</code>
-				</pre>
+end)</code></pre>
 
-				<pre>
-				<code>
-ruled.client.append_rule {
+<pre><code>ruled.client.append_rule {
     id = "desktop",
     rule_any = {
         class = {
@@ -48,8 +43,7 @@ ruled.client.append_rule {
         }
     },
     properties = { sticky = true, tag = " " }
-}</code>
-				</pre>
+}</code></pre>
 
 				<a>To avoid a tag appearing "occupied" I created another tag called <code>" "</code> exclusively for <code>nemo-desktop</code>. When using a taglist without a background or icons, like mine, it's unnoticeable. A rule is also added to make <code>nemo-desktop</code> sticky and therefore visible on all desktops.</a>
 				<br/><br/>
@@ -62,12 +56,9 @@ ruled.client.append_rule {
 					<li>Make <code>nemo-desktop</code> transparent by making this element transparent in your gtk theme:</li>
 				</div>
 
-				<pre>
-				<code>
-notebook stack:only-child {
+<pre><code>notebook stack:only-child {
     background: transparent;
-}</code>
-				</pre>
+}</code></pre>
 
 				<a>The only other thing to keep in mind is that <code>nemo-desktop</code> uses its own root menu, meaning that you won't be able to use your own root menu. This isn't a problem for me since I like the root menu and it integrates well with Nemo, but it may be different for you.</a>
 				<br/><br/>
