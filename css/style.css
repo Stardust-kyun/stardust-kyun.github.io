@@ -62,6 +62,10 @@ code {
 	max-width: 750px;
 	display: inline-flex;
 	flex-direction: column;
+	padding: 20px;
+}
+
+#wrapper { 
 	margin: auto;
 	padding: 20px;
 }
@@ -118,4 +122,4 @@ code {
 	display: table-cell;
 	text-align: center;
 	width: 33%;
-}	
+}
