@@ -37,6 +37,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+hr {
+	border: 2px solid var(--bg3);
+}
+
 ul {
 	list-style: none;
 	padding: 0;
@@ -51,8 +55,6 @@ ul {
 	border-style: solid;
 	border-width: 3px;
 	border-color: var(--bg3);
-	display: inline-flex;
-	flex-direction: column;
 }
 
 #wrapper {
