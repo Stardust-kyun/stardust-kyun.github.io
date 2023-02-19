@@ -5,6 +5,11 @@
 	--fg: #b3b3b3;
 }
 
+@font-face {
+	font-family: "Roboto";
+	src: local("Roboto"), url(../../fonts/Roboto-Regular.ttf)
+}
+
 html,
 body {
 	margin: 0;
@@ -16,7 +21,7 @@ html {
 }
 
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto";
 	background-color: var(--bg);
 	color: var(--fg);
 	display: flex;
