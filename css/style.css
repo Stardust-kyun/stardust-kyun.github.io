@@ -75,8 +75,29 @@ code {
 }
 
 .image {
-	max-width: 450px;
-	max-height: auto;
+	width: 450px;
+	height: auto;
+	pointer-events: none;
+	user-select: none;
+	justify-content: center;
+	align-items: center;
+	scroll-snap-align: center;
+}
+
+.images {
+	width: 450px;
+	height: auto;
+	display: flex;
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+}
+
+.images::-webkit-scrollbar {
+	background-color: var(--bg3);
+}
+
+.images::-webkit-scrollbar-thumb {
+	background: var(--bg);
 }
 
 .header {
