@@ -77,8 +77,8 @@ code {
 .image {
 	width: 450px;
 	height: auto;
-	pointer-events: none;
 	user-select: none;
+	cursor: pointer;
 	justify-content: center;
 	align-items: center;
 	scroll-snap-align: center;
