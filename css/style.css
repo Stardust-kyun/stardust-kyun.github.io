@@ -60,8 +60,10 @@ code {
 	border-color: var(--bg3);
 	min-width: 445px;
 	max-width: 750px;
+	/*
 	display: inline-flex;
 	flex-direction: column;
+	*/
 	padding: 20px;
 }
 
