@@ -76,8 +76,15 @@ code {
 	text-decoration: underline;
 }
 
+.imageheader {
+	margin-bottom: 10px;
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}
+
 .image {
-	width: 450px;
+	width: 100%;
 	height: auto;
 	user-select: none;
 	cursor: pointer;
@@ -85,7 +92,7 @@ code {
 	align-items: center;
 	scroll-snap-align: center;
 }
-
+/*
 .images {
 	width: 450px;
 	height: auto;
@@ -101,7 +108,7 @@ code {
 .images::-webkit-scrollbar-thumb {
 	background: var(--bg);
 }
-
+*/
 .header {
 	margin: 0 20px;
 	display: table;
