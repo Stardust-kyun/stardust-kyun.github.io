@@ -2,19 +2,53 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Desktop Icons</title>
+		<meta content="🌸 Sakura - Home" property="og:title"/>
+		<meta content="Stardust-kyun's personal website and blog." property="og:description"/>
+		<meta content="https://stardust-kyun.github.io" property="og:url"/>
+		<meta content="https://stardust-kyun.github.io/src/thumbnail.png" property="og:image"/>
+		<meta content="#F199AA" data-react-helmet="true" name="theme-color"/>
+		<meta name="twitter:card" content="summary_large_image">
+		<title>Home</title>
 		<link rel="stylesheet" href="../css/style.css"/>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 	</head>
 	<body>
-	<div id="wrapper">
-		<div id="box">
-			<div class="header">
-				<h1>Desktop Icons</h1>
-				<h2 class="postdate">02/05/23</h2>
+		<div id="header">
+			<div class="horiz">
+				<img id="pfp" src="../src/pfp.png">
+				<h2>Stella - any/all</h2>
 			</div>
-			<hr/>
-			<div class="body">
+			<h2>🌸 Sakura 🌸</h2>
+			<div class="horiz pages">
+				<a href="https://stardust-kyun.github.io/" target="_self" class="headerlink">Home</a>
+				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
+				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
+			</div>
+		</div>
+		<div class="main">
+			<div id="sidebar" class="side">
+				<div class="box">
+					<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
+					<hr>
+					<li><a href="https://stardust-kyun.github.io/projects/keyboards" target="_blank" class="listlink">Keyboards</a></li>
+					<a>My custom built keyboards</a>
+					<li><a href="https://stardust-kyun.github.io/projects/desktop" target="_blank" class="listlink">Desktop</a></li>
+					<a>My personal desktop written in lua</a>
+					<li><a href="https://stardust-kyun.github.io/projects/awm" target="_blank" class="listlink">AwesomeWM</a></li>
+					<a>A collection of repositories for awm</a>
+				</div>
+				<div class="box">
+					<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
+					<hr>
+					<li><a href="https://stardust-kyun.github.io/blog/first" target="_blank" class="listlink">First Post</a></li>
+					<a>My experience writing this website</a>
+					<li><a href="https://stardust-kyun.github.io/blog/icons" target="_blank" class="listlink">Desktop Icons</a></li>
+					<a>Documenting a simple way to add desktop icons</a>
+				</div>
+			</div>
+			<div id="body" class="box">
+				<a class="headertext">About</a>
+				<hr>
 				<a>This post is to document how I added desktop icons to my AwesomeWM rice and some of the hiccups I ran into.</a>
 				<br/><br/>
 
@@ -68,12 +102,20 @@ end)</code></pre>
 
 				<a>- Stardust</a>
 			</div>
-			<hr/>
-			<div class="footer">
-				<a href="https://stardust-kyun.github.io/" target="_self" class="link">Home</a>
-				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="link">Blog</a>
+			<div id="contact" class="side">
+				<div class="box">
+					<a class="headertext">Contact</a>
+					<hr>
+					<li>Github</li>
+					<a href="https://github.com/stardust-kyun/" target="_blank" class="link">Stardust-kyun</a>
+					<li>Discord</li>
+					<a href="https://discord.com/users/417133059654156299" target="_blank" class="link">stardustkyun</a>
+					<li>Matrix</li>
+					<a href="https://matrix.to/#/@stardust-kyun:matrix.org" target="_blank" class="link">stardust-kyun:matrix.org</a>
+					<li>Email</li>
+					<a href="mailto:stardust-kyun@proton.me" target="_blank" class="link">stardust-kyun@proton.me</a>
+				</div>
 			</div>
 		</div>
-	</div>
 	</body>
 </html>

@@ -4,8 +4,8 @@
 		<meta charset="UTF-8"/>
 		<meta content="🌸 Sakura - Home" property="og:title"/>
 		<meta content="Stardust-kyun's personal website and blog." property="og:description"/>
-		<meta content="https://star.is-a.dev" property="og:url"/>
-		<meta content="https://star.is-a.dev/src/thumbnail.png" property="og:image"/>
+		<meta content="https://stardust-kyun.github.io" property="og:url"/>
+		<meta content="https://stardust-kyun.github.io/src/thumbnail.png" property="og:image"/>
 		<meta content="#F199AA" data-react-helmet="true" name="theme-color"/>
 		<meta name="twitter:card" content="summary_large_image">
 		<title>Home</title>
@@ -13,34 +13,62 @@
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 	</head>
 	<body>
-	<div id="wrapper">
-		<div id="box">
-			<div class="header">
-				<h1>Hello, I'm Star.</h1>
-				<h2 class="tag">any/all</h2>
+		<div id="header">
+			<div class="horiz">
+				<img id="pfp" src="src/pfp.png">
+				<h2>Stella - any/all</h2>
 			</div>
-			<hr/>
-			<div class="list">
-				<li>
-					<a href="https://stardust-kyun.github.io/projects/sakura" target="_self" class="link">Sakura</a>
-				</li>
-					<a>My personal desktop written in lua.</a>
-				<li>
-					<a href="https://stardust-kyun.github.io/projects/keyboard" target="_self" class="link">Keyboard</a>
-				</li>
-					<a>My custom built keyboard.</a>
-				<li>
-					<a href="https://stardust-kyun.github.io/awmdots" target="_self" class="link">AwesomeWM Dotfiles</a>
-				</li>
-					<a>A collection of dotfiles for awesomewm.</a>
-			</div>
-			<hr/>
-			<div class="footer">
-				<a href="https://stardust-kyun.github.io/contact" target="_self" class="link">Contact</a>
-				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="link">Blog</a>
-				<a href="https://stardust-kyun.github.io/startpage/" target="_self" class="link">Startpage</a>
+			<h2>🌸 Sakura 🌸</h2>
+			<div class="horiz pages">
+				<a href="https://stardust-kyun.github.io/" target="_self" class="headerlink">Home</a>
+				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
+				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
 			</div>
 		</div>
-	</div>
+		<div class="main">
+			<div id="sidebar" class="side">
+				<div class="box">
+					<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
+					<hr>
+					<li><a href="https://stardust-kyun.github.io/projects/keyboards" target="_blank" class="listlink">Keyboards</a></li>
+					<a>My custom built keyboards</a>
+					<li><a href="https://stardust-kyun.github.io/projects/desktop" target="_blank" class="listlink">Desktop</a></li>
+					<a>My personal desktop written in lua</a>
+					<li><a href="https://stardust-kyun.github.io/projects/awm" target="_blank" class="listlink">AwesomeWM</a></li>
+					<a>A collection of repositories for awm</a>
+				</div>
+				<div class="box">
+					<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
+					<hr>
+					<li><a href="https://stardust-kyun.github.io/blog/first" target="_blank" class="listlink">First Post</a></li>
+					<a>My experience writing this website</a>
+					<li><a href="https://stardust-kyun.github.io/blog/icons" target="_blank" class="listlink">Desktop Icons</a></li>
+					<a>Documenting a simple way to add desktop icons</a>
+				</div>
+			</div>
+			<div id="body" class="box">
+				<a class="headertext">About</a>
+				<hr>
+				<p>Welcome to my website! I'm Stardust-kyun, but people call me Star/Stella. Programming is my hobby, mainly in the linux desktop space. Keyboards are an important tool for this to me, making me spend irrational amounts of money for marginal changes. I also love pottery and ceramics, currently focusing in vase forms.</p>
+				<p>I listen to pretty much any genre of music, but prefer jrock, indie rock, and speedcore. Favorite band is Last Dinosaurs, but my favorite song is currently Absolute Territory. I'd recommend that anyone listen to Mint Jams, The Tale of a Cruel World, All the Unknown, and Wellness (by Last Dinosaurs).</p>
+				<p>I read a lot of manga, mainly light hearted romance. Favorites are Bloom Into You, Our Wonderful Days, The Sheep Princess in Wolf's Clothing, and more. Aside from that I read a variety of books, my favorites being Ender's Game, The Electric State, and Blood Meridian.</p>
+				<p>Video games are a consistent part of my free time, usually relaxing games that you can turn your brain off for, but sometimes more competitive ones when I feel up for it. I have a lot of games I enjoy but my favorites are Mario Kart Wii, Celeste, Terraria, Minecraft, Momodora: RutM, Omori, and Stardew Valley.</p>
+				<p>(っ´ω`)っ❤</p>
+			</div>
+			<div id="contact" class="side">
+				<div class="box">
+					<a class="headertext">Contact</a>
+					<hr>
+					<li>Github</li>
+					<a href="https://github.com/stardust-kyun/" target="_blank" class="link">Stardust-kyun</a>
+					<li>Discord</li>
+					<a href="https://discord.com/users/417133059654156299" target="_blank" class="link">stardustkyun</a>
+					<li>Matrix</li>
+					<a href="https://matrix.to/#/@stardust-kyun:matrix.org" target="_blank" class="link">stardust-kyun:matrix.org</a>
+					<li>Email</li>
+					<a href="mailto:stardust-kyun@proton.me" target="_blank" class="link">stardust-kyun@proton.me</a>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
