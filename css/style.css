@@ -31,7 +31,7 @@ h2 {
 }
 
 
-a, p {
+a, p, pre, li {
     font-size: 18px;
     color: #9999a8;
     text-decoration: none;
@@ -71,6 +71,17 @@ hr {
     font-weight: bold;
     color: #9999a8;
     padding-top: 10px;
+}
+
+pre {
+	background-color: #2b2b33;
+	padding: 20px;
+	white-space: pre-wrap;
+}
+
+code {
+	background-color: #2b2b33;
+	padding: 0px 4px;
 }
 
 /* Header */
@@ -133,9 +144,14 @@ hr {
 	height: auto;
 	user-select: none;
 	cursor: pointer;
-	justify-content: center;
-	align-items: center;
 	scroll-snap-align: center;
+}
+
+.imageheader {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 /* Screen */
