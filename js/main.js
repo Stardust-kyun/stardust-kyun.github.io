@@ -6,7 +6,7 @@ class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
 			<div class="horiz">
-				<img id="pfp" src="src/pfp.png">
+				<img id="pfp" src="/src/pfp.png">
 				<div id="name">
 					<h2>Stella</h2>
 					<h3>any/all</h3>

@@ -128,7 +128,7 @@ code {
 
 .side {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     gap: 20px;
     list-style-type: none;
 }
