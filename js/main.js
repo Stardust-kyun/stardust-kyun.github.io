@@ -12,8 +12,8 @@ class Header extends HTMLElement {
 					<h3>any/all</h3>
 				</div>
 			</div>
-			<h2>🌸 Sakura 🌸</h2>
-			<div class="horiz pages">
+			<h1 id="sakura">🌸</h1>
+			<div class="horiz" id="pages">
 				<a href="https://stardust-kyun.github.io/" target="_self" class="headerlink">Home</a>
 				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
 				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
