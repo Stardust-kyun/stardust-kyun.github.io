@@ -169,7 +169,7 @@ code {
 
 /* Screen */
 
-@media all and (max-width: 750px) {
+@media all and (max-aspect-ratio: 1/1) {
     #header {
         display: flex;
         flex-flow: row wrap;
@@ -204,7 +204,7 @@ code {
     }
 }
 
-@media all and (min-width: 750px) {
+@media all and (min-aspect-ratio: 1/1) {
     .side { flex: 1 1; }
     #body { flex: 4 0; }
     #sidebar { order: 1; }
