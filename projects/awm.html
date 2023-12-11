@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta content="🌸 Sakura - AwesomeWM Dotfiles" property="og:title"/>
 		<meta content="A list of dotfile repositories for awesomewm." property="og:description"/>
 		<meta content="https://stardust-kyun.github.io" property="og:url"/>
@@ -11,41 +12,12 @@
 		<title>AwesomeWM</title>
 		<link rel="stylesheet" href="../css/style.css"/>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+		<script src="../js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
-		<div id="header">
-			<div class="horiz">
-				<img id="pfp" src="../src/pfp.png">
-				<h2>Stella - any/all</h2>
-			</div>
-			<h2>🌸 Sakura 🌸</h2>
-			<div class="horiz pages">
-				<a href="https://stardust-kyun.github.io/" target="_self" class="headerlink">Home</a>
-				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
-				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
-			</div>
-		</div>
+		<header-component id="header"></header-component>
 		<div class="main">
-			<div id="sidebar" class="side">
-				<div class="box">
-					<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
-					<hr>
-					<li><a href="https://stardust-kyun.github.io/projects/keyboards" target="_self" class="listlink">Keyboards</a></li>
-					<a>My custom built keyboards</a>
-					<li><a href="https://stardust-kyun.github.io/projects/desktop" target="_self" class="listlink">Desktop</a></li>
-					<a>My personal desktop written in lua</a>
-					<li><a href="https://stardust-kyun.github.io/projects/awm" target="_self" class="listlink">AwesomeWM</a></li>
-					<a>A collection of repositories for awm</a>
-				</div>
-				<div class="box">
-					<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
-					<hr>
-					<li><a href="https://stardust-kyun.github.io/blog/first" target="_self" class="listlink">First Post</a></li>
-					<a>My experience writing this website</a>
-					<li><a href="https://stardust-kyun.github.io/blog/icons" target="_self" class="listlink">Desktop Icons</a></li>
-					<a>Documenting a simple way to add desktop icons</a>
-				</div>
-			</div>
+			<sidebar-component id="sidebar" class="side"></sidebar-component>
 			<div id="body" class="box">
 				<a class="headertext">AwesomeWM</a>
 				<hr>
@@ -261,20 +233,7 @@
 				<img src="../src/awm/lominoss.png" alt="Lominoss" onclick="window.open(this.src)" draggable="false" class="image">	
 				<p>Simple desktop reminiscent of wm's like i3 and bspwm. Not far from the default configuration.</p>
 			</div>
-			<div id="contact" class="side">
-				<div class="box">
-					<a class="headertext">Contact</a>
-					<hr>
-					<li>Github</li>
-					<a href="https://github.com/stardust-kyun/" target="_blank" class="link">Stardust-kyun</a>
-					<li>Discord</li>
-					<a href="https://discord.com/users/417133059654156299" target="_blank" class="link">stardustkyun</a>
-					<li>Matrix</li>
-					<a href="https://matrix.to/#/@stardust-kyun:matrix.org" target="_blank" class="link">stardust-kyun:matrix.org</a>
-					<li>Email</li>
-					<a href="mailto:stardust-kyun@proton.me" target="_blank" class="link">stardust-kyun@proton.me</a>
-				</div>
-			</div>
+			<contact-component id="contact" class="side"></contact-component>
 		</div>
 	</body>
 </html>

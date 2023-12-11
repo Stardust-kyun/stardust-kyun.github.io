@@ -30,6 +30,10 @@ h2 {
     color: #9999a8;
 }
 
+h3 {
+    font-size: 16px;
+    color: #9999a855;
+}
 
 a, p, pre, li {
     font-size: 18px;
@@ -105,6 +109,10 @@ code {
     gap: 20px;
 }
 
+#name > * {
+    margin: 0;
+}
+
 /* Main */
 
 .main {
@@ -168,6 +176,7 @@ code {
     .pages {
         width: 100%;
         justify-content: center;
+        padding-top: 10px;
     }
 }
 
