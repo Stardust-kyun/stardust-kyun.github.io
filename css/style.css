@@ -153,18 +153,26 @@ code {
 }
 
 .image {
-	width: 100%;
+    max-width: 60%;
+    width: auto;
 	height: auto;
 	user-select: none;
 	cursor: pointer;
 	scroll-snap-align: center;
 }
 
-.imageheader {
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
+.imagewrapper {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    margin: 20px 0 20px 0;
+}
+
+.imagecontent {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* Screen */
@@ -184,6 +192,10 @@ code {
         padding-top: 10px;
     }
 
+    #sidebar {
+        overflow: visible;
+    }
+
     .side {
         display: flex;
         flex: 1 1;
@@ -199,6 +211,14 @@ code {
         margin: 20px;
     }
 
+    .image {
+        max-width: 100%;
+    }
+
+    .imagewrapper {
+        flex-flow: row wrap;
+    }
+
     html, body, .main {
         height: auto;
     }
@@ -212,7 +232,7 @@ code {
     #contact { order: 3; }
 
     #pages { order: 2; }
-    #sakura { order: 3; }
+    #sakuralogo { order: 3; }
 
     .main { overflow: hidden; }
 }

@@ -12,7 +12,7 @@ class Header extends HTMLElement {
 					<h3>any/all</h3>
 				</div>
 			</div>
-			<h1 id="sakura">🌸</h1>
+			<h1 id="sakuralogo">🌸</h1>
 			<div class="horiz" id="pages">
 				<a href="https://stardust-kyun.github.io/" target="_self" class="headerlink">Home</a>
 				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
@@ -79,3 +79,33 @@ class Contact extends HTMLElement {
 }
 
 customElements.define('contact-component', Contact);
+
+class AwmEntry extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        let id = this.getAttribute('id');
+        let link = this.getAttribute('link');
+        let name = this.getAttribute('name');
+        let creator = this.getAttribute('creator');
+        let image = this.getAttribute('image');
+        let content = this.getAttribute('content');
+
+        this.innerHTML = `
+            <div class="imagewrapper">
+                <img src=${image} onclick="window.open(this.src)" draggable="false" class="image">
+                <div class="imagecontent">
+                    <div id=${id}>
+                        <a href=${link} target="_blank" class="link">${name}</a><a> - ${creator}</a><a href="#${id}" target="_self"> 🔗</a>
+                    </div>
+                    <p>${content}</p>
+                </div>
+            </div>	
+            <br/>
+        `;
+    }
+}
+
+customElements.define('awm-component', AwmEntry);
