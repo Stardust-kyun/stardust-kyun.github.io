@@ -156,10 +156,15 @@ code {
     max-width: 60%;
     width: auto;
 	height: auto;
-    object-fit: cover;
+    object-fit: contain;
 	user-select: none;
 	cursor: pointer;
 	scroll-snap-align: center;
+}
+
+.mangaimage {
+    width: 60%;
+    object-fit: cover;
 }
 
 .imagewrapper {
@@ -214,6 +219,10 @@ code {
 
     .image {
         max-width: 100%;
+    }
+
+    .mangaimage {
+        width: 100%;
     }
 
     .imagewrapper {
