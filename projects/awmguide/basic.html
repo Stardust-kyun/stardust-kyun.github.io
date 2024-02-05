@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="🌸 Sakura - Basic Configuration" property="og:title"/>
+		<meta content="Stardust-kyun's personal website and blog." property="og:description"/>
+		<meta content="https://stardust-kyun.github.io" property="og:url"/>
+		<meta content="https://stardust-kyun.github.io/src/thumbnail.png" property="og:image"/>
+		<meta content="#F199AA" data-react-helmet="true" name="theme-color"/>
+		<meta name="twitter:card" content="summary_large_image">
+		<title>Basic Configuration</title>
+		<link rel="stylesheet" href="../../css/style.css"/>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+		<script src="../../js/main.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<header-component id="header"></header-component>
+		<div class="main">
+			<sidebar-component id="sidebar" class="side"></sidebar-component>
+			<div id="body" class="box">
+				<a class="headertext">Basic Configuration</a>
+				<hr>
+				<p>Hi there! Welcome to the first part of this series on configuring AwesomeWM. The goal of this post is to create a basic, usable environment from scratch -- not from the default configuration. The configurations I make for this series will be hosted on my GitHub, under the appropriate branch of <a href="" target="_blank" class="link">this repository</a>. The branch for this post will be called "basic".</p>
+
+				<p>To start off, let's explain what the purpose of the default configuration file is. The default configuration file for AwesomeWM, usually stored under <code>/etc/xdg/awesome/</code>, is not actually intended to be used or built off of. Instead, it's supposed to showcase the API AwesomeWM provides and how it can be used. Many people complain that this configuration is ugly, or painful to use, and especially annoying to build off of. And that's by design. However, starting from scratch is very daunting for new users, and that's what this series is for!</p>
+
+				<p>Before going into the actual configuration, though, it's important to talk about something just as important: modularization. AwesomeWM has the capability of splitting its configuration into multiple files and directories, allowing for much more organized and readable code. This is one of the difficulties of the starting config -- there's just too much from too many different areas. So let's fix that.</p>
+
+				<p>First we'll need to create the start of any configuration, the <code>rc.lua</code> file. This file should be placed in <code>~/.config/awesome/</code>, and is the file that AwesomeWM runs when starting. So, let's put the basics of our config in there, which will be needed as soon as our configuration is loaded.</p>
+
+<!-- So annoying I need to break the indents for this to display properly! -->
+<pre><code>-- ~/.config/awesome/rc.lua
+-- Load libraries
+local awful = require("awful")
+local naughty = require("naughty")
+require("awful.autofocus")
+
+--[[ 
+	Error handling:
+	This will run if an error is encountered and 
+	send a notification specifying what happened. 
+	It's best to put this at the start of the file.
+--]]
+naughty.connect_signal("request::display_error", function(message, startup)
+	naughty.notification {
+		urgency = "critical",
+		title = "An error occured" .. (startup and " during startup." or "."),
+		message = message
+	}
+end)
+
+-- Set variables
+terminal = "st"
+modkey = "Mod4"
+
+--[[
+	Layouts:
+	This specifies the layouts available to the user.
+	To see more layouts, read the docs on awful.layout.
+--]]
+tag.connect_signal("request::default_layouts", function()
+	awful.layout.append_default_layouts({
+		awful.layout.suit.tile,
+		awful.layout.suit.floating
+	})
+end)
+
+--[[
+	Tags:
+	This specifies the tags available to the user.
+	These will be added to each connected screen
+	and set the layout to the first in the layout table.
+--]]
+screen.connect_signal("request::desktop_decoration", function(s)
+	awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
+end)
+
+--[[
+	Sloppy focus:
+	This will focus clients when your mouse hovers over them.
+--]]
+client.connect_signal("mouse::enter", function(c)
+	c:activate { context = "mouse_enter", raise = false }
+end)
+
+--[[
+	Tiling fix:
+	This puts new windows at the bottom of the stack
+	instead of replacing the master window.
+--]]
+client.connect_signal('manage', function(c)
+	if not awesome.startup then awful.client.setslave(c) end
+	if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then
+		awful.placement.no_offscreen(c)
+	end
+end)
+</code></pre>
+
+				<p>So, there's quite a bit going on here. Let's start with the first few lines.</p>
+
+				<p>First is a comment! I'll be including this at the start of each file to show where it should be placed. In Lua single-line comments start with <code>--</code>, while multi-line comments start with <code>--[[</code> and end in <code>--]]</code>.</p>
+
+				<p>Next, we load some libraries that we'll need. We create a local variable with <code>local awful</code>, and set it to <code>require("awful")</code> which loads the library for that variable. You can set the variable to something different than the library name, but this will make it more difficult for other people to read. This would look like <code>local awf = require("awful")</code> and would be used as <code>awf.tag(...)</code>. To make things a bit easier, I'll talk about libraries as they are introduced. <code>awful</code> is AwesomeWM's general window management library, and <code>naughty</code> is the library for everything related to notifications. <code>awful.autofocus</code> will autofocus a window when changing tags.</p>
+
+				<p>After loading those libraries, we set some more variables. These are global variables, which can be used in any file loaded after this one. <code>"st"</code> will be used as my terminal of choice, and <code>"Mod4"</code> will be used as my modkey. Mod4 is also known as the "Super" key or "Windows" key. Alternatively, you can use <code>"Mod1"</code> as your mod key, which is Alt.</p>
+
+				<p>I wrote comments for each of the functions in this file so I don't have to explain them here :)</p>
+
+				<p>So we have some basic functions running -- now what? Well, keybinds would be really helpful! To do this, let's create a file for these keybinds at <code>~/.config/awesome/bind.lua</code>.</p>
+
+<pre><code>-- ~/.config/awesome/bind.lua
+local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
+
+-- Mouse
+client.connect_signal("request::default_mousebindings", function()
+    awful.mouse.append_client_mousebindings({
+        awful.button({ mod }, 1, function(c)
+            c:activate { context = "mouse_click", action = "mouse_move"  }
+        end),
+        awful.button({ mod }, 3, function(c)
+            c:activate { context = "mouse_click", action = "mouse_resize"}
+        end)
+    })
+end)
+
+-- General keybinds
+awful.keyboard.append_global_keybindings({
+	-- Awesome keybinds
+	awful.key(
+		{ modkey }, "k",
+			hotkeys_popup.show_help,
+		{ description = "show keybinds", group = "awesome" }
+	),
+	awful.key(
+		{ modkey, "Shift" }, "r",
+			awesome.restart,
+		{ description = "reload awesome", group = "awesome" }
+	),
+	awful.key(
+		{ modkey }, "Tab", function()
+			awful.client.focus.byidx(1)
+		end,
+		{ description = "next window", group = "awesome" }
+	),
+	awful.key(
+		{ modkey, "Shift" }, "Tab", function()
+			awful.client.focus.byidx(-1)
+		end,
+		{ description = "previous window", group = "awesome" }
+	),
+	awful.key(
+		{ modkey }, "Return", function()
+			awful.spawn.with_shell(terminal)
+		end,
+		{ description = "run terminal", group = "awesome" }
+	),
+
+	-- Tag keybinds
+    awful.key {
+        modifiers   = { modkey },
+        keygroup    = "numrow",
+        description = "only view tag",
+        group       = "tag",
+        on_press    = function(index)
+            local screen = awful.screen.focused()
+            local tag = screen.tags[index]
+            if tag then
+                tag:view_only()
+            end
+        end,
+    },
+    awful.key {
+        modifiers = { modkey, "Shift" },
+        keygroup    = "numrow",
+        description = "move focused client to tag and follow",
+        group       = "tag",
+        on_press    = function(index)
+            if client.focus then
+                local tag = client.focus.screen.tags[index]
+                if tag then
+                    client.focus:move_to_tag(tag)
+					tag:view_only()
+                end
+            end
+        end,
+    }
+})
+
+-- Client keybinds
+client.connect_signal("request::default_keybindings", function()
+	awful.keyboard.append_client_keybindings({
+		awful.key(
+			{ modkey }, "c",
+			function(c)
+				awful.placement.centered(c, { honor_workarea = true })
+			end,
+			{ description = "center window", group = "client" }
+		),a
+        awful.key(
+			{ modkey }, "f",
+            function(c)
+                c.fullscreen = not c.fullscreen
+                c:raise()
+            end,
+            { description = "toggle fullscreen", group = "client" }
+		),
+	    awful.key(
+			{ modkey }, "s", 
+			function(c)
+				c.floating = not c.floating
+				c:raise()
+			end,
+        	{ description = "toggle floating", group = "client" }
+		),
+	    awful.key(
+			{ modkey }, "n", 
+			function(c)
+				client.focus.minimized = true
+			end,
+        	{ description = "minimize", group = "client" }
+		),
+	    awful.key(
+			{ modkey }, "m", 
+			function(c)
+				c.maximized = not c.maximized
+				c:raise()
+			end,
+        	{ description = "toggle maximize", group = "client" }
+		),
+		awful.key(
+			{ modkey, "Shift" }, "q", function(c) 
+				c:kill() 
+			end,
+ 			{ description = "close", group = "client" }
+		),
+	})
+end)
+</code></pre>
+
+				<p>Yikes, that's a long one! Thankfully, it's actually pretty simple -- keybinds are defined by the keys used, the function it runs, and its description along with the group it belongs to. Those last two are used for the hotkeys popup, which we loaded at the start of the file. This popup will show a handy menu with all of the keybinds and what they do!</p>
+
+				<p>Despite having this new file, though, it won't work just yet. When AwesomeWM is run it will run the <code>rc.lua</code> file, but have no idea that the <code>bind.lua</code> file exists since <code>rc.lua</code> never mentions it. To fix this, we can tell <code>rc.lua</code> to load <code>bind.lua</code> near the start of the file, like this:</p>
+
+<pre><code>-- ~/.config/awesome/rc.lua
+-- Load libraries
+local awful = require("awful")
+local naughty = require("naughty")
+require("awful.autofocus")
+
+--[[ 
+	Error handling:
+	This will run if an error is encountered and 
+	send a notification specifying what happened. 
+	It's best to put this at the start of the file.
+--]]
+naughty.connect_signal("request::display_error", function(message, startup)
+	naughty.notification {
+		urgency = "critical",
+		title = "An error occured" .. (startup and " during startup." or "."),
+		message = message
+	}
+end)
+
+-- Set variables
+terminal = "st"
+modkey = "Mod4"
+
+-- Load files
+require("bind")
+require("rule") 
+
+...
+</code></pre>
+
+				<p>It's also important to note that order matters! You should place your error handling before you load anything else, since it will only give you errors for what comes after it. Additionally, you should put global variables before files that need them, otherwise they will not be initialized.</p>
+
+				<p>Before we move on, let's talk about how loading files works with AwesomeWM. You will need to tell it to <code>require</code> a file, which it looks for starting from the <code>~/.config/awesome/</code> directory. Here it looks for a file called <code>bind.lua</code> in <code>~/.config/awesome/</code>. However, this will also look for a directory called <code>bind</code> and, if it exists, it will look for a file called <code>init.lua</code> within that directory. Files within directories can be specified with the directory followed by a <code>.</code>, then the file. Thus, a file called <code>bar</code> within a directory called <code>foo</code> would be loaded with <code>require("foo.bar")</code>.</p>
+
+				<p>To finish off our basic configuration, let's set some rules for AwesomeWM to follow with <code>ruled</code>, the library for rules, in <code>~/.config/awesome/rule.lua</code>. </p>
+
+<pre><code>-- ~/.config/awesome/rule.lua
+local awful = require("awful")
+local ruled = require("ruled")
+local naughty = require("naughty")
+
+ruled.client.connect_signal("request::rules", function()
+	-- All new clients will follow this rule
+	ruled.client.append_rule {
+		id = "global",
+		rule = { },
+		properties = {
+			focus = awful.client.focus.filter,
+			raise = true,
+			screen = awful.screen.preferred,
+			placement = awful.placement.centered+awful.placement.no_offscreen
+		}
+	}
+
+	-- Clients that will always start as floating
+	ruled.client.append_rule {
+		id = "floating",
+		rule_any = {
+			class = {
+				"Arandr", "Sxiv" -- Add your own here! You can find the class name with xprop
+			},
+			name = {
+				"Event Tester" -- xev windows
+			},
+			role = {
+				"pop-up"
+			}
+		},
+		properties = { floating = true }
+	}
+end)
+
+ruled.notification.connect_signal("request::rules", function()
+	-- All notifications will follow this rule
+	ruled.notification.append_rule {
+		rule = { },
+		properties = {
+			screen = awful.screen.preferred,
+			implicit_timeout = 5,
+		}
+	}
+end)
+
+-- Create notifications
+naughty.connect_signal("request::display", function(n)
+	naughty.layout.box { notification = n }
+end)
+</code></pre>
+
+				<p>In here we tell AwesomeWM to do several things. We tell it to focus new clients and place them in the center of the screen if they're floating, make certain clients open as floating regardless of the current layout, and have notifications open on the preferred screen with a 5 second timeout. We also tell AwesomeWM to create notifications here, which will be moved in a later part, but this is currently the best place to put it.</p>
+
+				<p>And that's it for the basic configuration! This is perfectly usable... if incredibly barebones. In the next post, we'll touch on theming. Good luck!</p>
+			</div>
+			<contact-component id="contact" class="side"></contact-component>
+		</div>
+	</body>
+</html>

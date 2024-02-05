@@ -85,12 +85,13 @@ hr {
 pre {
 	background-color: #2b2b33;
 	padding: 20px;
-	white-space: pre-wrap;
+	display: block;
+	overflow-x: auto;
+	white-space: pre;
 }
 
 code {
 	background-color: #2b2b33;
-	padding: 0px 4px;
 }
 
 /* Header */
