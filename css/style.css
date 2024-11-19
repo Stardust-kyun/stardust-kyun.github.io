@@ -7,6 +7,11 @@
 
 :root {
     font-family: "Roboto";
+	--fg: #c8c8c8;
+	--fgalt: #969696;
+	--bg: #151515;
+	--bgalt: #202020;
+	--link: #6a9fb5;
 }
 
 html {
@@ -20,7 +25,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #19191e;
+    background-color: var(--bg);
 }
 
 /* Text */
@@ -32,42 +37,42 @@ h1 {
 
 h2 {
     font-size: 24px;
-    color: #9999a8;
+    color: var(--fg);
 }
 
 h3 {
     font-size: 16px;
-    color: #9999a855;
+    color: var(--fgalt);
 }
 
 a, p, pre, li {
     font-size: 18px;
-    color: #9999a8;
+    color: var(--fg);
     text-decoration: none;
 }
 
 hr {
     border-width: 0;
     height: 3px;
-    background-color: #9999a8;
+    background-color: var(--fg);
 }
 
 .link {
-    color: #5f819d;
+    color: var(--link);
     text-decoration: none;
 }
 
 .listlink {
     font-size: 20px;
     font-weight: bold;
-    color: #5f819d;
+    color: var(--link);
     text-decoration: none;
 }
 
 .headerlink, .headertext {
     font-weight: bold;
     font-size: 24px;
-    color: #9999a8;
+    color: var(--fg);
     text-decoration: none;
 }
 
@@ -78,12 +83,12 @@ hr {
 .side > * > li {
     font-size: 20px;
     font-weight: bold;
-    color: #9999a8;
+    color: var(--fg);
     padding-top: 10px;
 }
 
 pre {
-	background-color: #2b2b33;
+	background-color: var(--bgalt);
 	padding: 20px;
 	display: block;
 	overflow-x: auto;
@@ -92,7 +97,7 @@ pre {
 }
 
 code {
-	background-color: #2b2b33;
+	background-color: var(--bgalt);
 }
 
 /* Header */
@@ -100,7 +105,7 @@ code {
 #header {
     display: flex;
     justify-content: space-between;
-    background-color: #2b2b33;
+    background-color: var(--bgalt);
     padding: 20px;
 }
 
@@ -165,7 +170,7 @@ code {
 }
 
 .mangaimage {
-    width: 60%;
+    width: 40%;
     object-fit: cover;
 }
 
@@ -194,7 +199,7 @@ code {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
-        background-color: #2b2b33;
+        background-color: var(--bgalt);
         padding: 20px;
     }
 
