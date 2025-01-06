@@ -139,3 +139,46 @@ class MangaEntry extends HTMLElement {
 }
 
 customElements.define('manga-component', MangaEntry);
+
+class listVideo extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+		let rank = this.getAttribute('rank');
+        let name = this.getAttribute('name');
+		let link = this.getAttribute('link');
+        let video = this.getAttribute('video');
+
+        this.innerHTML = `
+			<a href=${link} target="_blank" class="headerlink listheader">#${rank}: ${name}</a>
+			<hr/>
+			<video controls class="listcontent"><source src=${video} type="video/mp4"></video>
+        `;
+    }
+}
+
+customElements.define('list-video', listVideo);
+
+class listImage extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+		let rank = this.getAttribute('rank');
+        let name = this.getAttribute('name');
+		let link = this.getAttribute('link');
+        let image = this.getAttribute('image');
+
+        this.innerHTML = `
+			<a href=${link} target="_blank" class="headerlink listheader">#${rank}: ${name}</a>
+			<hr/>
+            <img src=${image} onclick="window.open(this.src)" draggable="false" class="listcontent">
+        `;
+    }
+}
+
+customElements.define('list-image', listImage);
+

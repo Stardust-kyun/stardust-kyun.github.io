@@ -192,6 +192,28 @@ code {
     gap: 10px;
 }
 
+.list {
+    font-size: 48px;
+    color: var(--fg);
+}
+
+.listcontent {
+	max-width: 100%;
+	height: auto;
+    object-fit: contain;
+	user-select: none;
+	cursor: pointer;
+	scroll-snap-align: center;
+}
+
+.listbox {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-auto-flow: row;
+	column-gap: 20px;
+	row-gap: 20px;
+}
+
 /* Screen */
 
 @media all and (max-aspect-ratio: 1/1) {
