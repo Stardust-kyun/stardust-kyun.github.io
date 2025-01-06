@@ -262,6 +262,13 @@ code {
         flex-flow: row wrap;
     }
 
+	.listbox {
+		display: grid;
+		grid-template-columns: auto;
+		grid-auto-flow: row;
+		column-gap: 20px;
+	}
+
     html, body, .main {
         height: auto;
     }
