@@ -126,12 +126,11 @@ class MangaEntry extends HTMLElement {
         let tags = this.getAttribute('tags');
 
         this.innerHTML = `
-            <div class="imagewrapper ${tags}">
-                <img src=${image} onclick="window.open(this.src)" draggable="false" class="image mangaimage">
+			<a href=${link} target="_blank" class="headerlink listheader">${name}  🔗</a>
+			<hr/>
+            <div class="mangawrapper ${tags}">
+                <img src=${image} onclick="window.open(this.src)" draggable="false" class="mangaimage">
                 <div class="imagecontent">
-                    <div id=${id}>
-                        <a href=${link} target="_blank" class="link">${name}</a><a href="#${id}" target="_self"> 🔗</a>
-                    </div>
                     <p>${content}</p>
                 </div>
             </div>	
