@@ -112,35 +112,6 @@ class AwmEntry extends HTMLElement {
 
 customElements.define('awm-component', AwmEntry);
 
-class MangaEntry extends HTMLElement {
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        let id = this.getAttribute('id');
-        let link = this.getAttribute('link');
-        let name = this.getAttribute('name');
-        let image = this.getAttribute('image');
-        let content = this.getAttribute('content');
-        let tags = this.getAttribute('tags');
-
-        this.innerHTML = `
-			<a href=${link} target="_blank" class="headerlink listheader">${name}  🔗</a>
-			<hr/>
-            <div class="mangawrapper ${tags}">
-                <img src=${image} onclick="window.open(this.src)" draggable="false" class="mangaimage">
-                <div class="imagecontent">
-                    <p>${content}</p>
-                </div>
-            </div>	
-            <br/>
-        `;
-    }
-}
-
-customElements.define('manga-component', MangaEntry);
-
 class listVideo extends HTMLElement {
     constructor() {
         super();
@@ -182,4 +153,3 @@ class listImage extends HTMLElement {
 }
 
 customElements.define('list-image', listImage);
-
