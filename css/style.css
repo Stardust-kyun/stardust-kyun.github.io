@@ -210,79 +210,6 @@ code {
 	row-gap: 20px;
 }
 
-/* Manga */
-
-.mangabutton {
-    font-size: 18px;
-    color: var(--fg);
-	border: none;
-	outline: none;
-	padding: 10px;
-	margin-right: 10px;
-	background-color: var(--bgalt);
-	cursor: pointer;
-}
-
-.mangabutton.active {
-	color: var(--bg);
-	background-color: var(--fg);
-}
-
-.manga {
-	display: none;
-}
-
-.mangashow {
-	display: block;
-}
-
-.mangatagname {
-    font-size: 18px;
-    color: var(--fg);
-	outline: none;
-	padding: 10px;
-	margin-right: 10px;
-	background-color: var(--bgalt);
-}
-
-.mangawrapper {
-    display: flex;
-    flex-flow: row;
-    gap: 20px;
-    margin: 25px 0 20px 0;
-}
-
-.mangaheader {
-    font-size: 36px;
-	display: grid;
-	justify-content: center;
-}
-
-.mangaimage {
-    max-width: 40%;
-    width: auto;
-	height: auto;
-    object-fit: contain;
-	user-select: none;
-	cursor: pointer;
-	scroll-snap-align: center;
-}
-
-.mangareview {
-	all: unset;
-    font-size: 18px;
-    color: var(--fg);
-	margin-top: 10px;
-}
-
-.mangabox {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-auto-flow: row;
-	column-gap: 20px;
-	row-gap: 20px;
-}
-
 /* Screen */
 
 @media all and (max-aspect-ratio: 1/1) {
@@ -350,13 +277,4 @@ code {
     #sakuralogo { order: 3; }
 
     .main { overflow: hidden; }
-}
-
-@media all and (max-aspect-ratio: 4/5) {
-	.mangabox {
-		display: grid;
-		grid-template-columns: auto;
-		grid-auto-flow: row;
-		column-gap: 20px;
-	}
 }
