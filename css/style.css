@@ -81,11 +81,12 @@ hr {
     text-decoration: underline;
 }
 
-.side > * > li {
+.side > * > li, .box  > li {
     font-size: 20px;
     font-weight: bold;
     color: var(--fg);
     padding-top: 10px;
+	list-style-type: none;
 }
 
 pre {

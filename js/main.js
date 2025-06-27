@@ -50,6 +50,8 @@ class Sidebar extends HTMLElement {
                 <a>Documenting a simple way to add desktop icons</a>
                 <li><a href="https://stardust-kyun.github.io/blog/2024" target="_self" class="listlink">Best of 2024</a></li>
                 <a>An opinionated list of the best rices of 2024</a>
+                <li><a href="https://stardust-kyun.github.io/blog/manga" target="_self" class="listlink">Manga Reviews</a></li>
+                <a>Reviews of various manga I've enjoyed</a>
             </div>
         `;
     }
