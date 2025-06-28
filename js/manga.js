@@ -7,12 +7,17 @@ class MangaEntry extends HTMLElement {
         let link = this.getAttribute('link');
         let name = this.getAttribute('name');
         let image = this.getAttribute('image');
-        let content = this.getAttribute('content');
+        let content = this.getAttribute('content').replace(/\n/g, '<br>').replace(/\[\*/g, '<i>').replace(/\*\]/g, '</i>');
 		let tags = this.getAttribute('tags');
+		let rating = this.getAttribute('rating');
 		addClass(this, tags);
+		let id = name.replaceAll(' ', '');
 
         this.innerHTML = `
-			<a href=${link} target="_blank" class="headerlink listheader">${name}  🔗</a>
+			<div class="mangaheader" id=${id}>
+				<a href=${link} target="_blank" class="headerlink">${name}</a>
+				<a href=#${id} class="headerlink headeranchor">🔗</a>
+			</div>
 			<hr/>
 			<div class="mangawrapper">
 				<img src=${image} onclick="window.open(this.src)" draggable="false" class="mangaimage">
@@ -29,9 +34,12 @@ class MangaEntry extends HTMLElement {
 			const tag = document.createElement('a');
 			tag.className = 'mangatagname'
 			tag.innerText = tagnames[i];
-			console.log(this);
 			this.querySelector('.mangatagnames').appendChild(tag);
 		}
+		const rate = document.createElement('a');
+		rate.className = 'mangatagname'
+		rate.innerText = 'Rating: ' + rating + '/10';
+		this.querySelector('.mangatagnames').appendChild(rate);
     }
 }
 
@@ -114,4 +122,12 @@ for (var i = 0; i < buttons.length; i++) {
 			filter(tagfilter);
 		}
 	});
+}
+
+var entries = [].slice.call(document.getElementsByClassName('manga'));
+entries.sort(function(a,b) {
+	return a.getAttribute('name').toLowerCase().localeCompare(b.getAttribute('name').toLowerCase());
+});
+for (var i = 0; i < entries.length; i++) {
+	document.getElementsByClassName('mangabox')[0].appendChild(entries[i]);
 }
