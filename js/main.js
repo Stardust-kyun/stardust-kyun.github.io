@@ -1,30 +1,3 @@
-class Meta extends HTMLElement {
-	constructor() {
-		super();
-	}
-
-	connectedCallback() {
-		let name = this.getAttribute('name');
-		let caption = this.getAttribute('caption');
-		let image = this.getAttribute('image');
-
-		this.innerHTML = `
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta content="🌸 Sakura - ${name}" property="og:title"/>
-			<meta content="${caption}" property="og:description"/>
-			<meta content="https://stardust-kyun.github.io" property="og:url"/>
-			<meta content="https://stardust-kyun.github.io/src/${image}" property="og:image"/>
-			<meta content="#F199AA" data-react-helmet="true" name="theme-color"/>
-			<meta name="twitter:card" content="summary_large_image">
-			<title>${name}</title>
-			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
-		`;
-	}
-}
-
-customElements.define('meta-component', Meta);
-
 class Header extends HTMLElement {
     constructor() {
         super();
