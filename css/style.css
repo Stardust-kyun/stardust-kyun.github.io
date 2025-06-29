@@ -127,7 +127,7 @@ code {
     gap: 20px;
 }
 
-#name > * {
+#name > *, .list > * {
     margin: 0;
 }
 
