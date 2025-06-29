@@ -7,7 +7,7 @@ class MangaEntry extends HTMLElement {
         let link = this.getAttribute('link');
         let name = this.getAttribute('name');
         let image = this.getAttribute('image');
-        let content = this.getAttribute('content').replace(/\n/g, '<br>').replace(/\[\*/g, '<i>').replace(/\*\]/g, '</i>');
+        let content = this.getAttribute('content').replace(/\n/g, '<br>').replace(/\*(.*)\*/g, '<i>$1</i>').replace(/\*\*(.*)\*\*/g, '<b>$1</b>').replace(/\[(.*)\]\((.*)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
 		let tags = this.getAttribute('tags');
 		let rating = this.getAttribute('rating');
 		addClass(this, tags);
@@ -26,7 +26,6 @@ class MangaEntry extends HTMLElement {
 					<pre class="mangareview">${content}</pre>
 				</div>
 			</div>	
-			<br/>
         `;
 
 		var tagnames = tags.split(' ');

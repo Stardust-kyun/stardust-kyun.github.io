@@ -1,3 +1,30 @@
+class Meta extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+		let name = this.getAttribute('name');
+		let caption = this.getAttribute('caption');
+		let image = this.getAttribute('image');
+
+		this.innerHTML = `
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta content="🌸 Sakura - ${name}" property="og:title"/>
+			<meta content="${caption}" property="og:description"/>
+			<meta content="https://stardust-kyun.github.io" property="og:url"/>
+			<meta content="https://stardust-kyun.github.io/src/${image}" property="og:image"/>
+			<meta content="#F199AA" data-react-helmet="true" name="theme-color"/>
+			<meta name="twitter:card" content="summary_large_image">
+			<title>${name}</title>
+			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+		`;
+	}
+}
+
+customElements.define('meta-component', Meta);
+
 class Header extends HTMLElement {
     constructor() {
         super();
@@ -38,8 +65,10 @@ class Sidebar extends HTMLElement {
                 <a>My custom built keyboards</a>
                 <li><a href="https://stardust-kyun.github.io/projects/desktop" target="_self" class="listlink">Desktop</a></li>
                 <a>My personal desktop written in lua</a>
-                <li><a href="https://stardust-kyun.github.io/projects/awm" target="_self" class="listlink">AwesomeWM</a></li>
+                <li><a href="https://stardust-kyun.github.io/projects/awm" target="_self" class="listlink">AwesomeWM Dotfiles</a></li>
                 <a>A collection of repositories for awm</a>
+                <li><a href="https://stardust-kyun.github.io/projects/awmguide" target="_self" class="listlink">AwesomeWM Guide</a></li>
+                <a>A series of tutorials for awm</a>
             </div>
             <div class="box">
                 <a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
