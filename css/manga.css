@@ -56,9 +56,16 @@
     width: auto;
 	height: auto;
     object-fit: contain;
+	object-position: top;
 	user-select: none;
 	cursor: pointer;
 	scroll-snap-align: center;
+}
+
+.mangacontent {
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
 }
 
 .mangareview {

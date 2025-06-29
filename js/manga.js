@@ -21,7 +21,7 @@ class MangaEntry extends HTMLElement {
 			<hr/>
 			<div class="mangawrapper">
 				<img src=${image} onclick="window.open(\'${link}\', \'_blank\')" draggable="false" class="mangaimage">
-				<div class="imagecontent">
+				<div class="mangacontent">
 					<div class="mangatagnames"></div>
 					<pre class="mangareview">${content}</pre>
 				</div>
