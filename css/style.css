@@ -284,3 +284,13 @@ code {
 
     .main { overflow: hidden; }
 }
+
+@media (prefers-color-scheme: light) {
+:root {
+	--fg: #303030;
+	--fgalt: #505050;
+	--bg: #f5f5f5;
+	--bgalt: #e3e3e3;
+	--link: #6a9fb5;
+}
+}
