@@ -217,7 +217,7 @@ code {
 
 /* Screen */
 
-@media all and (max-aspect-ratio: 1/1) {
+@media all and (max-aspect-ratio: 3/2) {
     #header {
         display: flex;
         flex-flow: row wrap;
@@ -247,7 +247,7 @@ code {
 
     .main {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column;
         gap: 20px;
         margin: 20px;
     }
@@ -270,9 +270,13 @@ code {
     html, body, .main {
         height: auto;
     }
+
+    #body { flex: 1 1; }
+    #body { order: 1; }
+    #contact { order: 2; }
 }
 
-@media all and (min-aspect-ratio: 1/1) {
+@media all and (min-aspect-ratio: 3/2) {
     .side { flex: 1 1; }
     #body { flex: 4 0; }
     #sidebar { order: 1; }

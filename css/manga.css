@@ -83,7 +83,7 @@
 	row-gap: 20px;
 }
 
-@media all and (max-aspect-ratio: 4/5) {
+@media all and (max-aspect-ratio: 2/3) {
 	.mangaimage {
 		max-width: 100%;
 	}
@@ -91,7 +91,9 @@
 	.mangawrapper {
 		flex-flow: row wrap;
 	}
+}
 
+@media all and (max-aspect-ratio: 1/1) {
 	.mangabox {
 		display: grid;
 		grid-template-columns: auto;
