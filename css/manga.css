@@ -33,7 +33,6 @@
 .mangaheader {
 	display: flex;
 	justify-content: space-between;
-	padding: 5px;
 }
 
 .headeranchor {
@@ -77,7 +76,7 @@
 
 .mangabox {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 	grid-auto-flow: row;
 	column-gap: 20px;
 	row-gap: 20px;
