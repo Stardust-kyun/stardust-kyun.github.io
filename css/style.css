@@ -85,8 +85,9 @@ hr {
     text-decoration: underline;
 }
 
-:target {
-	background-color: var(--bgalt);
+:target > .headerlink {
+	background-color: var(--fg);
+	color: var(--bg);
 }
 
 li {
