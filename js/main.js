@@ -33,7 +33,6 @@ class Sidebar extends HTMLElement {
         this.innerHTML = `
             <div class="box">
                 <a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerlink">Projects</a>
-                <hr>
                 <li><a href="https://stardust-kyun.github.io/projects/keyboards" target="_self" class="listlink">Keyboards</a></li>
                 <a>My custom built keyboards</a>
                 <li><a href="https://stardust-kyun.github.io/projects/desktop" target="_self" class="listlink">Desktop</a></li>
@@ -45,7 +44,6 @@ class Sidebar extends HTMLElement {
             </div>
             <div class="box">
                 <a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerlink">Blog</a>
-                <hr>
                 <li><a href="https://stardust-kyun.github.io/blog/first" target="_self" class="listlink">First Post</a></li>
                 <a>My experience writing this website</a>
                 <li><a href="https://stardust-kyun.github.io/blog/icons" target="_self" class="listlink">Desktop Icons</a></li>
@@ -70,7 +68,6 @@ class Contact extends HTMLElement {
         this.innerHTML = `
             <div class="box">
                 <a class="headertext">Contact</a>
-                <hr>
                 <li>Github</li>
                 <a href="https://github.com/stardust-kyun/" target="_blank" class="link">Stardust-kyun</a>
                 <li>Discord</li>

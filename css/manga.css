@@ -12,6 +12,7 @@
 	outline: none;
 	padding: 10px;
 	background-color: var(--bgalt);
+	border-radius: 15px;
 }
 
 .mangabutton {

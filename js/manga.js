@@ -18,7 +18,6 @@ class MangaEntry extends HTMLElement {
 				<a href=${link} target="_blank" class="headerlink">${name}</a>
 				<a href=#${id} class="headerlink headeranchor">🔗</a>
 			</div>
-			<hr/>
 			<div class="mangawrapper">
 				<img src=${image} onclick="window.open(\'${link}\', \'_blank\')" draggable="false" class="mangaimage">
 				<div class="mangacontent">
