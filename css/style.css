@@ -241,6 +241,7 @@ code {
     #pages {
         width: 100%;
         justify-content: center;
+		padding-top: 10px;
     }
 
     #sidebar {
