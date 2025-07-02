@@ -4,41 +4,44 @@ class MangaEntry extends HTMLElement {
     }
 
     connectedCallback() {
-        let link = this.getAttribute('link');
-        let name = this.getAttribute('name');
-        let image = this.getAttribute('image');
-        let content = this.getAttribute('content').replace(/\n/g, '<br>').replace(/\*(.*)\*/g, '<i>$1</i>').replace(/\*\*(.*)\*\*/g, '<b>$1</b>').replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
-		let tags = this.getAttribute('tags');
-		let rating = this.getAttribute('rating');
-		addClass(this, tags);
-		let id = name.replaceAll(' ', '');
+		if (this.getElementsByClassName('mangaheader').length === 0) {
+			let link = this.getAttribute('link');
+			let name = this.getAttribute('name');
+			let image = this.getAttribute('image');
+			let content = this.innerHTML.replace(/\n/g, '<br>').replace(/\*(.*)\*/g, '<i>$1</i>').replace(/\*\*(.*)\*\*/g, '<b>$1</b>').replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
+			let tags = this.getAttribute('tags');
+			let rating = this.getAttribute('rating');
+			addClass(this, tags);
+			let id = name.replaceAll(' ', '');
+			console.log('for ' + name + ' ' + this.innerHTML);
 
-        this.innerHTML = `
-			<div class="mangaheader" id=${id}>
-				<a href=${link} target="_blank" class="headerlink">${name}</a>
-				<a href=#${id} class="headerlink headeranchor">🔗</a>
-			</div>
-			<div class="mangawrapper">
-				<img src=${image} onclick="window.open(\'${link}\', \'_blank\')" draggable="false" class="mangaimage">
-				<div class="mangacontent">
-					<div class="mangatagnames"></div>
-					<pre class="mangareview">${content}</pre>
+			this.innerHTML = `
+				<div class="mangaheader" id=${id}>
+					<a href=${link} target="_blank" class="headerlink">${name}</a>
+					<a href=#${id} class="headerlink headeranchor">🔗</a>
 				</div>
-			</div>	
-        `;
+				<div class="mangawrapper">
+					<img src=${image} onclick="window.open(\'${link}\', \'_blank\')" draggable="false" class="mangaimage">
+					<div class="mangacontent">
+						<div class="mangatagnames"></div>
+						<pre class="mangareview">${content}</pre>
+					</div>
+				</div>	
+			`;
 
-		var tagnames = tags.split(' ');
-		for (var i = 0; i < tagnames.length; i++) {
-			const tag = document.createElement('a');
-			tag.className = 'mangatagname'
-			tag.innerText = tagnames[i];
-			this.querySelector('.mangatagnames').appendChild(tag);
+			var tagnames = tags.split(' ');
+			for (var i = 0; i < tagnames.length; i++) {
+				const tag = document.createElement('a');
+				tag.className = 'mangatagname'
+				tag.innerText = tagnames[i];
+				this.querySelector('.mangatagnames').appendChild(tag);
+			}
+			const rate = document.createElement('a');
+			rate.className = 'mangatagname'
+			rate.innerText = 'Rating: ' + rating + '/10';
+			this.querySelector('.mangatagnames').appendChild(rate);
 		}
-		const rate = document.createElement('a');
-		rate.className = 'mangatagname'
-		rate.innerText = 'Rating: ' + rating + '/10';
-		this.querySelector('.mangatagnames').appendChild(rate);
-    }
+	}
 }
 
 customElements.define('manga-component', MangaEntry);
