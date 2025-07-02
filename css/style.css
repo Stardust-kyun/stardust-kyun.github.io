@@ -257,10 +257,16 @@ code {
 		flex-flow: row wrap;
 		gap: 20px;
 		list-style-type: none;
+		/*display: none;*/
 	}
 
 	.main {
 		flex-flow: column;
+	}
+
+	#body {
+		overflow: unset;
+		/*overflow: auto;*/
 	}
 
 	.image {
@@ -279,7 +285,8 @@ code {
 	}
 
 	html, body, .main {
-		height: auto;
+		/*height: auto;*/
+		overflow: auto;
 	}
 
 	#body { flex: 1 1; }

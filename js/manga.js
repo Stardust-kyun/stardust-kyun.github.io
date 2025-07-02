@@ -13,7 +13,6 @@ class MangaEntry extends HTMLElement {
 			let rating = this.getAttribute('rating');
 			addClass(this, tags);
 			let id = name.replaceAll(' ', '');
-			console.log('for ' + name + ' ' + this.innerHTML);
 
 			this.innerHTML = `
 				<div class="mangaheader" id=${id}>
