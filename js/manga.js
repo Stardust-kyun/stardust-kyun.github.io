@@ -1,133 +1,145 @@
+// ------------------ Manga Component ------------------
+
 class MangaEntry extends HTMLElement {
     constructor() {
         super();
+
+		this._initialized = false;
+		const tags = this.dataset.tags;
+		const tagArray = tags
+			.split(',')
+			.map(t => t.trim())
+			.filter(Boolean);
+		this.classList.add(...tagArray.map(t => t.toLowerCase().replaceAll(' ', '_')));
     }
 
     connectedCallback() {
-		if (this.getElementsByClassName('mangaheader').length === 0) {
-			let link = this.getAttribute('link');
-			let name = this.getAttribute('name');
-			let image = this.getAttribute('image');
-			let content = this.innerHTML.replace(/\n/g, '<br>').replace(/\*(.*)\*/g, '<i>$1</i>').replace(/\*\*(.*)\*\*/g, '<b>$1</b>').replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
-			let tags = this.getAttribute('tags');
-			let rating = this.getAttribute('rating');
-			addClass(this, tags);
-			let id = name.replaceAll(' ', '');
+		if (this._initialized) return
+		this._initialized = true;
 
-			this.innerHTML = `
-				<div class="mangaheader" id=${id}>
-					<a href=${link} target="_blank" class="headerlink">${name}</a>
-					<a href=#${id} class="headerlink headeranchor">🔗</a>
+		const link = this.dataset.link;
+		const name = this.dataset.name;
+		const image = this.dataset.image;
+		const tags = this.dataset.tags;
+		const rating = this.dataset.rating;
+		const id = name.replaceAll(' ', '');
+
+		const content = this.innerHTML
+			.replace(/\n/g, '<br>')
+			.replace(/\*(.*)\*/g, '<i>$1</i>')
+			.replace(/\*\*(.*)\*\*/g, '<b>$1</b>')
+			.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
+
+
+		this.innerHTML = `
+			<div class="mangaheader" id=${id}>
+				<a href=${link} target="_blank" class="headerlink">${name}</a>
+				<a href=#${id} class="headerlink headeranchor">🔗</a>
+			</div>
+			<div class="mangawrapper">
+				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaimage">
+				<div class="mangacontent">
+					<div class="mangatagnames"></div>
+					<p class="mangareview">${content}</p>
 				</div>
-				<div class="mangawrapper">
-					<img src=${image} onclick="window.open(\'${link}\', \'_blank\')" draggable="false" class="mangaimage">
-					<div class="mangacontent">
-						<div class="mangatagnames"></div>
-						<pre class="mangareview">${content}</pre>
-					</div>
-				</div>	
-			`;
+			</div>	
+		`;
 
-			var tagnames = tags.split(' ');
-			for (var i = 0; i < tagnames.length; i++) {
-				const tag = document.createElement('a');
-				tag.className = 'mangatagname'
-				tag.innerText = tagnames[i];
-				this.querySelector('.mangatagnames').appendChild(tag);
-			}
-			const rate = document.createElement('a');
-			rate.className = 'mangatagname'
-			rate.innerText = 'Rating: ' + rating + '/10';
-			this.querySelector('.mangatagnames').appendChild(rate);
+		const createTag = (content) => {
+			const tagElement = document.createElement('a');
+			tagElement.className = 'mangatagname';
+			tagElement.innerText = content;
+			tagContainer.appendChild(tagElement);
 		}
+
+		const tagContainer = this.querySelector('.mangatagnames');
+		for (const tag of tags.split(',')) {
+			createTag(tag);
+		}
+		createTag(`Rating: ${rating}/10`);
+
+		/*
+		const mangaContent = this.querySelector('.mangacontent');
+		const collapsedHeight = 350;
+
+		mangaContent.style.overflow = 'hidden';
+		mangaContent.style.transition = 'max-height 0.3s ease';
+		mangaContent.style.maxHeight = `${collapsedHeight}px`;
+
+		if (mangaContent.scrollHeight > collapsedHeight + 10) {
+			const button = document.createElement('button');
+			button.className = 'readMore';
+			button.textContent = 'Read More';
+			mangaContent.after(button);
+
+			button.addEventListener('click', () => {
+				const isExpanded = mangaContent.classList.toggle('expanded');
+				if (isExpanded) {
+					mangaContent.style.maxHeight = `${mangaContent.scrollHeight}px`;
+					button.textContent = 'Show Less';
+				} else {
+					mangaContent.style.maxHeight = `${collapsedHeight}px`;
+					button.textContent = 'Read More';
+				}
+			});
+		}
+		*/
 	}
 }
 
 customElements.define('manga-component', MangaEntry);
 
-const tagfilter = [];
+// ------------------ Tag Filter Logic ------------------
 
+const tagFilter = [];
+
+const visibility = (action) => {
+	const entries = document.querySelectorAll('.manga');
+	entries.forEach(entry => {
+		entry.classList.toggle('mangashow', action === 'show');
+	});
+};
 visibility('show');
-function visibility(action) {
-	var entries, i;
-	entries = document.getElementsByClassName('manga');
-	if (action === 'show') {
-		for (i = 0; i < entries.length; i++) {
-			addClass(entries[i], 'mangashow');
-		}
-	} else if (action === 'hide') {
-		for (i = 0; i < entries.length; i++) {
-			removeClass(entries[i], 'mangashow');
-		}
-	}
-}
 
-function addClass(element, name) {
-	var i, arr1, arr2;
-	arr1 = element.className.split(' ');
-	arr2 = name.split(' ');
-	for (i = 0; i < arr2.length; i++) {
-		if (arr1.indexOf(arr2[i]) == -1) {
-			element.className += ' ' + arr2[i];
-		}
-	}
-}
-
-function removeClass(element, name) {
-	var i, arr1, arr2;
-	arr1 = element.className.split(' ');
-	arr2 = name.split(' ');
-	for (i = 0; i < arr2.length; i++) {
-		while (arr1.indexOf(arr2[i]) > -1) {
-			arr1.splice(arr1.indexOf(arr2[i]), 1);
-		}
-	}
-	element.className = arr1.join(' ');
-}
-
-function filter(tagfilter) {
-	if (tagfilter.length === 0) {
+const filter = () => {
+	const entries = document.querySelectorAll('.manga')
+	if (tagFilter.length === 0) {
 		visibility('show');
 		return;
 	}
-	var i, j, entries, current, goal;
-	entries = document.getElementsByClassName('manga');
-	current = 0;
-	goal = tagfilter.length;
-	for (i = 0; i < entries.length; i++) {
-		for (j = 0; j < tagfilter.length; j++) {
-			if (entries[i].className.includes(tagfilter[j])) {
-				current += 1;
-			}
-			if (current === goal) {
-				addClass(entries[i], 'mangashow');
-			}
-		}
-		current = 0;
-	}
-}
-
-var buttons = document.getElementById('mangatags').getElementsByClassName('mangabutton');
-for (var i = 0; i < buttons.length; i++) {
-	buttons[i].addEventListener('click', function() {
-		if (!this.className.includes('active')) {
-			this.className += ' active';
-			tagfilter.push(this.getAttribute('tag'));
-			visibility('hide');
-			filter(tagfilter);
-		} else {
-			this.className = this.className.replace(' active', '');
-			tagfilter.splice(tagfilter.indexOf(this.getAttribute('tag')), 1);
-			visibility('hide');
-			filter(tagfilter);
-		}
+	entries.forEach(entry => {
+		const hasAllTags = tagFilter.every(tag => {
+			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
+			return entry.classList.contains(safeTag);
+		});
+		entry.classList.toggle('mangashow', hasAllTags);
 	});
 }
 
-var entries = [].slice.call(document.getElementsByClassName('manga'));
-entries.sort(function(a,b) {
-	return a.getAttribute('name').toLowerCase().localeCompare(b.getAttribute('name').toLowerCase());
+// ------------------ Button Events ------------------
+
+const buttons = document.querySelectorAll('#mangatags .mangabutton');
+buttons.forEach(button => {
+	button.addEventListener('click', () => {
+		const tag = button.getAttribute('tag');
+		const isActive = button.classList.toggle('active');
+		if (isActive) {
+			tagFilter.push(tag);
+		} else {
+			const index = tagFilter.indexOf(tag);
+			if (index !== -1) tagFilter.splice(index, 1);
+		}
+
+		visibility('hide');
+		filter();
+	});
 });
-for (var i = 0; i < entries.length; i++) {
-	document.getElementsByClassName('mangabox')[0].appendChild(entries[i]);
-}
+
+// ------------------ Sorting Entries ------------------
+
+const entries = Array.from(document.querySelectorAll('.manga'));
+entries.sort((a, b) =>
+	a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
+);
+const box = document.querySelector('.mangabox');
+entries.forEach(entry => box.appendChild(entry));
