@@ -235,6 +235,11 @@ code {
 /* Screen */
 
 @media all and (max-aspect-ratio: 3/2) {
+	body {
+		height: auto;
+		min-height: 100vh;
+	}
+
 	#header {
 		flex-flow: row wrap;
 		justify-content: space-between;
@@ -302,11 +307,11 @@ code {
 }
 
 @media (prefers-color-scheme: light) {
-:root {
-	--fg: #303030;
-	--fgalt: #505050;
-	--bg: #f5f5f5;
-	--bgalt: #e3e3e3;
-	--link: #6a9fb5;
-}
+	:root {
+		--fg: #303030;
+		--fgalt: #505050;
+		--bg: #f5f5f5;
+		--bgalt: #e3e3e3;
+		--link: #6a9fb5;
+	}
 }
