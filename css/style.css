@@ -146,10 +146,10 @@ code {
 
 .main {
 	display: flex;
+	flex: 1;
 	gap: 20px;
 	padding: 20px;
 	margin: 10px;
-	height: 100%;
 	background-size: cover;
 	background-image: url(../src/background.png);
 	border-radius: 30px;
@@ -266,7 +266,6 @@ code {
 
 	#body {
 		overflow: unset;
-		/*overflow: auto;*/
 	}
 
 	.image {
@@ -282,11 +281,6 @@ code {
 		grid-template-columns: auto;
 		grid-auto-flow: row;
 		column-gap: 20px;
-	}
-
-	html, body, .main {
-		/*height: auto;*/
-		overflow: auto;
 	}
 
 	#body { flex: 1 1; }
