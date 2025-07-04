@@ -59,25 +59,27 @@ class MangaEntry extends HTMLElement {
 		createTag(`Rating: ${rating}/10`);
 
 		requestAnimationFrame(() => {
-			const mangaReview = this.querySelector('.mangaReview');
+			setTimeout(() => {
+				const mangaReview = this.querySelector('.mangaReview');
 
-			if (mangaReview.scrollHeight > mangaReview.clientHeight + 10) {
-				const button = document.createElement('button');
-				button.className = 'mangaButton';
-				button.textContent = 'Show More';
-				let expanded = false;
-				button.setAttribute('aria-expanded', expanded);
+				if (mangaReview.scrollHeight > mangaReview.clientHeight + 10) {
+					const button = document.createElement('button');
+					button.className = 'mangaButton';
+					button.textContent = 'Show More';
+					let expanded = false;
+					button.setAttribute('aria-expanded', expanded);
 
-				button.addEventListener('click', () => {
-					expanded = !expanded;
-					mangaReview.classList.toggle('collapsed', !expanded);
-					mangaReview.classList.toggle('expanded', expanded);
-					button.textContent = expanded ? 'Show Less' : 'Show More';
-					button.setAttribute('aria-expanded', expanded)
-				});
-				
-				mangaReview.after(button);
-			}
+					button.addEventListener('click', () => {
+						expanded = !expanded;
+						mangaReview.classList.toggle('collapsed', !expanded);
+						mangaReview.classList.toggle('expanded', expanded);
+						button.textContent = expanded ? 'Show Less' : 'Show More';
+						button.setAttribute('aria-expanded', expanded)
+					});
+					
+					mangaReview.after(button);
+				}
+			}, 0);
 		});
 	}
 }
