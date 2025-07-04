@@ -40,7 +40,7 @@ class MangaEntry extends HTMLElement {
 				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaimage">
 				<div class="mangacontent">
 					<div class="mangatagnames"></div>
-					<p class="mangareview">${content}</p>
+					<div class="mangareview collapsed">${content}</div>
 				</div>
 			</div>	
 		`;
@@ -58,32 +58,27 @@ class MangaEntry extends HTMLElement {
 		}
 		createTag(`Rating: ${rating}/10`);
 
-		/*
-		const mangaContent = this.querySelector('.mangacontent');
-		const collapsedHeight = 350;
+		requestAnimationFrame(() => {
+			const mangaReview = this.querySelector('.mangareview');
 
-		mangaContent.style.overflow = 'hidden';
-		mangaContent.style.transition = 'max-height 0.3s ease';
-		mangaContent.style.maxHeight = `${collapsedHeight}px`;
+			if (mangaReview.scrollHeight > mangaReview.clientHeight + 10) {
+				const button = document.createElement('button');
+				button.className = 'mangabutton';
+				button.textContent = 'Read More';
+				let expanded = false;
+				button.setAttribute('aria-expanded', expanded);
 
-		if (mangaContent.scrollHeight > collapsedHeight + 10) {
-			const button = document.createElement('button');
-			button.className = 'readMore';
-			button.textContent = 'Read More';
-			mangaContent.after(button);
-
-			button.addEventListener('click', () => {
-				const isExpanded = mangaContent.classList.toggle('expanded');
-				if (isExpanded) {
-					mangaContent.style.maxHeight = `${mangaContent.scrollHeight}px`;
-					button.textContent = 'Show Less';
-				} else {
-					mangaContent.style.maxHeight = `${collapsedHeight}px`;
-					button.textContent = 'Read More';
-				}
-			});
-		}
-		*/
+				button.addEventListener('click', () => {
+					expanded = !expanded;
+					mangaReview.classList.toggle('collapsed', !expanded);
+					mangaReview.classList.toggle('expanded', expanded);
+					button.textContent = expanded ? 'Show Less' : 'Read More';
+					button.setAttribute('aria-expanded', expanded)
+				});
+				
+				mangaReview.after(button);
+			}
+		});
 	}
 }
 

@@ -74,6 +74,18 @@
     font-size: 18px;
     color: var(--fg);
 	margin-top: 10px;
+	transition: max-height 0.3s ease;
+}
+
+.mangareview.expanded {
+	display: block;
+}
+
+.mangareview.collapsed {
+	display: -webkit-box;
+	-webkit-line-clamp: 12;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .mangabox {
