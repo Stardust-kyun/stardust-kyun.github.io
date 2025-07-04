@@ -2,11 +2,11 @@
 	display: none;
 }
 
-.mangashow {
+.mangaShow {
 	display: block;
 }
 
-.mangatagname, .mangabutton {
+.mangaTagName, .mangaButton {
     font-size: 18px;
     color: var(--fg);
 	outline: none;
@@ -15,44 +15,44 @@
 	border-radius: 15px;
 }
 
-.mangabutton {
+.mangaButton {
 	border: none;
 	cursor: pointer;
 }
 
-.mangabutton.active {
+.mangaButton.active {
 	color: var(--bg);
 	background-color: var(--fg);
 }
 
-.mangatagnames, #mangatags {
+.mangaTagNames, #mangaTags {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
 }
 
-.mangaheader {
+.mangaHeader {
 	display: flex;
 	justify-content: space-between;
 	gap: 15px;
 }
 
-.headeranchor {
+.headerAnchor {
 	display: none;
 }
 
-.mangaheader:hover .headeranchor {
+.mangaHeader:hover .headerAnchor {
 	display: inherit;
 }
 
-.mangawrapper {
+.mangaWrapper {
     display: flex;
     flex-flow: row;
     gap: 20px;
     margin: 20px 0 20px 0;
 }
 
-.mangaimage {
+.mangaImage {
     max-width: 40%;
     width: auto;
 	height: auto;
@@ -63,13 +63,13 @@
 	scroll-snap-align: center;
 }
 
-.mangacontent {
+.mangaContent {
 	display: flex;
 	flex-flow: column;
 	gap: 10px;
 }
 
-.mangareview {
+.mangaReview {
 	all: unset;
     font-size: 18px;
     color: var(--fg);
@@ -77,18 +77,18 @@
 	transition: max-height 0.3s ease;
 }
 
-.mangareview.expanded {
+.mangaReview.expanded {
 	display: block;
 }
 
-.mangareview.collapsed {
+.mangaReview.collapsed {
 	display: -webkit-box;
 	-webkit-line-clamp: 12;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
 
-.mangabox {
+.mangaBox {
 	display: grid;
 	grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 	grid-auto-flow: row;
@@ -97,17 +97,17 @@
 }
 
 @media all and (max-aspect-ratio: 2/3) {
-	.mangaimage {
+	.mangaImage {
 		max-width: 100%;
 	}
 
-	.mangawrapper {
+	.mangaWrapper {
 		flex-flow: row wrap;
 	}
 }
 
 @media all and (max-aspect-ratio: 1/1) {
-	.mangabox {
+	.mangaBox {
 		display: grid;
 		grid-template-columns: auto;
 		grid-auto-flow: row;

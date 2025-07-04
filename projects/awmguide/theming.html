@@ -19,7 +19,7 @@
 		<div class="main">
 			<sidebar-component id="sidebar" class="side"></sidebar-component>
 			<div id="body" class="box">
-				<a class="headertext">Basic Theming</a>
+				<a class="headerText">Basic Theming</a>
 				<p>Welcome back! This is part two of this series on configuring AwesomeWM. The goal of this post is to do some basic theming with our new desktop. As always, the configurations are hosted on <a href="https://github.com/stardust-kyun/awmguide/tree/theming" target="_blank" class="link">this repository</a>. The branch for this post is called "theming".</p>
 
 				<p>Let's start off with creating a new directory for our theme. I'll create this directory at <code>~/.config/awesome/theme/</code>. However, this doesn't mean anything to AwesomeWM right now -- we need to create a file called <code>init.lua</code> and load it in our <code>rc.lua</code> like so:</p>
@@ -113,7 +113,7 @@ screen.connect_signal("request::wallpaper", function(s)
 end)
 </code></pre>
 
-				<img src="src/theming1.png" onclick="window.open(this.src)" draggable="false" class="image guideimage">
+				<img src="src/theming1.png" onclick="window.open(this.src)" draggable="false" class="image guideImage">
 
 				<p>Here's what the desktop looks like so far! Already pretty good, no? However, we're missing a bar, which is pretty much mandatory for a usable desktop. So let's start by creating a new file at <code>~/.config/awesome/theme/bar.lua</code> and loading it in <code>~/.config/awesome/theme/init.lua</code> as such:</p>
 
@@ -242,7 +242,7 @@ end)
 
 				<p>That's all for our bar! It can seem like a lot at first, but as you learn more about AwesomeWM it will soon seem incredibly simple :)</p>
 
-				<img src="src/theming2.png" onclick="window.open(this.src)" draggable="false" class="image guideimage">
+				<img src="src/theming2.png" onclick="window.open(this.src)" draggable="false" class="image guideImage">
 
 				<p>Here's what it looks like! Pretty nice, but we can make it look a bit better with some new variables in our <code>theme.lua</code>.</p>
 
@@ -270,7 +270,7 @@ theme.taglist_fg_occupied = "#d0d0d0" .. "75"
 
 				<p>The only notable things here are a new variable for the tasklist and concatonation of variables. The new tasklist variable is <code>theme.tasklist_plain_task_name</code>, which removes special icons from the start of task names. Then we have the concatonation. Lua adds two strings together with <code>..</code>, and here we're adding two more characters onto our hex codes which specify the opacity of the color. This effectively dims these colors.</p>
 
-				<img src="src/theming3.png" onclick="window.open(this.src)" draggable="false" class="image guideimage">
+				<img src="src/theming3.png" onclick="window.open(this.src)" draggable="false" class="image guideImage">
 
 				<p>And there we have it! A simple, aesthetically appealing desktop. Join me next time for some basic widgets which add more functionality to our desktop.</p>
 

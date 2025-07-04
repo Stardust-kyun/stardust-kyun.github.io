@@ -63,14 +63,14 @@ hr {
 	cursor: pointer;
 }
 
-.listlink {
+.listLink {
 	font-size: 20px;
 	font-weight: bold;
 	color: var(--link);
 	text-decoration: none;
 }
 
-.headerlink, .headertext {
+.headerLink, .headerText {
 	font-weight: bold;
 	font-size: 24px;
 	color: var(--fg);
@@ -82,11 +82,11 @@ hr {
 	height: min-content;
 }
 
-.link:hover, .headerlink:hover, .listlink:hover {
+.link:hover, .headerLink:hover, .listLink:hover {
 	text-decoration: underline;
 }
 
-:target > .headerlink {
+:target > .headerLink {
 	background-color: var(--fg);
 	color: var(--bg);
 }
@@ -137,7 +137,7 @@ code {
 	margin: 0;
 }
 
-#sakuralogo {
+#sakura {
 	display: flex;
 	align-items: center;
 }
@@ -192,18 +192,18 @@ code {
 	scroll-snap-align: center;
 }
 
-.guideimage {
+.guideImage {
 	max-width: 100%;
 }
 
-.imagewrapper {
+.imageWrapper {
 	display: flex;
 	flex-flow: row;
 	gap: 20px;
 	margin: 20px 0 20px 0;
 }
 
-.imagecontent {
+.imageContent {
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
@@ -215,7 +215,7 @@ code {
 	color: var(--fg);
 }
 
-.listcontent {
+.listContent {
 	max-width: 100%;
 	height: auto;
 	object-fit: contain;
@@ -224,7 +224,7 @@ code {
 	scroll-snap-align: center;
 }
 
-.listbox {
+.listBox {
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-auto-flow: row;
@@ -277,11 +277,11 @@ code {
 		max-width: 100%;
 	}
 
-	.imagewrapper {
+	.imageWrapper {
 		flex-flow: row wrap;
 	}
 
-	.listbox {
+	.listBox {
 		display: grid;
 		grid-template-columns: auto;
 		grid-auto-flow: row;
@@ -301,7 +301,7 @@ code {
 	#contact { order: 3; }
 
 	#pages { order: 2; }
-	#sakuralogo { order: 3; }
+	#sakura { order: 3; }
 
 	.main { overflow: hidden; }
 }

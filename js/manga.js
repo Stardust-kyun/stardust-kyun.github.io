@@ -32,39 +32,39 @@ class MangaEntry extends HTMLElement {
 
 
 		this.innerHTML = `
-			<div class="mangaheader" id=${id}>
-				<a href=${link} target="_blank" class="headerlink">${name}</a>
-				<a href=#${id} class="headerlink headeranchor">🔗</a>
+			<div class="mangaHeader" id=${id}>
+				<a href=${link} target="_blank" class="headerLink">${name}</a>
+				<a href=#${id} class="headerLink headerAnchor">🔗</a>
 			</div>
-			<div class="mangawrapper">
-				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaimage">
-				<div class="mangacontent">
-					<div class="mangatagnames"></div>
-					<div class="mangareview collapsed">${content}</div>
+			<div class="mangaWrapper">
+				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaImage">
+				<div class="mangaContent">
+					<div class="mangaTagNames"></div>
+					<div class="mangaReview collapsed">${content}</div>
 				</div>
 			</div>	
 		`;
 
 		const createTag = (content) => {
 			const tagElement = document.createElement('a');
-			tagElement.className = 'mangatagname';
+			tagElement.className = 'mangaTagName';
 			tagElement.innerText = content;
 			tagContainer.appendChild(tagElement);
 		}
 
-		const tagContainer = this.querySelector('.mangatagnames');
+		const tagContainer = this.querySelector('.mangaTagNames');
 		for (const tag of tags.split(',')) {
 			createTag(tag);
 		}
 		createTag(`Rating: ${rating}/10`);
 
 		requestAnimationFrame(() => {
-			const mangaReview = this.querySelector('.mangareview');
+			const mangaReview = this.querySelector('.mangaReview');
 
 			if (mangaReview.scrollHeight > mangaReview.clientHeight + 10) {
 				const button = document.createElement('button');
-				button.className = 'mangabutton';
-				button.textContent = 'Read More';
+				button.className = 'mangaButton';
+				button.textContent = 'Show More';
 				let expanded = false;
 				button.setAttribute('aria-expanded', expanded);
 
@@ -72,7 +72,7 @@ class MangaEntry extends HTMLElement {
 					expanded = !expanded;
 					mangaReview.classList.toggle('collapsed', !expanded);
 					mangaReview.classList.toggle('expanded', expanded);
-					button.textContent = expanded ? 'Show Less' : 'Read More';
+					button.textContent = expanded ? 'Show Less' : 'Show More';
 					button.setAttribute('aria-expanded', expanded)
 				});
 				
@@ -91,7 +91,7 @@ const tagFilter = [];
 const visibility = (action) => {
 	const entries = document.querySelectorAll('.manga');
 	entries.forEach(entry => {
-		entry.classList.toggle('mangashow', action === 'show');
+		entry.classList.toggle('mangaShow', action === 'show');
 	});
 };
 visibility('show');
@@ -107,13 +107,13 @@ const filter = () => {
 			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
 			return entry.classList.contains(safeTag);
 		});
-		entry.classList.toggle('mangashow', hasAllTags);
+		entry.classList.toggle('mangaShow', hasAllTags);
 	});
 }
 
 // ------------------ Button Events ------------------
 
-const buttons = document.querySelectorAll('#mangatags .mangabutton');
+const buttons = document.querySelectorAll('#mangaTags .mangaButton');
 buttons.forEach(button => {
 	button.addEventListener('click', () => {
 		const tag = button.getAttribute('tag');
@@ -136,5 +136,5 @@ const entries = Array.from(document.querySelectorAll('.manga'));
 entries.sort((a, b) =>
 	a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
 );
-const box = document.querySelector('.mangabox');
+const box = document.querySelector('.mangaBox');
 entries.forEach(entry => box.appendChild(entry));
