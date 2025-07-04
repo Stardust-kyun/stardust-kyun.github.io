@@ -10,7 +10,7 @@ class MangaEntry extends HTMLElement {
 			.split(',')
 			.map(t => t.trim())
 			.filter(Boolean);
-		this.classList.add(...tagArray.map(t => t.toLowerCase().replaceAll(' ', '_')));
+		this.classList.add(...tagArray.map(tag => tag.toLowerCase().replaceAll(' ', '_')));
     }
 
     connectedCallback() {
@@ -81,45 +81,61 @@ class MangaEntry extends HTMLElement {
 				}
 			}, 0);
 		});
+
+		this.classList.add('mangaShow');
 	}
 }
 
 customElements.define('manga-component', MangaEntry);
 
-// ------------------ Tag Filter Logic ------------------
+// ------------------ Filter Logic ------------------
 
-const tagFilter = [];
-
-const visibility = (action) => {
-	const entries = document.querySelectorAll('.manga');
-	entries.forEach(entry => {
-		entry.classList.toggle('mangaShow', action === 'show');
-	});
-};
-visibility('show');
+let tagFilter = [];
 
 const filter = () => {
-	const entries = document.querySelectorAll('.manga')
-	if (tagFilter.length === 0) {
-		visibility('show');
-		return;
-	}
+	const query = searchInput.value.toLowerCase();
+	const entries = document.querySelectorAll('manga-component');
+
 	entries.forEach(entry => {
-		const hasAllTags = tagFilter.every(tag => {
+		const name = entry.dataset.name.toLowerCase();
+		const alt = (entry.dataset.alt || '').toLowerCase();
+
+		const searchMatch = name.includes(query) || alt.includes(query);
+
+		const tagMatch = tagFilter.every(tag => {
 			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
 			return entry.classList.contains(safeTag);
 		});
-		entry.classList.toggle('mangaShow', hasAllTags);
+		
+		entry.classList.toggle('mangaShow', searchMatch && tagMatch);
 	});
 }
 
-// ------------------ Button Events ------------------
+// ------------------ Search Bar ------------------
 
-const buttons = document.querySelectorAll('#mangaTags .mangaButton');
-buttons.forEach(button => {
+const searchInput = document.getElementById('mangaSearchInput');
+const mangaSearchClear = document.getElementById('mangaSearchClear');
+searchInput.value = '';
+
+searchInput.addEventListener('input', () => {
+	filter();
+});
+
+mangaSearchClear.addEventListener('click', () => {
+	searchInput.value = '';
+	tagFilter = [];
+	tagButtons.forEach(button => button.classList.toggle('active', false));
+	filter();
+});
+
+// ------------------ Tag Buttons ------------------
+
+const tagButtons = document.querySelectorAll('#mangaTags .mangaButton');
+tagButtons.forEach(button => {
 	button.addEventListener('click', () => {
-		const tag = button.getAttribute('tag');
+		const tag = button.dataset.tag;
 		const isActive = button.classList.toggle('active');
+
 		if (isActive) {
 			tagFilter.push(tag);
 		} else {
@@ -127,14 +143,13 @@ buttons.forEach(button => {
 			if (index !== -1) tagFilter.splice(index, 1);
 		}
 
-		visibility('hide');
 		filter();
 	});
 });
 
 // ------------------ Sorting Entries ------------------
 
-const entries = Array.from(document.querySelectorAll('.manga'));
+const entries = Array.from(document.querySelectorAll('manga-component'));
 entries.sort((a, b) =>
 	a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
 );
