@@ -6,18 +6,23 @@ manga-component {
 	display: block;
 }
 
+#body {
+	display: flex;
+	flex-flow: column;
+	gap: 15px;
+}
+
 #mangaSearch {
 	display: flex;
 	flex-flow: row;
 	gap: 15px;
-	margin-top: 15px;
 }
 
 #mangaSearchInput {
 	width: 100%;
 }
 
-.mangaTagName, .mangaButton {
+.mangaTagName, .mangaButton, .mangaTagButton, .mangaCategory {
     font-size: 18px;
     color: var(--fg);
 	outline: none;
@@ -26,19 +31,43 @@ manga-component {
 	border-radius: 15px;
 }
 
+.mangaCategory {
+	cursor: pointer;
+	height: min-content;
+	flex: 1 1;
+}
+
+.mangaCategory summary {
+	list-style-type: '';
+	font-size: 24px;
+}
+
+.mangaTagCategory {
+	margin-top: 10px;
+}
+
 .mangaButton {
 	border: none;
 	cursor: pointer;
 }
 
-.mangaButton.active {
+.mangaTagButton {
+	border: 2px solid var(--fg);
+}
+
+.mangaTagButton.active {
 	color: var(--bg);
 	background-color: var(--fg);
 }
 
-.mangaTagNames, #mangaTags {
+.mangaTagNames, .mangaTagCategory {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 10px;
+}
+
+#mangaTags {
+	display: flex;
 	gap: 10px;
 }
 
@@ -124,4 +153,8 @@ manga-component {
 		grid-auto-flow: row;
 		column-gap: 20px;
 	}
+
+	/*#mangaTags {
+		flex-flow: column;
+	}*/
 }

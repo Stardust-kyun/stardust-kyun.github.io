@@ -25,17 +25,30 @@
 					<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
 					<button class="mangaButton" id="mangaSearchClear">Clear</button>
 				</div>
-				<p>Select tags:</p>
 				<div id="mangaTags">
-					<button class="mangaButton" data-tag="Romance">Romance</button>
-					<button class="mangaButton" data-tag="Yuri">Yuri</button>
-					<button class="mangaButton" data-tag="Action">Action</button>
-					<button class="mangaButton" data-tag="Horror">Horror</button>
-					<button class="mangaButton" data-tag="Suggestive">Suggestive</button>
-					<button class="mangaButton" data-tag="Oneshot">Oneshot</button>
-					<button class="mangaButton" data-tag="4-Koma">4-Koma</button>
+					<details class="mangaCategory">
+						<summary>Format</summary>
+						<div class="mangaTagCategory" data-category="format">
+							<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
+							<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
+						</div>
+					</details>
+					<details class="mangaCategory">
+						<summary>Genre</summary>
+						<div class="mangaTagCategory" data-category="genre">
+							<button class="mangaTagButton" data-tag="Romance">Romance</button>
+							<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
+							<button class="mangaTagButton" data-tag="Action">Action</button>
+							<button class="mangaTagButton" data-tag="Horror">Horror</button>
+						</div>
+					</details>
+					<details class="mangaCategory">
+						<summary>Rating</summary>
+						<div class="mangaTagCategory" data-category="rating">
+							<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
+						</div>
+					</details>
 				</div>
-				<br>
 				<!--
 					<manga-component 
 						data-link=""

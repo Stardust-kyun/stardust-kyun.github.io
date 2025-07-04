@@ -126,7 +126,6 @@ class listVideo extends HTMLElement {
 
         this.innerHTML = `
 			<a href=${link} target="_blank" class="headerLink listheader">#${rank}: ${name}</a>
-			<hr/>
 			<video controls class="listContent"><source src=${video} type="video/mp4"></video>
         `;
     }
@@ -147,7 +146,6 @@ class listImage extends HTMLElement {
 
         this.innerHTML = `
 			<a href=${link} target="_blank" class="headerLink listheader">#${rank}: ${name}</a>
-			<hr/>
             <img src=${image} onclick="window.open(this.src)" draggable="false" class="listContent">
         `;
     }

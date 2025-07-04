@@ -130,7 +130,7 @@ mangaSearchClear.addEventListener('click', () => {
 
 // ------------------ Tag Buttons ------------------
 
-const tagButtons = document.querySelectorAll('#mangaTags .mangaButton');
+const tagButtons = document.querySelectorAll('#mangaTags .mangaTagButton');
 tagButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		const tag = button.dataset.tag;
