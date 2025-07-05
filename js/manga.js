@@ -90,25 +90,42 @@ customElements.define('manga-component', MangaEntry);
 
 // ------------------ Filter Logic ------------------
 
-let tagFilter = [];
+let includeTags = [];
+let excludeTags = [];
 
 const filter = () => {
 	const query = searchInput.value.toLowerCase();
 	const entries = document.querySelectorAll('manga-component');
+	const box = document.getElementById('mangaBox');
+	const noResults = document.getElementById('noResults');
+	let anyVisible = false;
 
 	entries.forEach(entry => {
 		const name = entry.dataset.name.toLowerCase();
 		const alt = (entry.dataset.alt || '').toLowerCase();
-
 		const searchMatch = name.includes(query) || alt.includes(query);
 
-		const tagMatch = tagFilter.every(tag => {
+		const includeMatch = includeTags.every(tag => {
+			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
+			return entry.classList.contains(safeTag);
+		});
+
+		const excludeMatch = excludeTags.some(tag => {
 			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
 			return entry.classList.contains(safeTag);
 		});
 		
-		entry.classList.toggle('mangaShow', searchMatch && tagMatch);
+		entry.classList.toggle('mangaShow', searchMatch && includeMatch && !excludeMatch);
 	});
+
+	for (const entry of entries) {
+		if (entry.classList.contains('mangaShow')) {
+			anyVisible = true;
+			break;
+		}
+	};
+	box.style.display = anyVisible ? 'grid' : 'none';
+	noResults.style.display = anyVisible ? 'none' : 'block';
 }
 
 // ------------------ Search Bar ------------------
@@ -123,8 +140,10 @@ searchInput.addEventListener('input', () => {
 
 mangaSearchClear.addEventListener('click', () => {
 	searchInput.value = '';
-	tagFilter = [];
-	tagButtons.forEach(button => button.classList.toggle('active', false));
+	includeTags = [];
+	excludeTags = [];
+	tagButtons.forEach(button => button.classList.remove('included'));
+	tagButtons.forEach(button => button.classList.remove('excluded'));
 	filter();
 });
 
@@ -140,18 +159,26 @@ filterButton.addEventListener('click', () => {
 
 // ------------------ Tag Buttons ------------------
 
-const tagButtons = document.querySelectorAll('.mangaTagCategory .mangaTagButton');
+const tagButtons = document.querySelectorAll('.mangaTagButton');
 tagButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		const tag = button.dataset.tag;
-		const isActive = button.classList.toggle('active');
 
-		if (isActive) {
-			tagFilter.push(tag);
+		if (button.classList.contains('included')) {
+			button.classList.remove('included');
+			button.classList.add('excluded');
+			includeTags = includeTags.filter(t => t !== tag);
+			if (!excludeTags.includes(tag)) excludeTags.push(tag);
+		} else if (button.classList.contains('excluded')) {
+			button.classList.remove('excluded');
+			excludeTags = excludeTags.filter(t => t !== tag);
 		} else {
-			const index = tagFilter.indexOf(tag);
-			if (index !== -1) tagFilter.splice(index, 1);
+			button.classList.add('included');
+			if (!includeTags.includes(tag)) includeTags.push(tag);
 		}
+
+		includeTags = includeTags.filter(t => !excludeTags.includes(t));
+		excludeTags = excludeTags.filter(t => !includeTags.includes(t));
 
 		filter();
 	});
@@ -163,5 +190,24 @@ const entries = Array.from(document.querySelectorAll('manga-component'));
 entries.sort((a, b) =>
 	a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
 );
-const box = document.querySelector('.mangaBox');
+const box = document.getElementById('mangaBox');
 entries.forEach(entry => box.appendChild(entry));
+
+// ------------------ Back To Top ------------------
+
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 200) {
+		backToTop.classList.add('visible');
+	} else {
+		backToTop.classList.remove('visible');
+	}
+});
+
+backToTop.addEventListener('click', () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+});

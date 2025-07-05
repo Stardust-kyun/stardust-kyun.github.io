@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=0.8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8 user-scalable=no, maximum-scale=0.8">
 		<meta content="🌸 Sakura - Manga" property="og:title"/>
 		<meta content="Stella's manga reviews" property="og:description"/>
 		<meta content="https://stardust-kyun.github.io" property="og:url"/>
@@ -61,7 +61,7 @@
 						data-rating=""
 					></manga-component>
 				-->
-				<div class="mangaBox">
+				<div id="mangaBox">
 					<manga-component 
 						data-link="https://mangadex.org/title/69060a67-1d4e-4110-9d29-838bfd99917f/bloom-into-you"
 						data-name="Yagate Kimi Ni Naru" 
@@ -184,6 +184,8 @@
 
 					The author, Izumo Ito, has been struggling with health problems for a good portion of the manga's runtime, leading to substantial delays in chapters. As of writing, it's been over a year since the last chapter was released. However, [she posted on Twitter](https://xcancel.com/izumo_ito/status/1911073094418252087#m) in April that she's still alive and working on the manga, so we should hopefully see updates soon!</manga-component>
 				</div>
+				<p id="noResults" class="headerText" style="display: none; text-align: center; margin: 0 auto;">No results found</p>
+				<button id="backToTop" class="mangaButton">⮝</button>
 			</div>
 			<contact-component id="contact" class="side"></contact-component>
 		</div>
