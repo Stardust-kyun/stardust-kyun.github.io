@@ -145,7 +145,6 @@ manga-component {
 	grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 	grid-auto-flow: row;
 	column-gap: 20px;
-	row-gap: 20px;
 }
 
 @media all and (max-aspect-ratio: 2/3) {
