@@ -23,31 +23,33 @@
 				<a class="headerText">Manga</a>
 				<div id="mangaSearch">
 					<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
+					<button class="mangaButton" id="mangaFilterButton">Show Filters</button>
 					<button class="mangaButton" id="mangaSearchClear">Clear</button>
 				</div>
 				<div id="mangaTags">
-					<details class="mangaCategory">
-						<summary>Format</summary>
-						<div class="mangaTagCategory" data-category="format">
+					<div class="mangaTagCategory">
+						<div class="mangaTagHeader">Format</div>
+						<div class="mangaTagNames">
 							<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
 							<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
 						</div>
-					</details>
-					<details class="mangaCategory">
-						<summary>Genre</summary>
-						<div class="mangaTagCategory" data-category="genre">
+					</div>
+					<div class="mangaTagCategory">
+						<div class="mangaTagHeader">Genre</div>
+						<div class="mangaTagNames">
 							<button class="mangaTagButton" data-tag="Romance">Romance</button>
 							<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
 							<button class="mangaTagButton" data-tag="Action">Action</button>
 							<button class="mangaTagButton" data-tag="Horror">Horror</button>
+							<button class="mangaTagButton" data-tag="Slice_Of_Life">Slice Of Life</button>
 						</div>
-					</details>
-					<details class="mangaCategory">
-						<summary>Rating</summary>
-						<div class="mangaTagCategory" data-category="rating">
+					</div>
+					<div class="mangaTagCategory">
+						<div class="mangaTagHeader">Rating</div>
+						<div class="mangaTagNames">
 							<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
 						</div>
-					</details>
+					</div>
 				</div>
 				<!--
 					<manga-component 

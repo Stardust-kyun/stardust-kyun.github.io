@@ -128,9 +128,19 @@ mangaSearchClear.addEventListener('click', () => {
 	filter();
 });
 
+// ------------------ Filter Button ------------------
+
+const filterButton = document.getElementById('mangaFilterButton');
+const tagContainer = document.getElementById('mangaTags');
+
+filterButton.addEventListener('click', () => {
+	const isOpen = tagContainer.classList.toggle('open');
+	filterButton.textContent = isOpen ? 'Hide Filters' : 'Show Filters';
+});
+
 // ------------------ Tag Buttons ------------------
 
-const tagButtons = document.querySelectorAll('#mangaTags .mangaTagButton');
+const tagButtons = document.querySelectorAll('.mangaTagCategory .mangaTagButton');
 tagButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		const tag = button.dataset.tag;
