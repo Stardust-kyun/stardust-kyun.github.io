@@ -127,6 +127,7 @@ const filter = () => {
 			break;
 		}
 	};
+
 	box.style.display = anyVisible ? 'grid' : 'none';
 	noResults.style.display = anyVisible ? 'none' : 'block';
 }
@@ -154,6 +155,7 @@ mangaSearchClear.addEventListener('click', () => {
 	tagButtons.forEach(button => button.classList.remove('included'));
 	tagButtons.forEach(button => button.classList.remove('excluded'));
 	filter();
+	updateURLFilters();
 });
 
 // ------------------ Filter Button ------------------
@@ -188,6 +190,7 @@ tagButtons.forEach(button => {
 
 		includeTags = includeTags.filter(t => !excludeTags.includes(t));
 		excludeTags = excludeTags.filter(t => !includeTags.includes(t));
+		updateURLFilters();
 
 		filter();
 	});
@@ -220,3 +223,44 @@ backToTop.addEventListener('click', () => {
 		behavior: 'smooth'
 	});
 });
+
+// ------------------ URL Filters ------------------
+
+const updateURLFilters = () => {
+	const params = new URLSearchParams();
+
+	if (includeTags.length) params.set('include', includeTags.join('~'));
+	if (excludeTags.length) params.set('exclude', excludeTags.join('~'));
+
+	if (params.size) {
+		const newURL =`${window.location.pathname}?${params.toString()}`;
+		history.replaceState(null, '', newURL);
+	} else {
+		history.replaceState(null, '', window.location.pathname);
+	}
+};
+
+const loadURLFilters = () => {
+	const params = new URLSearchParams(window.location.search);
+	const include = params.get('include');
+	const exclude = params.get('exclude');
+
+	if (include) {
+		includeTags = include.split('~');
+		includeTags.forEach(tag => {
+			const button = document.querySelector(`.mangaTagButton[data-tag="${tag}"]`);
+			if (button) button.classList.add('included');
+		});
+	}
+	if (exclude) {
+		excludeTags = exclude.split('~');
+		excludeTags.forEach(tag => {
+			const button = document.querySelector(`.mangaTagButton[data-tag="${tag}"]`);
+			if (button) button.classList.add('excluded');
+		});
+	}
+
+	filter();
+};
+
+window.addEventListener('DOMContentLoaded', loadURLFilters);
