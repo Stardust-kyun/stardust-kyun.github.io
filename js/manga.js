@@ -216,15 +216,20 @@ tagButtons.forEach(button => {
 
 // ------------------ Sorting Entries ------------------
 
-let currentSort = 'upload';
+const defaultSort = 'upload';
+let currentSort = defaultSort;
 
 const mangaSortButtons = document.querySelectorAll('.mangaSortButton');
 mangaSortButtons.forEach(button => {
 	if (button.dataset.sort === currentSort) button.classList.add('selected');
 	button.addEventListener('click', () => {
 		currentSort = button.dataset.sort;
+
 		mangaSortButtons.forEach(btn => btn.classList.remove('selected'));
 		button.classList.add('selected');
+
+		updateURLFilters();
+
 		filter();
 	});
 });
@@ -255,6 +260,7 @@ const updateURLFilters = () => {
 
 	if (includeTags.length) params.set('include', includeTags.join('~'));
 	if (excludeTags.length) params.set('exclude', excludeTags.join('~'));
+	if (currentSort !== defaultSort) params.set('sort', currentSort);
 
 	if (params.size) {
 		const newURL =`${window.location.pathname}?${params.toString()}`;
@@ -268,6 +274,7 @@ const loadURLFilters = () => {
 	const params = new URLSearchParams(window.location.search);
 	const include = params.get('include');
 	const exclude = params.get('exclude');
+	const sort = params.get('sort');
 
 	if (include) {
 		includeTags = include.split('~');
@@ -282,6 +289,12 @@ const loadURLFilters = () => {
 			const button = document.querySelector(`.mangaTagButton[data-tag="${tag}"]`);
 			if (button) button.classList.add('excluded');
 		});
+	}
+	if (sort) {
+		currentSort = sort;
+		mangaSortButtons.forEach(btn => btn.classList.remove('selected'));
+		const button = document.querySelector(`.mangaSortButton[data-sort="${sort}"]`);
+		if (button) button.classList.add('selected');
 	}
 
 	filter();
