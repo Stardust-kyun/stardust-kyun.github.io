@@ -96,6 +96,23 @@ customElements.define('manga-component', MangaEntry);
 let includeTags = [];
 let excludeTags = [];
 
+const sortEntries = Array.from(document.querySelectorAll('manga-component'));
+const sort = () => {
+	const box = document.getElementById('mangaBox');
+
+	let sorted = [...sortEntries];
+
+	if (currentSort === 'alphabetical') {
+		sorted.sort((a, b) => a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase()));
+	} else if (currentSort === 'rating') {
+		sorted.sort((a, b) => Number(b.dataset.rating) - Number(a.dataset.rating));
+	} else if ( currentSort === 'upload') {
+		sorted.reverse();
+	}
+
+	sorted.forEach(entry => box.appendChild(entry));
+}
+
 const filter = () => {
 	const query = searchInput.value.toLowerCase();
 	const entries = document.querySelectorAll('manga-component');
@@ -117,7 +134,8 @@ const filter = () => {
 			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
 			return entry.classList.contains(safeTag);
 		});
-		
+	
+		sort();
 		entry.classList.toggle('mangaShow', searchMatch && includeMatch && !excludeMatch);
 	});
 
@@ -198,12 +216,18 @@ tagButtons.forEach(button => {
 
 // ------------------ Sorting Entries ------------------
 
-const entries = Array.from(document.querySelectorAll('manga-component'));
-entries.sort((a, b) =>
-	a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
-);
-const box = document.getElementById('mangaBox');
-entries.forEach(entry => box.appendChild(entry));
+let currentSort = 'upload';
+
+const mangaSortButtons = document.querySelectorAll('.mangaSortButton');
+mangaSortButtons.forEach(button => {
+	if (button.dataset.sort === currentSort) button.classList.add('selected');
+	button.addEventListener('click', () => {
+		currentSort = button.dataset.sort;
+		mangaSortButtons.forEach(btn => btn.classList.remove('selected'));
+		button.classList.add('selected');
+		filter();
+	});
+});
 
 // ------------------ Back To Top ------------------
 

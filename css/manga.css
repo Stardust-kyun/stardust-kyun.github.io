@@ -1,3 +1,10 @@
+#mangaBox {
+	display: grid;
+	grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+	grid-auto-flow: row;
+	column-gap: 20px;
+}
+
 manga-component {
 	display: none;
 }
@@ -26,7 +33,7 @@ manga-component {
 	width: 100%;
 }
 
-.mangaTagName, .mangaButton, .mangaTagButton {
+.mangaTagName, .mangaButton, .mangaTagButton, .mangaSortButton {
     font-size: 18px;
     color: var(--fg);
 	outline: none;
@@ -35,13 +42,13 @@ manga-component {
 	border-radius: 15px;
 }
 
-.mangaButton, .mangaTagButton {
+.mangaButton, .mangaTagButton, .mangaSortButton {
 	border: none;
 	cursor: pointer;
 	transition: filter 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.mangaButton:hover, .mangaTagButton:hover {
+.mangaButton:hover, .mangaTagButton:hover, .mangaSortButton:hover {
 	filter: brightness(1.3);
 }
 
@@ -57,6 +64,16 @@ manga-component {
 
 .mangaTagButton.excluded {
 	background-color: var(--red);
+	color: var(--bg);
+}
+
+.mangaSortButton {
+	background-color: var(--bg);
+	height: min-content; 
+}
+
+.mangaSortButton.selected {
+	background-color: var(--fg);
 	color: var(--bg);
 }
 
@@ -139,7 +156,7 @@ manga-component {
 	gap: 10px;
 	overflow: hidden;
 	max-height: 300px;
-	transition: max-height 0.3s ease;
+	transition: max-height 0.5s ease;
 	position: relative;
 }
 
@@ -178,13 +195,6 @@ manga-component {
     font-size: 18px;
     color: var(--fg);
 	margin-top: 10px;
-}
-
-#mangaBox {
-	display: grid;
-	grid-template-columns: calc(50% - 10px) calc(50% - 10px);
-	grid-auto-flow: row;
-	column-gap: 20px;
 }
 
 #backToTop {
