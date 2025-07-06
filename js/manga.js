@@ -141,6 +141,12 @@ searchInput.addEventListener('input', () => {
 	filter();
 });
 
+searchInput.addEventListener('keydown', (e) => {
+	if (e.key === 'Escape' || e.key === 'Enter') {
+		searchInput.blur();
+	}
+});
+
 mangaSearchClear.addEventListener('click', () => {
 	searchInput.value = '';
 	includeTags = [];
