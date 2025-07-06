@@ -38,9 +38,11 @@ class MangaEntry extends HTMLElement {
 			</div>
 			<div class="mangaWrapper">
 				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaImage">
-				<div class="mangaContent">
-					<div class="mangaTagNames"></div>
-					<div class="mangaReview collapsed">${content}</div>
+				<div class="mangaContentWrapper">
+					<div class="mangaContent">
+						<div class="mangaTagNames"></div>
+						<div class="mangaReview collapsed">${content}</div>
+					</div>
 				</div>
 			</div>	
 		`;
@@ -60,24 +62,25 @@ class MangaEntry extends HTMLElement {
 
 		requestAnimationFrame(() => {
 			setTimeout(() => {
-				const mangaReview = this.querySelector('.mangaReview');
-
-				if (mangaReview.scrollHeight > mangaReview.clientHeight + 10) {
+				const mangaContent = this.querySelector('.mangaContent');
+				
+				if (mangaContent.scrollHeight > 300) {
 					const button = document.createElement('button');
 					button.className = 'mangaButton';
 					button.textContent = 'Show More';
 					let expanded = false;
 					button.setAttribute('aria-expanded', expanded);
 
+					mangaContent.classList.add('collapsible');
+
 					button.addEventListener('click', () => {
 						expanded = !expanded;
-						mangaReview.classList.toggle('collapsed', !expanded);
-						mangaReview.classList.toggle('expanded', expanded);
+						mangaContent.classList.toggle('expanded', expanded);
 						button.textContent = expanded ? 'Show Less' : 'Show More';
 						button.setAttribute('aria-expanded', expanded)
 					});
 					
-					mangaReview.after(button);
+					mangaContent.after(button);
 				}
 			}, 0);
 		});

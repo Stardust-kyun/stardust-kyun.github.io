@@ -21,33 +21,35 @@
 			<sidebar-component id="sidebar" class="side"></sidebar-component>
 			<div id="body" class="box">
 				<a class="headerText">Manga</a>
-				<div id="mangaSearch">
-					<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
-					<button class="mangaButton" id="mangaFilterButton">Show Filters</button>
-					<button class="mangaButton" id="mangaSearchClear">Clear</button>
-				</div>
-				<div id="mangaTags">
-					<div class="mangaTagCategory">
-						<div class="mangaTagHeader">Format</div>
-						<div class="mangaTagNames">
-							<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
-							<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
-						</div>
+				<div id="mangaFilter">
+					<div id="mangaSearch">
+						<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
+						<button class="mangaButton" id="mangaFilterButton">Show Filters</button>
+						<button class="mangaButton" id="mangaSearchClear">Clear</button>
 					</div>
-					<div class="mangaTagCategory">
-						<div class="mangaTagHeader">Genre</div>
-						<div class="mangaTagNames">
-							<button class="mangaTagButton" data-tag="Romance">Romance</button>
-							<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
-							<button class="mangaTagButton" data-tag="Action">Action</button>
-							<button class="mangaTagButton" data-tag="Horror">Horror</button>
-							<button class="mangaTagButton" data-tag="Slice_Of_Life">Slice Of Life</button>
+					<div id="mangaTags">
+						<div class="mangaTagCategory">
+							<div class="mangaTagHeader">Format</div>
+							<div class="mangaTagNames">
+								<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
+								<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
+							</div>
 						</div>
-					</div>
-					<div class="mangaTagCategory">
-						<div class="mangaTagHeader">Content</div>
-						<div class="mangaTagNames">
-							<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
+						<div class="mangaTagCategory">
+							<div class="mangaTagHeader">Genre</div>
+							<div class="mangaTagNames">
+								<button class="mangaTagButton" data-tag="Romance">Romance</button>
+								<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
+								<button class="mangaTagButton" data-tag="Action">Action</button>
+								<button class="mangaTagButton" data-tag="Horror">Horror</button>
+								<button class="mangaTagButton" data-tag="Slice_Of_Life">Slice Of Life</button>
+							</div>
+						</div>
+						<div class="mangaTagCategory">
+							<div class="mangaTagHeader">Content</div>
+							<div class="mangaTagNames">
+								<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -185,7 +187,7 @@
 					The author, Izumo Ito, has been struggling with health problems for a good portion of the manga's runtime, leading to substantial delays in chapters. As of writing, it's been over a year since the last chapter was released. However, [she posted on Twitter](https://xcancel.com/izumo_ito/status/1911073094418252087#m) in April that she's still alive and working on the manga, so we should hopefully see updates soon!</manga-component>
 				</div>
 				<p id="noResults" class="headerText" style="display: none; text-align: center; margin: 0 auto;">No results found</p>
-				<button id="backToTop" class="mangaButton">⮝</button>
+				<button id="backToTop" class="mangaButton">Back to Top</button>
 			</div>
 			<contact-component id="contact" class="side"></contact-component>
 		</div>
