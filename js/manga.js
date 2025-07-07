@@ -64,7 +64,7 @@ class MangaEntry extends HTMLElement {
 			setTimeout(() => {
 				const mangaContent = this.querySelector('.mangaContent');
 				
-				if (mangaContent.scrollHeight > 300) {
+				if (mangaContent.scrollHeight > 450) {
 					const button = document.createElement('button');
 					button.className = 'mangaButton';
 					button.textContent = 'Show More';

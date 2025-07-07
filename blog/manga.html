@@ -17,236 +17,241 @@
 	</head>
 	<body>
 		<header-component id="header"></header-component>
-		<div class="main">
-			<sidebar-component id="sidebar" class="side"></sidebar-component>
-			<div id="body" class="box">
-				<a class="headerText">Manga</a>
-				<div id="mangaFilter">
-					<div id="mangaSearch">
-						<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
-						<button class="mangaButton" id="mangaFilterButton">Show Filters</button>
-						<button class="mangaButton" id="mangaSearchClear">Clear</button>
+		<div id="background">
+			<div id="center">
+				<sidebar-component id="sidebar" class="side"></sidebar-component>
+				<div id="main" class="box">
+					<a class="headerText">Manga</a>
+					<div id="mangaFilter">
+						<div id="mangaSearch">
+							<input type="text" class="mangaButton" id="mangaSearchInput" placeholder="Search manga..."/>
+							<button class="mangaButton" id="mangaFilterButton">Show Filters</button>
+							<button class="mangaButton" id="mangaSearchClear">Clear</button>
+						</div>
+						<div id="mangaTags">
+							<div class="mangaTagContainer">
+								<div class="mangaTagCategory">
+									<div class="mangaTagHeader">Sort By</div>
+									<div class="mangaTagNames">
+										<button class="mangaSortButton" data-sort="upload">Upload Date (Newest)</button>
+										<button class="mangaSortButton" data-sort="rating">Rating (High-Low)</button>
+										<button class="mangaSortButton" data-sort="alphabetical">Alphabetical (A-Z)</button>
+									</div>
+								</div>
+								<div class="mangaTagCategory">
+									<div class="mangaTagHeader">Format</div>
+									<div class="mangaTagNames">
+										<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
+										<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
+									</div>
+								</div>
+							</div>
+							<div class="mangaTagContainer">
+								<div class="mangaTagCategory">
+									<div class="mangaTagHeader">Genre</div>
+									<div class="mangaTagNames">
+										<button class="mangaTagButton" data-tag="Romance">Romance</button>
+										<button class="mangaTagButton" data-tag="Straight">Straight</button>
+										<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
+										<button class="mangaTagButton" data-tag="Action">Action</button>
+										<button class="mangaTagButton" data-tag="Horror">Horror</button>
+										<button class="mangaTagButton" data-tag="Slice_Of_Life">Slice Of Life</button>
+									</div>
+								</div>
+								<div class="mangaTagCategory">
+									<div class="mangaTagHeader">Themes</div>
+									<div class="mangaTagNames">
+										<button class="mangaTagButton" data-tag="Office_Workers">Office Workers</button>
+										<button class="mangaTagButton" data-tag="Crossdressing">Crossdressing</button>
+										<button class="mangaTagButton" data-tag="School_Life">School Life</button>
+									</div>
+								</div>
+								<div class="mangaTagCategory">
+									<div class="mangaTagHeader">Content</div>
+									<div class="mangaTagNames">
+										<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div id="mangaTags">
-						<div class="mangaTagCategory">
-							<div class="mangaTagHeader">Sort By</div>
-							<div class="mangaTagNames">
-								<button class="mangaSortButton" data-sort="upload">Upload Date (Newest)</button>
-								<button class="mangaSortButton" data-sort="rating">Rating (High-Low)</button>
-								<button class="mangaSortButton" data-sort="alphabetical">Alphabetical (A-Z)</button>
-							</div>
-						</div>
-						<div class="mangaTagCategory">
-							<div class="mangaTagHeader">Format</div>
-							<div class="mangaTagNames">
-								<button class="mangaTagButton" data-tag="Oneshot">Oneshot</button>
-								<button class="mangaTagButton" data-tag="4-Koma">4-Koma</button>
-							</div>
-						</div>
-						<div class="mangaTagCategory">
-							<div class="mangaTagHeader">Genre</div>
-							<div class="mangaTagNames">
-								<button class="mangaTagButton" data-tag="Romance">Romance</button>
-								<button class="mangaTagButton" data-tag="Straight">Straight</button>
-								<button class="mangaTagButton" data-tag="Yuri">Yuri</button>
-								<button class="mangaTagButton" data-tag="Action">Action</button>
-								<button class="mangaTagButton" data-tag="Horror">Horror</button>
-								<button class="mangaTagButton" data-tag="Slice_Of_Life">Slice Of Life</button>
-							</div>
-						</div>
-						<div class="mangaTagCategory">
-							<div class="mangaTagHeader">Themes</div>
-							<div class="mangaTagNames">
-								<button class="mangaTagButton" data-tag="Office_Workers">Office Workers</button>
-								<button class="mangaTagButton" data-tag="Crossdressing">Crossdressing</button>
-								<button class="mangaTagButton" data-tag="School_Life">School Life</button>
-							</div>
-						</div>
-						<div class="mangaTagCategory">
-							<div class="mangaTagHeader">Content</div>
-							<div class="mangaTagNames">
-								<button class="mangaTagButton" data-tag="Suggestive">Suggestive</button>
-							</div>
-						</div>
+					<!--
+						<manga-component 
+							data-link=""
+							data-name=""
+							data-alt=""
+							data-image="../src/manga/.jpg"
+							data-tags=""
+							data-rating=""
+						></manga-component>
+					-->
+					<div id="mangaBox">
+						<manga-component 
+							data-link="https://mangadex.org/title/69060a67-1d4e-4110-9d29-838bfd99917f/bloom-into-you"
+							data-name="Yagate Kimi Ni Naru" 
+							data-alt="Bloom Into You"
+							data-image="../src/manga/yagakimi.jpg"
+							data-tags="Romance,Yuri,Slice Of Life,School Life"
+							data-rating="10"
+						>THE yuri manga. As of writing this, it's been a few years since I've read it, but I really enjoyed the story. Its characters feel alive, each having their own complex feelings that are explored in a way that makes the reader truly understand where they're coming from. Has a very satisfying ending and I highly recommend reading it, especially if you're new to yuri.</manga-component>
+
+						<manga-component 
+							data-link="https://bato.to/series/100362/kiss-and-white-lily-for-my-dearest-girl-official"
+							data-name="Ano Ko Ni Kiss To Shirayuri Wo"
+							data-alt="Kiss and White Lily for My Dearest Girl"
+							data-image="../src/manga/konikiss.jpg"
+							data-tags="Romance,Yuri,Slice Of Life,School Life"
+							data-rating="10"
+						>One of my all time favorites. Not exactly a single story; it's moreso a compilation of interconnected stories as each couple is given a few chapters to explore their relationship. It includes a wide variety of relationships, both romantic and platonic. None of them feel glossed over or rushed, and each is a great story on its own. What really makes this special to me is the overarching couple, which executes the idea of "enemies to lovers" perfectly. Full of wonderful fluff and cuteness, give it a read!</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/b98c4daf-be1a-46c8-ad83-21d532995240/my-food-seems-to-be-very-cute"
+							data-name="My Food Looks Very Cute" 
+							data-image="../src/manga/foodlookscute.jpg"
+							data-tags="Romance,Yuri,Action,Slice Of Life"
+							data-rating="10"
+						>Literally the definition of fluff. Adorable couples that show their love for one another clearly. While there is drama, none of it is the "do they like me? can I trust them?" drama that so many stories have sunk into. Rather, the drama is caused by actual plot and not only requires the characters working together to overcome, but also makes the characters closer with every difficulty overcome. 
+
+						Translation is unfortunately very behind the raws. However, a new translator named Hazazel has been pumping out chapters quick on [Bato.to's non-official version](https://bato.to/series/192610/my-food-looks-very-cute) and [Mangadex](https://mangadex.org/title/b98c4daf-be1a-46c8-ad83-21d532995240/my-food-seems-to-be-very-cute). If they keep up their current pace, the translation should be caught up in around 2 months as of July 2025 (I doubt they'll keep the current pace though, it's way too much for one person).</manga-component>
+
+						<manga-component 
+							data-link="https://bato.to/series/78228/blame-official-master-edition"
+							data-name="BLAME!" 
+							data-image="../src/manga/blame.jpg"
+							data-tags="Action,Horror"
+							data-rating="10"
+						>Incredible manga. Insane, mindbending visuals and an excellent story which had me by the throat the entire read. Monster designs are some of the best I've ever seen, invoking both horror and a sense of awe. Somehow, the protagonist having a gun that deletes everything in front of it for 70-odd kilometers is actually pretty balanced. However, I think most of the quality of this manga comes from the settings it takes place in, which could even be considered the "main character" -- most of the actual meat of the manga comes from panels with no dialogue or real story, but rather the incredible atmosphere of the environment. The best example of this is towards the end of the manga, where the protagonist walks through a "room" (if you can even call it that) which is ***literally the size of Jupiter***. Truly a megalophobe's worst nightmare.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/6fe56296-e980-4321-8a7b-bc8b4e2750c8/ookami-no-kawa-o-kabutta-hitsujihime"
+							data-name="Ookami no Kawa o Kabutta Hitsujihime"
+							data-alt="Sheep Princess in Wolf's Clothing"
+							data-image="../src/manga/sheepprincess.jpg"
+							data-tags="Romance,Yuri,Suggestive"
+							data-rating="10"
+						>The true definition of fluff, in more ways than one! This is just a really nice comfort story... nothing too angsty or dramatic, just a story about a princess and her butler falling in love. It never feels "fake" in its characters or story and has a great sense of humor which peeks out occasionally. Overall a great pallete cleanser or just something to relax with.
+
+						If you enjoyed this, check out its sequel oneshot [*Himesama to Watashi no Kekkon Ryokou*](https://mangadex.org/title/943cde7b-87bc-415d-b2b1-4b814eb6df04/my-honeymoon-with-the-princess).</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/ece511da-3461-421a-8275-7af48a642aa5/beauty-and-the-beast-girl"
+							data-name="Bocchi Kaibutsu to Moumoku Shoujo"
+							data-alt="Beauty and the Beast Girl"
+							data-image="../src/manga/beautyandbeast.jpg"
+							data-tags="Romance,Yuri,Suggestive"
+							data-rating="10"
+						>This is an incredible manga with some of the strongest storytelling I've seen. One of the most compelling parts of its core story to me is the pairing of a beast girl and a blind girl -- it feels pretty reminiscent of queer struggles and how outsiders perceive a relationship they don't understand. If that's intentional, it's conveyed masterfully. The story is ripe with emotion and love in a way that hits you deeply, even more so once you come to the ending. That made me sob the first time I read it. I highly recommend this manga to pretty much anyone even slightly interested.</manga-component>
+
+						<manga-component 
+							data-link="https://bato.to/series/180930/a-yuri-story-in-which-a-girl-who-says-that-girls-being-together-is-unbelievable-will-completely-fall-within-100-days"
+							data-name="Onna Doushi to ka Arienai deshou to Iiharu Onna no ko wo, Hyakunichi kan de Tetteiteki ni Otosu Yuri no Ohanashi"
+							data-alt="A Yuri Story About a Girl Who Insists It's Impossible for Two Girls to Get Together Completely Falling Within 100 Days"
+							data-image="../src/manga/fallin100days.jpg"
+							data-tags="Romance,Yuri,School Life,Suggestive"
+							data-rating="9"
+						>A surprisingly good coming to age story of learning about oneself and how to properly communicate with your partner. The main character is initially attached to the idea that homosexuality is unnatural or wrong, creating a lot of internal conflict as she cannot accept her own feelings and necessitating open communication with her partner. It's a pretty decent representation of internalized homophobia, more societal in nature than personal. I also really loved the art style, particularly in the little chibi character portraits which are adorable! The only issues I have with it largely have to do with the main characters being underage in more adult situations, but it's to be expected from a coming of age story.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/4a044644-902f-482b-9737-f018c6f6c1a7/belladonna-no-koibito"
+							data-name="Belladonna no Koibito"
+							data-alt="Belladonna's Lover"
+							data-image="../src/manga/belladonna.jpg"
+							data-tags="Romance,Yuri,Oneshot"
+							data-rating="8"
+						>Gorgeous art and a wonderful story. The story isn't particularly original, but the emotions in it are powerful and conveyed expertly. The art style is the highlight of this for me, it has a level of detail that isn't seen in many manga but it never feels overly detailed or visually crowded. Recommended for a short read.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/2b5b045c-32ee-4f3e-85cc-8f205000ec98/your-reason-for-living"
+							data-name="Your Reason for Living" 
+							data-image="../src/manga/yourreasonforliving.jpg"
+							data-tags="Yuri"
+							data-rating="9"
+						>A relatively short story that makes me tear up every time I read it. Such a simple story, but one of the best portrayals of love and loss I've ever seen. How you learn to love the little things, no matter how small. The pain of never experiencing them again. Just a gorgeous story. High recommendation if you're open to heavy stories about loss.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/71a515ab-19b6-4839-9089-e4caac1f0628/handsome-girl-and-sheltered-girl"
+							data-name="Ikemen Onna to Hakoiri Musume"
+							data-alt="Handsome Girl and Sheltered Girl"
+							data-image="../src/manga/handsomeandsheltered.jpg"
+							data-tags="Romance,Yuri,Crossdressing,Suggestive"
+							data-rating="8"
+						>A super fluffy story with an airhead and a girl she mistook for a guy. While it takes a while for them to start properly communicating, their relationship is very healthy and fun to watch with minimal drama. Solid queer representation outside the main couple. If anything, I wish there was more of it! It kinda stops right around when the main characters get past their communication issues, which is a real shame because their dynamic would make for a wonderful slice of life story and they no doubt have more to overcome in the future in the form of parental approval. There are also very obvious hints at side character romances that never go anywhere. It almost makes me wonder if it got axed early. Overall a very sweet manga with a great story, I just wish it kept going.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/5311ac6f-3651-43a8-bb9c-b40dea7ab72d/ichido-dake-demo-koukai-shitemasu"
+							data-name="Ichido Dake Demo, Koukai Shitemasu"
+							data-alt="Even If It Was Just Once, I Regret It"
+							data-image="../src/manga/ichidodakedemo.jpg"
+							data-tags="Romance,Yuri,Slice Of Life,Suggestive"
+							data-rating="9"
+						>An actually good take on the "will they won't they" trope. Everything feels believable as a natural progression of events rather than filler to draw out the story as these kinds often do. Very good representation of how societal attitudes towards queer people can be internalized by queer people themselves and the struggles that come with it. Namely the instinct to reject people automatically out of fear that you might get rejected based on differences in sexuality or other societal factors. Overall a great read.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/d13332db-7b57-4cc4-9e46-802cf52e3b8b/koharu-and-minato-my-partner-is-a-girl"
+							data-name="Koharu to Minato: Watashi no Partner wa Onna no Ko"
+							data-alt="Koharu and Minato: My Partner is a Girl"
+							data-image="../src/manga/koharutominato.jpg"
+							data-tags="Romance,Yuri,Slice Of Life"
+							data-rating="9"
+						>A ridiculously cute autobiography of an age gap couple which they write and draw together! It's packed with fluff and the art is superb. Mostly slice of life, though there are dedicated chapters to telling the story of how they got together and whatnot. The only thing holding this back for me is that I want to see more stories from them! The bite-sized slice of life is nice, but the art and storytelling truly shines in parts like the story of how they got together. Maybe this is addressed in future volumes.
+
+						The fan translation is unfortunately 2 volumes behind, but Koharu and Minato post in Japanese and English on [their pixiv](https://www.pixiv.net/en/users/82480735/artworks)!</manga-component>
+						
+						<manga-component 
+							data-link="https://mangadex.org/title/d4ff7502-b5d4-4fd2-845f-c8754b14dd8d/machikado-mazoku"
+							data-name="Machikado Mazoku"
+							data-alt="The Demon Girl Next Door"
+							data-image="../src/manga/machikadomazoku.jpg"
+							data-tags="Yuri,Action,Slice Of Life,School Life,4-Koma"
+							data-rating="10"
+						>This is a really special one for me. The first season of the anime was some of the first yuri I was exposed to, and it has a really strong charm to it. Fantastic comedy, great characters, and overall you can feel the amount of love the creators put into it. I think it has one of the strongest overarching stories for a slice of life manga I've seen, which is really being leaned into later in the series where it starts to take a more serious tone. It doesn't have much romance in it, but there is a very clear "main couple" (even if they aren't explicitly together) and the love characters have for one another is palpable, even if their words say otherwise. The only struggle I've had with it is the 4-koma layout, which is difficult to read on a phone, but once you get past that it's pretty smooth sailing.
+
+						The author, Izumo Ito, has been struggling with health problems for a good portion of the manga's runtime, leading to substantial delays in chapters. As of writing, it's been over a year since the last chapter was released. However, [she posted on Twitter](https://xcancel.com/izumo_ito/status/1911073094418252087#m) in April that she's still alive and working on the manga, so we should hopefully see updates soon!</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/18f42811-ce55-4143-ae30-b97e30e6cf82/amasaya"
+							data-name="Amasaya"
+							data-alt=""
+							data-image="../src/manga/amasaya.jpg"
+							data-tags="Romance,Yuri,Slice Of Life,School Life,Suggestive"
+							data-rating="7"
+						>Cute little shorts of a high school couple. Not much to be said. Art style is pretty good, if not a bit rough. Some light S/M. Overall a pretty good quick read.</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/98c34d01-2f69-41f1-bd54-4e0c7d89ce18/still-sick"
+							data-name="Still Sick"
+							data-alt=""
+							data-image="../src/manga/stillsick.jpg"
+							data-tags="Romance,Yuri,Office Workers"
+							data-rating="10"
+						>Truly one of the greatest yuri stories, hands down. It's fantastic at telling its story, especially with conveying its characters' emotions and motivations to the reader. The characters feel truly real and are very charming in their own ways. As for the story itself, it does an incredible job at showing the struggle of passion: not only how fulfilling it can be, but how draining it can be even to the point of quitting. It also shows some aspects of queer love that aren't touched on very often: namely, the idea that love is just not meant for you out of fear of rejection or self-hatred. Not only that, it does a great job of showing the difficulties in just accepting that you *can* be in love. By the end of the manga, you can truly see the change the characters have gone through, and it gives a very satisfying feeling. 
+
+						Another really unique aspect is the setting and characters: an office environment with characters well into their adulthood. That isn't seen super often in yuri -- most focus heavily on romance and less on life itself -- but it really grounds the story from the beginning and treats it as a "story about life," less so a "story about love." I highly recommend giving it a read. 
+
+						If you liked it, you should also check out its sequel oneshot [Still Life](https://mangadex.org/title/1b2f3e21-0991-4840-a47f-0f3026d7878a/still-life)!</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/d20ded9e-4df4-4dea-94e1-3905df5c4c16/under-one-roof-today"
+							data-name="Kyou mo Hitotsu Yane no Shita"
+							data-alt="Our Days Under One Roof"
+							data-image="../src/manga/oneroof.jpg"
+							data-tags="Romance,Yuri,Slice Of Life"
+							data-rating="8"
+						>A very sweet autobiography of the author and her girlfriend. While it's definitely slice of life, it's more story focused than most autobiographical manga are; rather than having short little tidbits from everyday life, it focuses much more on actual stories from the couple and their internal thoughts/feelings. The art style is pretty good -- it's a far more unique style than most, though it can definitely take some time to grow on you. I do wish it were a bit more varied in the kind of stories it tells though, as the lovey-dovey stories can get a bit samey after 30 chapters. It's oddly paradoxical: while it shows the reader a lot of their stories and how they think, by the end I still felt like I hadn't really gotten to know the characters as well as I should have. Regardless, it's a very sweet story from a real couple. The stereotypical lesbian pacing is also hilarious (ch. 20 pg. 1).</manga-component>
+
+						<manga-component 
+							data-link="https://mangadex.org/title/1a9bccc5-244a-4495-8a7a-59f097e358dd/you-the-one-sitting-next-to-me-are-the-cutest"
+							data-name="Tonari no Kimi ga Ichiban Kawaii"
+							data-alt="You, the One Sitting Next to Me, Are the Cutest"
+							data-image="../src/manga/sittingnexttomethecutest.jpg"
+							data-tags="Romance,Straight,Crossdressing,Slice Of Life,School Life"
+							data-rating="8"
+						>Can this even be called yuri bait when it's straight? While it doesn't have the most original story basis, this one is fantastic for what it is: a love story between a girl and the most androgynous person ever. Notions of "boyfriend" and "girlfriend," "guy" and "girl" are very fluid in this one -- and not only in our androgynous character. It's this fluidity that makes me feel, despite the main boy seeing themselves as a man (debatably), it reads very much like the story of a nonbinary person learning to accept themselves and finding a partner who accepts them for who they are too. The writing is great too; none of the characters really feel like shallow representations of stereotypes, which is difficult to pull off with subject matter like this. I really just wish that there was more of it!! After they get together there's like... 10 chapters left, it's ridiculous! I want 100! Give me more!</manga-component>
 					</div>
+					<p id="noResults" class="headerText" style="display: none; text-align: center; margin: 0 auto;">No results found</p>
+					<button id="backToTop" class="mangaButton">Back to Top</button>
 				</div>
-				<!--
-					<manga-component 
-						data-link=""
-						data-name=""
-						data-alt=""
-						data-image="../src/manga/.jpg"
-						data-tags=""
-						data-rating=""
-					></manga-component>
-				-->
-				<div id="mangaBox">
-					<manga-component 
-						data-link="https://mangadex.org/title/69060a67-1d4e-4110-9d29-838bfd99917f/bloom-into-you"
-						data-name="Yagate Kimi Ni Naru" 
-						data-alt="Bloom Into You"
-						data-image="../src/manga/yagakimi.jpg"
-						data-tags="Romance,Yuri,Slice Of Life,School Life"
-						data-rating="10"
-					>THE yuri manga. As of writing this, it's been a few years since I've read it, but I really enjoyed the story. Its characters feel alive, each having their own complex feelings that are explored in a way that makes the reader truly understand where they're coming from. Has a very satisfying ending and I highly recommend reading it, especially if you're new to yuri.</manga-component>
-
-					<manga-component 
-						data-link="https://bato.to/series/100362/kiss-and-white-lily-for-my-dearest-girl-official"
-						data-name="Ano Ko Ni Kiss To Shirayuri Wo"
-						data-alt="Kiss and White Lily for My Dearest Girl"
-						data-image="../src/manga/konikiss.jpg"
-						data-tags="Romance,Yuri,Slice Of Life,School Life"
-						data-rating="10"
-					>One of my all time favorites. Not exactly a single story; it's moreso a compilation of interconnected stories as each couple is given a few chapters to explore their relationship. It includes a wide variety of relationships, both romantic and platonic. None of them feel glossed over or rushed, and each is a great story on its own. What really makes this special to me is the overarching couple, which executes the idea of "enemies to lovers" perfectly. Full of wonderful fluff and cuteness, give it a read!</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/b98c4daf-be1a-46c8-ad83-21d532995240/my-food-seems-to-be-very-cute"
-						data-name="My Food Looks Very Cute" 
-						data-image="../src/manga/foodlookscute.jpg"
-						data-tags="Romance,Yuri,Action,Slice Of Life"
-						data-rating="10"
-					>Literally the definition of fluff. Adorable couples that show their love for one another clearly. While there is drama, none of it is the "do they like me? can I trust them?" drama that so many stories have sunk into. Rather, the drama is caused by actual plot and not only requires the characters working together to overcome, but also makes the characters closer with every difficulty overcome. 
-
-					Translation is unfortunately very behind the raws. However, a new translator named Hazazel has been pumping out chapters quick on [Bato.to's non-official version](https://bato.to/series/192610/my-food-looks-very-cute) and [Mangadex](https://mangadex.org/title/b98c4daf-be1a-46c8-ad83-21d532995240/my-food-seems-to-be-very-cute). If they keep up their current pace, the translation should be caught up in around 2 months as of July 2025 (I doubt they'll keep the current pace though, it's way too much for one person).</manga-component>
-
-					<manga-component 
-						data-link="https://bato.to/series/78228/blame-official-master-edition"
-						data-name="BLAME!" 
-						data-image="../src/manga/blame.jpg"
-						data-tags="Action,Horror"
-						data-rating="10"
-					>Incredible manga. Insane, mindbending visuals and an excellent story which had me by the throat the entire read. Monster designs are some of the best I've ever seen, invoking both horror and a sense of awe. Somehow, the protagonist having a gun that deletes everything in front of it for 70-odd kilometers is actually pretty balanced. However, I think most of the quality of this manga comes from the settings it takes place in, which could even be considered the "main character" -- most of the actual meat of the manga comes from panels with no dialogue or real story, but rather the incredible atmosphere of the environment. The best example of this is towards the end of the manga, where the protagonist walks through a "room" (if you can even call it that) which is ***literally the size of Jupiter***. Truly a megalophobe's worst nightmare.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/6fe56296-e980-4321-8a7b-bc8b4e2750c8/ookami-no-kawa-o-kabutta-hitsujihime"
-						data-name="Ookami no Kawa o Kabutta Hitsujihime"
-						data-alt="Sheep Princess in Wolf's Clothing"
-						data-image="../src/manga/sheepprincess.jpg"
-						data-tags="Romance,Yuri,Suggestive"
-						data-rating="10"
-					>The true definition of fluff, in more ways than one! This is just a really nice comfort story... nothing too angsty or dramatic, just a story about a princess and her butler falling in love. It never feels "fake" in its characters or story and has a great sense of humor which peeks out occasionally. Overall a great pallete cleanser or just something to relax with.
-
-					If you enjoyed this, check out its sequel oneshot [*Himesama to Watashi no Kekkon Ryokou*](https://mangadex.org/title/943cde7b-87bc-415d-b2b1-4b814eb6df04/my-honeymoon-with-the-princess).</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/ece511da-3461-421a-8275-7af48a642aa5/beauty-and-the-beast-girl"
-						data-name="Bocchi Kaibutsu to Moumoku Shoujo"
-						data-alt="Beauty and the Beast Girl"
-						data-image="../src/manga/beautyandbeast.jpg"
-						data-tags="Romance,Yuri,Suggestive"
-						data-rating="10"
-					>This is an incredible manga with some of the strongest storytelling I've seen. One of the most compelling parts of its core story to me is the pairing of a beast girl and a blind girl -- it feels pretty reminiscent of queer struggles and how outsiders perceive a relationship they don't understand. If that's intentional, it's conveyed masterfully. The story is ripe with emotion and love in a way that hits you deeply, even more so once you come to the ending. That made me sob the first time I read it. I highly recommend this manga to pretty much anyone even slightly interested.</manga-component>
-
-					<manga-component 
-						data-link="https://bato.to/series/180930/a-yuri-story-in-which-a-girl-who-says-that-girls-being-together-is-unbelievable-will-completely-fall-within-100-days"
-						data-name="Onna Doushi to ka Arienai deshou to Iiharu Onna no ko wo, Hyakunichi kan de Tetteiteki ni Otosu Yuri no Ohanashi"
-						data-alt="A Yuri Story About a Girl Who Insists It's Impossible for Two Girls to Get Together Completely Falling Within 100 Days"
-						data-image="../src/manga/fallin100days.jpg"
-						data-tags="Romance,Yuri,School Life,Suggestive"
-						data-rating="9"
-					>A surprisingly good coming to age story of learning about oneself and how to properly communicate with your partner. The main character is initially attached to the idea that homosexuality is unnatural or wrong, creating a lot of internal conflict as she cannot accept her own feelings and necessitating open communication with her partner. It's a pretty decent representation of internalized homophobia, more societal in nature than personal. I also really loved the art style, particularly in the little chibi character portraits which are adorable! The only issues I have with it largely have to do with the main characters being underage in more adult situations, but it's to be expected from a coming of age story.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/4a044644-902f-482b-9737-f018c6f6c1a7/belladonna-no-koibito"
-						data-name="Belladonna no Koibito"
-						data-alt="Belladonna's Lover"
-						data-image="../src/manga/belladonna.jpg"
-						data-tags="Romance,Yuri,Oneshot"
-						data-rating="8"
-					>Gorgeous art and a wonderful story. The story isn't particularly original, but the emotions in it are powerful and conveyed expertly. The art style is the highlight of this for me, it has a level of detail that isn't seen in many manga but it never feels overly detailed or visually crowded. Recommended for a short read.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/2b5b045c-32ee-4f3e-85cc-8f205000ec98/your-reason-for-living"
-						data-name="Your Reason for Living" 
-						data-image="../src/manga/yourreasonforliving.jpg"
-						data-tags="Yuri"
-						data-rating="9"
-					>A relatively short story that makes me tear up every time I read it. Such a simple story, but one of the best portrayals of love and loss I've ever seen. How you learn to love the little things, no matter how small. The pain of never experiencing them again. Just a gorgeous story. High recommendation if you're open to heavy stories about loss.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/71a515ab-19b6-4839-9089-e4caac1f0628/handsome-girl-and-sheltered-girl"
-						data-name="Ikemen Onna to Hakoiri Musume"
-						data-alt="Handsome Girl and Sheltered Girl"
-						data-image="../src/manga/handsomeandsheltered.jpg"
-						data-tags="Romance,Yuri,Crossdressing,Suggestive"
-						data-rating="8"
-					>A super fluffy story with an airhead and a girl she mistook for a guy. While it takes a while for them to start properly communicating, their relationship is very healthy and fun to watch with minimal drama. Solid queer representation outside the main couple. If anything, I wish there was more of it! It kinda stops right around when the main characters get past their communication issues, which is a real shame because their dynamic would make for a wonderful slice of life story and they no doubt have more to overcome in the future in the form of parental approval. There are also very obvious hints at side character romances that never go anywhere. It almost makes me wonder if it got axed early. Overall a very sweet manga with a great story, I just wish it kept going.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/5311ac6f-3651-43a8-bb9c-b40dea7ab72d/ichido-dake-demo-koukai-shitemasu"
-						data-name="Ichido Dake Demo, Koukai Shitemasu"
-						data-alt="Even If It Was Just Once, I Regret It"
-						data-image="../src/manga/ichidodakedemo.jpg"
-						data-tags="Romance,Yuri,Slice Of Life,Suggestive"
-						data-rating="9"
-					>An actually good take on the "will they won't they" trope. Everything feels believable as a natural progression of events rather than filler to draw out the story as these kinds often do. Very good representation of how societal attitudes towards queer people can be internalized by queer people themselves and the struggles that come with it. Namely the instinct to reject people automatically out of fear that you might get rejected based on differences in sexuality or other societal factors. Overall a great read.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/d13332db-7b57-4cc4-9e46-802cf52e3b8b/koharu-and-minato-my-partner-is-a-girl"
-						data-name="Koharu to Minato: Watashi no Partner wa Onna no Ko"
-						data-alt="Koharu and Minato: My Partner is a Girl"
-						data-image="../src/manga/koharutominato.jpg"
-						data-tags="Romance,Yuri,Slice Of Life"
-						data-rating="9"
-					>A ridiculously cute autobiography of an age gap couple which they write and draw together! It's packed with fluff and the art is superb. Mostly slice of life, though there are dedicated chapters to telling the story of how they got together and whatnot. The only thing holding this back for me is that I want to see more stories from them! The bite-sized slice of life is nice, but the art and storytelling truly shines in parts like the story of how they got together. Maybe this is addressed in future volumes.
-
-					The fan translation is unfortunately 2 volumes behind, but Koharu and Minato post in Japanese and English on [their pixiv](https://www.pixiv.net/en/users/82480735/artworks)!</manga-component>
-					
-					<manga-component 
-						data-link="https://mangadex.org/title/d4ff7502-b5d4-4fd2-845f-c8754b14dd8d/machikado-mazoku"
-						data-name="Machikado Mazoku"
-						data-alt="The Demon Girl Next Door"
-						data-image="../src/manga/machikadomazoku.jpg"
-						data-tags="Yuri,Action,Slice Of Life,School Life,4-Koma"
-						data-rating="10"
-					>This is a really special one for me. The first season of the anime was some of the first yuri I was exposed to, and it has a really strong charm to it. Fantastic comedy, great characters, and overall you can feel the amount of love the creators put into it. I think it has one of the strongest overarching stories for a slice of life manga I've seen, which is really being leaned into later in the series where it starts to take a more serious tone. It doesn't have much romance in it, but there is a very clear "main couple" (even if they aren't explicitly together) and the love characters have for one another is palpable, even if their words say otherwise. The only struggle I've had with it is the 4-koma layout, which is difficult to read on a phone, but once you get past that it's pretty smooth sailing.
-
-					The author, Izumo Ito, has been struggling with health problems for a good portion of the manga's runtime, leading to substantial delays in chapters. As of writing, it's been over a year since the last chapter was released. However, [she posted on Twitter](https://xcancel.com/izumo_ito/status/1911073094418252087#m) in April that she's still alive and working on the manga, so we should hopefully see updates soon!</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/18f42811-ce55-4143-ae30-b97e30e6cf82/amasaya"
-						data-name="Amasaya"
-						data-alt=""
-						data-image="../src/manga/amasaya.jpg"
-						data-tags="Romance,Yuri,Slice Of Life,School Life,Suggestive"
-						data-rating="7"
-					>Cute little shorts of a high school couple. Not much to be said. Art style is pretty good, if not a bit rough. Some light S/M. Overall a pretty good quick read.</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/98c34d01-2f69-41f1-bd54-4e0c7d89ce18/still-sick"
-						data-name="Still Sick"
-						data-alt=""
-						data-image="../src/manga/stillsick.jpg"
-						data-tags="Romance,Yuri,Office Workers"
-						data-rating="10"
-					>Truly one of the greatest yuri stories, hands down. It's fantastic at telling its story, especially with conveying its characters' emotions and motivations to the reader. The characters feel truly real and are very charming in their own ways. As for the story itself, it does an incredible job at showing the struggle of passion: not only how fulfilling it can be, but how draining it can be even to the point of quitting. It also shows some aspects of queer love that aren't touched on very often: namely, the idea that love is just not meant for you out of fear of rejection or self-hatred. Not only that, it does a great job of showing the difficulties in just accepting that you *can* be in love. By the end of the manga, you can truly see the change the characters have gone through, and it gives a very satisfying feeling. 
-
-					Another really unique aspect is the setting and characters: an office environment with characters well into their adulthood. That isn't seen super often in yuri -- most focus heavily on romance and less on life itself -- but it really grounds the story from the beginning and treats it as a "story about life," less so a "story about love." I highly recommend giving it a read. 
-
-					If you liked it, you should also check out its sequel oneshot [Still Life](https://mangadex.org/title/1b2f3e21-0991-4840-a47f-0f3026d7878a/still-life)!</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/d20ded9e-4df4-4dea-94e1-3905df5c4c16/under-one-roof-today"
-						data-name="Kyou mo Hitotsu Yane no Shita"
-						data-alt="Our Days Under One Roof"
-						data-image="../src/manga/oneroof.jpg"
-						data-tags="Romance,Yuri,Slice Of Life"
-						data-rating="8"
-					>A very sweet autobiography of the author and her girlfriend. While it's definitely slice of life, it's more story focused than most autobiographical manga are; rather than having short little tidbits from everyday life, it focuses much more on actual stories from the couple and their internal thoughts/feelings. The art style is pretty good -- it's a far more unique style than most, though it can definitely take some time to grow on you. I do wish it were a bit more varied in the kind of stories it tells though, as the lovey-dovey stories can get a bit samey after 30 chapters. It's oddly paradoxical: while it shows the reader a lot of their stories and how they think, by the end I still felt like I hadn't really gotten to know the characters as well as I should have. Regardless, it's a very sweet story from a real couple. The stereotypical lesbian pacing is also hilarious (ch. 20 pg. 1).</manga-component>
-
-					<manga-component 
-						data-link="https://mangadex.org/title/1a9bccc5-244a-4495-8a7a-59f097e358dd/you-the-one-sitting-next-to-me-are-the-cutest"
-						data-name="Tonari no Kimi ga Ichiban Kawaii"
-						data-alt="You, the One Sitting Next to Me, Are the Cutest"
-						data-image="../src/manga/sittingnexttomethecutest.jpg"
-						data-tags="Romance,Straight,Crossdressing,Slice Of Life,School Life"
-						data-rating="8"
-					>Can this even be called yuri bait when it's straight? While it doesn't have the most original story basis, this one is fantastic for what it is: a love story between a girl and the most androgynous person ever. Notions of "boyfriend" and "girlfriend," "guy" and "girl" are very fluid in this one -- and not only in our androgynous character. It's this fluidity that makes me feel, despite the main boy seeing themselves as a man (debatably), it reads very much like the story of a nonbinary person learning to accept themselves and finding a partner who accepts them for who they are too. The writing is great too; none of the characters really feel like shallow representations of stereotypes, which is difficult to pull off with subject matter like this. I really just wish that there was more of it!! After they get together there's like... 10 chapters left, it's ridiculous! I want 100! Give me more!</manga-component>
-				</div>
-				<p id="noResults" class="headerText" style="display: none; text-align: center; margin: 0 auto;">No results found</p>
-				<button id="backToTop" class="mangaButton">Back to Top</button>
 			</div>
-			<contact-component id="contact" class="side"></contact-component>
 		</div>
 	</body>
 	<script src="../js/manga.js" type="text/javascript"></script>
