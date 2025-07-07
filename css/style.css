@@ -11,7 +11,7 @@
 	--fgalt: #969696;
 	--bg: #151515;
 	--bgalt: #202020;
-	--link: #6a9fb5;
+	--blue: #6a9fb5;
 	--green: #90a959;
 	--red: #ac4142;
 }
@@ -60,7 +60,7 @@ hr {
 }
 
 .link {
-	color: var(--link);
+	color: var(--blue);
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -68,7 +68,7 @@ hr {
 .listLink {
 	font-size: 20px;
 	font-weight: bold;
-	color: var(--link);
+	color: var(--blue);
 	text-decoration: none;
 }
 

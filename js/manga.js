@@ -49,7 +49,7 @@ class MangaEntry extends HTMLElement {
 
 		const createTag = (content) => {
 			const tagElement = document.createElement('a');
-			tagElement.className = 'mangaTagName';
+			tagElement.classList.add('mangaTagName', `${content.replaceAll(' ', '_')}`);
 			tagElement.innerText = content;
 			tagContainer.appendChild(tagElement);
 		}

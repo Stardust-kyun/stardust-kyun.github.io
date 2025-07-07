@@ -49,6 +49,21 @@ manga-component {
 	filter: brightness(1.3);
 }
 
+.mangaTagName.Completed {
+	background-color: var(--blue);
+	color: var(--bg);
+}
+
+.mangaTagName.Ongoing {
+	background-color: var(--green);
+	color: var(--bg);
+}
+
+.mangaTagName.Suggestive {
+	background-color: var(--red);
+	color: var(--bg);
+}
+
 .mangaTagButton {
 	background-color: var(--bg);
 	height: min-content; 
