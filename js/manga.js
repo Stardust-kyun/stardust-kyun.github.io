@@ -26,8 +26,9 @@ class MangaEntry extends HTMLElement {
 
 		const content = this.innerHTML
 			.replace(/\n/g, '<br>')
-			.replace(/\*(.*)\*/g, '<i>$1</i>')
-			.replace(/\*\*(.*)\*\*/g, '<b>$1</b>')
+			.replace(/\*\*\*(.*?)\*\*\*/g, '<b><i>$1</i></b>')
+			.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+			.replace(/\*(.*?)\*/g, '<i>$1</i>')
 			.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
 
 
