@@ -149,10 +149,6 @@ code {
 	width: 100%;
 }
 
-#main {
-	aspect-ratio: 1/1;
-}
-
 .box {
 	padding: 15px;
 	background-color: var(--bg);
@@ -295,12 +291,12 @@ code {
 
 @media all and (min-aspect-ratio: 1/1) {
 	#sidebar { order: 1; }
-	#main { order: 2; }
+	#main { 
+		order: 2; 
+		aspect-ratio: 1/1; 
+	}
 
 	#header { display: none; }
-	#pages { order: 2; }
-	#sakuraLogo { order: 3; }
-
 	#background { overflow: hidden; }
 }
 
