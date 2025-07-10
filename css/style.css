@@ -33,46 +33,7 @@ body {
 /* Text */
 
 h1 {
-	font-size: 36px;
-	margin: 0 0 0 100px;
-}
-
-h2 {
-	font-size: 24px;
-	color: var(--fg);
-}
-
-h3 {
-	font-size: 16px;
-	color: var(--fgalt);
-}
-
-a, p, pre, li {
-	font-size: 18px;
-	color: var(--fg);
-	text-decoration: none;
-}
-
-hr {
-	border-width: 0;
-	height: 3px;
-	background-color: var(--fg);
-}
-
-.link {
-	color: var(--blue);
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.listLink {
-	font-size: 20px;
-	font-weight: bold;
-	color: var(--blue);
-	text-decoration: none;
-}
-
-.headerLink, .headerText {
+	margin: 0;
 	font-weight: bold;
 	font-size: 24px;
 	color: var(--fg);
@@ -84,24 +45,50 @@ hr {
 	height: min-content;
 }
 
-.link:hover, .headerLink:hover, .listLink:hover {
+h1 > a {
+	color: var(--fg);
+}
+
+h2 {
+	margin: 0;
+	font-size: 20px;
+	color: var(--fg);
+}
+
+h3 {
+	margin: 0;
+	font-size: 16px;
+	color: var(--fgalt);
+}
+
+p, pre, li, .text {
+	font-size: 18px;
+	color: var(--fg);
+	text-decoration: none;
+}
+
+hr {
+	border-width: 0;
+	height: 3px;
+	background-color: var(--fg);
+}
+
+a {
+	color: var(--blue);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
 	text-decoration: underline;
 }
 
-:target > .headerLink {
+:target * {
 	background-color: var(--fg);
 	color: var(--bg);
 }
 
-li {
-	font-size: 20px;
-	font-weight: bold;
-	color: var(--fg);
-	padding-top: 10px;
-	list-style-type: none;
-}
-
-pre {
+pre > code {
 	background-color: var(--bgalt);
 	padding: 20px;
 	display: block;
@@ -135,13 +122,11 @@ code {
 	gap: 20px;
 }
 
-#name > *, .list > * {
-	margin: 0;
-}
-
-#sakura {
+#sakuraLogo {
+	font-size: 36px;
 	display: flex;
 	align-items: center;
+	margin: 0 0 0 100px;
 }
 
 /* Main */
@@ -312,8 +297,9 @@ code {
 	#sidebar { order: 1; }
 	#main { order: 2; }
 
+	#header { display: none; }
 	#pages { order: 2; }
-	#sakura { order: 3; }
+	#sakuraLogo { order: 3; }
 
 	#background { overflow: hidden; }
 }

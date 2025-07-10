@@ -175,7 +175,7 @@ manga-component {
 	flex-flow: column;
 	gap: 10px;
 	overflow: hidden;
-	max-height: 450px;
+	max-height: 495px;
 	transition: max-height 0.5s ease;
 	position: relative;
 }

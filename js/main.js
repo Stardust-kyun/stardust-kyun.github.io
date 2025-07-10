@@ -1,3 +1,28 @@
+const textToMarkdown = (input) => {
+	return input
+		.replace(/\#\# (.*?)(\n|$)/g, '<h2>$1</h2>')
+		.replace(/\# (.*?)(\n|$)/g, '<h1>$1</h1>')
+		.replace(/\n/g, '<br>')
+		.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+		.replace(/\*(.*?)\*/g, '<i>$1</i>')
+		.replace(/\[(.*?)\]\((.\S*)\)/g, '<a href="$2" target="_blank" class="link">$1</a>')
+}
+
+class Markdown extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+		requestAnimationFrame(() => {
+			const content = this.innerHTML.trim();
+			this.innerHTML = `<div class="text">${textToMarkdown(content)}</div>`;
+		});
+	}
+}
+
+customElements.define('markdown-text', Markdown);
+
 class Header extends HTMLElement {
 	constructor() {
 		super();
@@ -7,16 +32,16 @@ class Header extends HTMLElement {
 		this.innerHTML = `
 			<div class="horiz">
 				<img id="pfp" src="/src/pfp.png">
-				<div id="name">
+				<div>
 					<h2>Stella</h2>
 					<h3>any/all</h3>
 				</div>
 			</div>
-			<h1 id="sakura">🌸</h1>
+			<div id="sakuraLogo">🌸</div>
 			<div class="horiz" id="pages">
-				<a href="https://stardust-kyun.github.io/" target="_self" class="headerLink">Home</a>
-				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerLink">Projects</a>
-				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerLink">Blog</a>
+				<h1><a href="https://stardust-kyun.github.io/" target="_self">Home</a></h1>
+				<h1><a href="https://stardust-kyun.github.io/projects/" target="_self">Projects</a></h1>
+				<h1><a href="https://stardust-kyun.github.io/blog/" target="_self">Blog</a></h1>
 			</div>
 		`;
 	}
@@ -32,29 +57,37 @@ class Sidebar extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
 			<div class="box">
-				<a href="https://stardust-kyun.github.io/projects/" target="_self" class="headerLink">Projects</a>
-				<li><a href="https://stardust-kyun.github.io/projects/awm" target="_self" class="listLink">AwesomeWM Dotfiles</a></li>
-				<a>A collection of repositories for awm</a>
-				<li><a href="https://stardust-kyun.github.io/projects/awmguide" target="_self" class="listLink">AwesomeWM Guide</a></li>
-				<a>A series of tutorials for awm</a>
-			</div>
-			<div class="box">
-				<a href="https://stardust-kyun.github.io/blog/" target="_self" class="headerLink">Blog</a>
-				<li><a href="https://stardust-kyun.github.io/blog/2024" target="_self" class="listLink">Best of 2024</a></li>
-				<a>An opinionated list of the best rices of 2024</a>
-				<li><a href="https://stardust-kyun.github.io/blog/manga" target="_self" class="listLink">Manga Reviews</a></li>
-				<a>Reviews of various manga I've enjoyed</a>
-			</div>
-			<div class="box">
-				<a class="headerText">Contact</a>
-				<li>Github</li>
-				<a href="https://github.com/stardust-kyun/" target="_blank" class="link">Stardust-kyun</a>
-				<li>Discord</li>
-				<a href="https://discord.com/users/417133059654156299" target="_blank" class="link">stardustkyun</a>
-				<li>Matrix</li>
-				<a href="https://matrix.to/#/@stardust-kyun:matrix.org" target="_blank" class="link">stardust-kyun:matrix.org</a>
-				<li>Email</li>
-				<a href="mailto:stardust-kyun@proton.me" target="_blank" class="link">stardust-kyun@proton.me</a>
+				<markdown-text>
+					# [Projects](https://stardust-kyun.github.io/projects/)
+
+					## [AwesomeWM Dotfiles](https://stardust-kyun.github.io/projects/awm)
+					A collection of repositories for awm
+
+					## [AwesomeWM Guide](https://stardust-kyun.github.io/projects/awmguide/)
+					A series of tutorials for awm
+					
+					# [Blog](https://stardust-kyun.github.io/blog/)
+
+					## [Best of 2024](https://stardust-kyun.github.io/blog/2024)
+					An opinionated list of the best rices of 2024
+
+					## [Manga Reviews](https://stardust-kyun.github.io/blog/manga)
+					Reviews of various manga I've enjoyed
+					
+					# Contact
+
+					## Github
+					[Stardust-kyun](https://github.com/stardust-kyun/)
+
+					## Discord
+					[stardustkyun](https://discord.com/users/417133059654156299)
+
+					## Matrix
+					[stardust-kyun:matrix.org](https://matrix.to/#/@stardust-kyun:matrix.org)
+
+					## Email
+					[stardust-kyun@proton.me](mailto:stardust-kyun@proton.me)
+				</markdown-text>
 			</div>
 		`;
 	}
@@ -104,7 +137,8 @@ class listVideo extends HTMLElement {
 		let video = this.getAttribute('video');
 
 		this.innerHTML = `
-			<a href=${link} target="_blank" class="headerLink listheader">#${rank}: ${name}</a>
+			<h1><a href=${link} target="_blank">#${rank}: ${name}</a></h1>
+			<br>
 			<video controls class="listContent"><source src=${video} type="video/mp4"></video>
 		`;
 	}
@@ -124,7 +158,8 @@ class listImage extends HTMLElement {
 		let image = this.getAttribute('image');
 
 		this.innerHTML = `
-			<a href=${link} target="_blank" class="headerLink listheader">#${rank}: ${name}</a>
+			<h1><a href=${link} target="_blank">#${rank}: ${name}</a></h1>
+			<br>
 			<img src=${image} onclick="window.open(this.src)" draggable="false" class="listContent">
 		`;
 	}

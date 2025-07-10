@@ -23,26 +23,19 @@ class MangaEntry extends HTMLElement {
 		const tags = this.dataset.tags;
 		const rating = this.dataset.rating;
 		const id = name.replaceAll(' ', '');
-
-		const content = this.innerHTML
-			.replace(/\n/g, '<br>')
-			.replace(/\*\*\*(.*?)\*\*\*/g, '<b><i>$1</i></b>')
-			.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-			.replace(/\*(.*?)\*/g, '<i>$1</i>')
-			.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="link">$1</a>');
-
+		const content = this.innerHTML;
 
 		this.innerHTML = `
 			<div class="mangaHeader" id=${id}>
-				<a href=${link} target="_blank" class="headerLink">${name}</a>
-				<a href=#${id} class="headerLink headerAnchor">🔗</a>
+				<h1><a href=${link} target="_blank">${name}</a></h1>
+				<h1 class="headerAnchor"><a href=#${id}>🔗</a></h1>
 			</div>
 			<div class="mangaWrapper">
 				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaImage">
 				<div class="mangaContentWrapper">
 					<div class="mangaContent">
 						<div class="mangaTagNames"></div>
-						<div class="mangaReview collapsed">${content}</div>
+						<markdown-text class="mangaReview collapsed">${content}</markdown-text>
 					</div>
 				</div>
 			</div>	
@@ -65,7 +58,7 @@ class MangaEntry extends HTMLElement {
 			setTimeout(() => {
 				const mangaContent = this.querySelector('.mangaContent');
 				
-				if (mangaContent.scrollHeight > 450) {
+				if (mangaContent.scrollHeight > 495) {
 					const button = document.createElement('button');
 					button.className = 'mangaButton';
 					button.textContent = 'Show More';
@@ -98,6 +91,7 @@ let includeTags = [];
 let excludeTags = [];
 
 const sortEntries = Array.from(document.querySelectorAll('manga-component'));
+const loaded = false;
 const sort = () => {
 	const box = document.getElementById('mangaBox');
 
@@ -112,6 +106,17 @@ const sort = () => {
 	}
 
 	sorted.forEach(entry => box.appendChild(entry));
+
+	requestAnimationFrame(() => {
+		const hash = window.location.hash;
+		if (hash && !loaded) {
+			const target = document.querySelector(hash);
+			if (target) {
+				target.scrollIntoView({ behavior: 'smooth' });
+				loaded = true;
+			}
+		}
+	});
 }
 
 const filter = () => {
