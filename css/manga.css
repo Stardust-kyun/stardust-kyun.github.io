@@ -168,6 +168,7 @@ manga-component {
 	user-select: none;
 	cursor: pointer;
 	scroll-snap-align: center;
+	border-radius: 15px;
 }
 
 .mangaContent {

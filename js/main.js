@@ -5,7 +5,7 @@ const textToMarkdown = (input) => {
 		.replace(/\n/g, '<br>')
 		.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
 		.replace(/\*(.*?)\*/g, '<i>$1</i>')
-		.replace(/\[(.*?)\]\((.\S*)\)/g, '<a href="$2" target="_blank" class="link">$1</a>')
+		.replace(/\[(.*?)\]\((.\S*)\)/g, '<a href="$2" class="link">$1</a>')
 }
 
 class Markdown extends HTMLElement {
@@ -56,38 +56,38 @@ class Sidebar extends HTMLElement {
 
 	connectedCallback() {
 		this.innerHTML = `
-			<div class="box">
-				<markdown-text>
-					# [Projects](https://stardust-kyun.github.io/projects/)
-
-					## [AwesomeWM Dotfiles](https://stardust-kyun.github.io/projects/awm)
-					A collection of repositories for awm
-
-					## [AwesomeWM Guide](https://stardust-kyun.github.io/projects/awmguide/)
-					A series of tutorials for awm
-					
-					# [Blog](https://stardust-kyun.github.io/blog/)
-
-					## [Best of 2024](https://stardust-kyun.github.io/blog/2024)
-					An opinionated list of the best rices of 2024
-
-					## [Manga Reviews](https://stardust-kyun.github.io/blog/manga)
-					Reviews of various manga I've enjoyed
-					
-					# Contact
-
-					## Github
-					[Stardust-kyun](https://github.com/stardust-kyun/)
-
-					## Discord
-					[stardustkyun](https://discord.com/users/417133059654156299)
-
-					## Matrix
-					[stardust-kyun:matrix.org](https://matrix.to/#/@stardust-kyun:matrix.org)
-
-					## Email
-					[stardust-kyun@proton.me](mailto:stardust-kyun@proton.me)
-				</markdown-text>
+			<div class="box" style="display: flex; flex-flow: column; gap: 15px; overflow: scroll;">
+				<div id="pfpContainer">
+					<img id="pfp" src="/src/pfp.png">
+				</div>
+				<div style="display: flex; justify-content: center; gap: 15px">
+					<h2 style="font-size: 24px;">Stella</h2>
+					<h3 style="font-size: 24px;">any/all</h3>
+				</div>
+				<div class="horiz" style="justify-content: center;">
+					<a href="https://github.com/stardust-kyun/"><img src="/src/github.svg" class="svg"></img></a>
+					<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>
+					<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
+				</div>
+				<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
+				<div class="boxAlt">
+					<h1 style="padding: 0;"><a href="https://stardust-kyun.github.io/projects/">Projects</a></h1>
+					<br>
+					<h2><a href="https://stardust-kyun.github.io/projects/awm">AwesomeWM Dotfiles</a><h2>
+					<h3>A collection of repositories for awm</h3>
+					<br>
+					<h2><a href="https://stardust-kyun.github.io/projects/awmguide/">AwesomeWM Guide</a></h2>
+					<h3>A series of tutorials for awm</h3>
+				</div>
+				<div class="boxAlt">
+					<h1 style="padding: 0;"><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
+					<br>
+					<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
+					<h3>An opinionated list of the best rices of 2024</h3>
+					<br>
+					<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
+					<h3>Reviews of various manga I've enjoyed</h3>
+				</div>
 			</div>
 		`;
 	}
