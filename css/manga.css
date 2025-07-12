@@ -162,13 +162,13 @@ manga-component {
 .mangaImage {
     max-width: 40%;
     width: auto;
-	height: fit-content;
+	height: auto;
     object-fit: contain;
 	object-position: top;
 	user-select: none;
 	cursor: pointer;
 	scroll-snap-align: center;
-	border-radius: 15px;
+	/*border-radius: 15px;*/
 }
 
 .mangaContent {
@@ -238,7 +238,6 @@ manga-component {
 @media all and (max-aspect-ratio: 2/3) {
 	.mangaImage {
 		max-width: 100%;
-		height: auto;
 	}
 
 	.mangaWrapper {
