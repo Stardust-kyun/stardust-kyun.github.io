@@ -162,7 +162,7 @@ manga-component {
 .mangaImage {
     max-width: 40%;
     width: auto;
-	height: auto;
+	height: min-content;
     object-fit: contain;
 	object-position: top;
 	user-select: none;
