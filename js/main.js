@@ -5,18 +5,27 @@ const textToMarkdown = (input) => {
 		.replace(/\n/g, '<br>')
 		.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
 		.replace(/\*(.*?)\*/g, '<i>$1</i>')
+		.replace(/\|\|(.*?)\|\|/g, '<span class="spoiler">$1</span>')
 		.replace(/\[(.*?)\]\((.\S*)\)/g, '<a href="$2" class="link">$1</a>')
 }
 
 class Markdown extends HTMLElement {
 	constructor() {
 		super();
+		this._initialized = false;
 	}
 
 	connectedCallback() {
+		if (this._initialized) return
+		this._initialized = true;
 		requestAnimationFrame(() => {
 			const content = this.innerHTML.trim();
 			this.innerHTML = `<div class="text">${textToMarkdown(content)}</div>`;
+
+			const spoilers = this.querySelectorAll('.spoiler');
+			spoilers.forEach(spoiler => {
+				spoiler.addEventListener('click', () => spoiler.classList.toggle('spoilerActive'));
+			});
 		});
 	}
 }

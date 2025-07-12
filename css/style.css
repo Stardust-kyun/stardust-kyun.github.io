@@ -101,6 +101,21 @@ code {
 	background-color: var(--bgalt);
 }
 
+.spoiler {
+	background-color: var(--fg);
+	color: var(--fg);
+	border-radius: 5px;
+	transition: color 0.1s ease;
+}
+
+.spoiler:hover {
+	cursor: pointer;
+}	
+
+.spoiler.spoilerActive {
+	color: var(--bg);
+}
+
 /* Header */
 
 #header {
