@@ -79,13 +79,18 @@ class Sidebar extends HTMLElement {
 					<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>
 					<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
 				</div>
-				<div style="display: flex; flex-flow: column; justify-content: space-between; height: 100%;">
+				<div style="display: flex; flex-flow: column;">
+				<div>
 					<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
-					<markdown-text style="padding: 10px;">
+					<div style="padding: 10px;">
+					<markdown-text>
 						*“Perhaps it's impossible to wear an identity without becoming what you pretend to be.”*
 
 						— Orson Scott Card, Ender's Game
 					</markdown-text>
+					</div>
+					</div>
+					<div>
 					<h1><a href="https://stardust-kyun.github.io/projects/">Projects</a></h1>
 					<div style="padding: 10px;">
 						<h2><a href="https://stardust-kyun.github.io/projects/awm">AwesomeWM Dotfiles</a><h2>
@@ -94,6 +99,8 @@ class Sidebar extends HTMLElement {
 						<h2><a href="https://stardust-kyun.github.io/projects/awmguide/">AwesomeWM Guide</a></h2>
 						<h3>A series of tutorials for awm</h3>
 					</div>
+					</div>
+					<div>
 					<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
 					<div style="padding: 10px;">
 						<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
@@ -102,7 +109,9 @@ class Sidebar extends HTMLElement {
 						<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
 						<h3>Reviews of various manga I've enjoyed</h3>
 					</div>
+					</div>
 					<!--
+					<div>
 					<h1>Contact</h1>
 					<div style="padding: 10px;">
 						<h2>Github<h2>
@@ -116,6 +125,7 @@ class Sidebar extends HTMLElement {
 						<br>
 						<h2>Email</h2>
 						<h3><a href="mailto:stardust-kyun@proton.me">stardust-kyun@proton.me</a></h3>
+					</div>
 					</div>
 					-->
 				</div>
