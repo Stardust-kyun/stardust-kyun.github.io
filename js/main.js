@@ -40,7 +40,7 @@ class Header extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
 			<div class="horiz">
-				<img id="pfp" src="../src/pfp.png">
+				<img id="pfp" src="/src/pfp.png">
 				<div>
 					<h2>Stella</h2>
 					<h3>any/all</h3>
@@ -67,16 +67,16 @@ class Sidebar extends HTMLElement {
 		this.innerHTML = `
 			<div class="box" style="display: flex; flex-flow: column; gap: 15px; overflow: scroll;">
 				<div id="pfpContainer">
-					<img id="pfp" src="../src/pfp.png">
+					<img id="pfp" src="/src/pfp.png">
 				</div>
 				<div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
 					<h2 style="font-size: 24px;">Stella</h2>
 					<h3 style="font-size: 24px;">any/all</h3>
 				</div>
 				<!--<div class="horiz" style="justify-content: center;">
-					<a href="https://github.com/stardust-kyun/"><img src="../src/github.svg" class="svg"></img></a>
-					<a href="https://discord.com/users/417133059654156299"><img src="../src/discord.svg" class="svg"></img></a>
-					<a href="mailto:stardust-kyun@proton.me"><img src="../src/email.svg" class="svg"></img></a>
+					<a href="https://github.com/stardust-kyun/"><img src="/src/github.svg" class="svg"></img></a>
+					<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>
+					<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
 				</div>-->
 				<div style="display: flex; flex-flow: column; justify-content: space-between; height: 100%;">
 					<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
