@@ -253,7 +253,7 @@ manga-component {
 	}
 }
 
-@media all and (max-aspect-ratio: 1/1) {
+@media all and (max-aspect-ratio: 3/4) {
 	#mangaBox {
 		display: grid;
 		grid-template-columns: auto;

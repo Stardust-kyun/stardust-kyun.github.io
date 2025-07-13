@@ -83,7 +83,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-:target * {
+:target h1, :target a  {
 	background-color: var(--fg);
 	color: var(--bg);
 }
@@ -185,7 +185,7 @@ code {
 	flex-flow: column;
 	gap: 20px;
 	list-style-type: none;
-	aspect-ratio: 1/3;
+	aspect-ratio: 1/4;
 }
 
 #sidebar > * {
@@ -312,7 +312,7 @@ code {
 	#sidebar { order: 1; }
 	#main { 
 		order: 2; 
-		aspect-ratio: 1/1; 
+		aspect-ratio: 3/4; 
 	}
 	#pfp {
 		margin: auto;
