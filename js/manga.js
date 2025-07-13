@@ -28,7 +28,10 @@ class MangaEntry extends HTMLElement {
 		this.innerHTML = `
 			<div class="mangaHeader" id=${id}>
 				<h1><a href=${link} target="_blank">${name}</a></h1>
-				<h1 class="headerAnchor"><a href=#${id}>🔗</a></h1>
+				<div class="headerAnchor">
+					<h1><a href=#${id}>🔗</a></h1>
+					<button class="mangaHeaderButton" data-name="${name}">⭐</button>
+				</div>
 			</div>
 			<div class="mangaWrapper">
 				<img src=${image} onclick="window.open('${link}', '_blank')" draggable="false" class="mangaImage">
@@ -140,9 +143,14 @@ const filter = () => {
 			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
 			return entry.classList.contains(safeTag);
 		});
+		
+		var customMatch = true;
+		if (customList.length) {
+			customMatch = customList.includes(entry.dataset.name);
+		}
 	
 		sort();
-		entry.classList.toggle('mangaShow', searchMatch && includeMatch && !excludeMatch);
+		entry.classList.toggle('mangaShow', searchMatch && includeMatch && customMatch && !excludeMatch);
 	});
 
 	for (const entry of entries) {
@@ -176,8 +184,10 @@ mangaSearchClear.addEventListener('click', () => {
 	searchInput.value = '';
 	includeTags = [];
 	excludeTags = [];
+	customList = [];
 	tagButtons.forEach(button => button.classList.remove('included'));
 	tagButtons.forEach(button => button.classList.remove('excluded'));
+	mangaHeaderButtons.forEach(button => button.classList.remove('selected'));
 	filter();
 	updateURLFilters();
 });
@@ -240,6 +250,26 @@ mangaSortButtons.forEach(button => {
 	});
 });
 
+// ------------------ Custom List Button ------------------
+
+let customList = [];
+
+const mangaHeaderButtons = document.querySelectorAll('.mangaHeaderButton');
+mangaHeaderButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		const active = button.classList.toggle('selected');
+		const name = button.dataset.name;
+
+		if (active) {
+			customList.push(name);
+		} else {
+			customList = customList.filter(n => n !== name);
+		}
+		console.log(customList);
+		updateURLFilters();
+	});
+});
+
 // ------------------ Back To Top ------------------
 
 const backToTop = document.getElementById('backToTop');
@@ -266,6 +296,7 @@ const updateURLFilters = () => {
 
 	if (includeTags.length) params.set('include', includeTags.join('~'));
 	if (excludeTags.length) params.set('exclude', excludeTags.join('~'));
+	if (customList.length) params.set('custom', customList.join('~'));
 	if (currentSort !== defaultSort) params.set('sort', currentSort);
 
 	if (params.size) {
@@ -280,6 +311,7 @@ const loadURLFilters = () => {
 	const params = new URLSearchParams(window.location.search);
 	const include = params.get('include');
 	const exclude = params.get('exclude');
+	const custom = params.get('custom');
 	const sort = params.get('sort');
 
 	if (include) {
@@ -294,6 +326,13 @@ const loadURLFilters = () => {
 		excludeTags.forEach(tag => {
 			const button = document.querySelector(`.mangaTagButton[data-tag="${tag}"]`);
 			if (button) button.classList.add('excluded');
+		});
+	}
+	if (custom) {
+		customList = custom.split('~');
+		customList.forEach(name => {
+			const button = document.querySelector(`.mangaHeaderButton[data-name="${name}"]`);
+			if (button) button.classList.add('selected');
 		});
 	}
 	if (sort) {

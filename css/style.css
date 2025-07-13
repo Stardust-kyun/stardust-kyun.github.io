@@ -130,7 +130,7 @@ code {
 }
 
 .svg {
-	height: 50px;
+	height: 36px;
 	filter: brightness(0) saturate(100%) invert(83%) sepia(0%) saturate(873%) hue-rotate(159deg) brightness(92%) contrast(109%);
 }
 
