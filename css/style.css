@@ -184,8 +184,6 @@ code {
 	display: flex;
 	flex-flow: column;
 	gap: 20px;
-	list-style-type: none;
-	aspect-ratio: 1/4;
 }
 
 #sidebar > * {
@@ -309,10 +307,15 @@ code {
 }
 
 @media all and (min-aspect-ratio: 1/1) {
-	#sidebar { order: 1; }
+	#sidebar { 
+		order: 1; 
+		/*aspect-ratio: 1/4;*/
+		max-width: 330px;
+	}
 	#main { 
 		order: 2; 
-		aspect-ratio: 3/4; 
+		/*aspect-ratio: 3/4;*/
+		max-width: 970px;
 	}
 	#pfp {
 		margin: auto;

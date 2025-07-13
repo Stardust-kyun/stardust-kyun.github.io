@@ -73,11 +73,12 @@ class Sidebar extends HTMLElement {
 					<h2 style="font-size: 24px;">Stella</h2>
 					<h3 style="font-size: 24px;">any/all</h3>
 				</div>
-				<!--<div class="horiz" style="justify-content: center;">
+				<div class="horiz" style="justify-content: center;">
 					<a href="https://github.com/stardust-kyun/"><img src="/src/github.svg" class="svg"></img></a>
+					<a href="https://www.reddit.com/user/Stardust-kyun/"><img src="/src/reddit.svg" class="svg"></img></a>
 					<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>
 					<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
-				</div>-->
+				</div>
 				<div style="display: flex; flex-flow: column; justify-content: space-between; height: 100%;">
 					<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
 					<markdown-text style="padding: 10px;">
@@ -101,6 +102,7 @@ class Sidebar extends HTMLElement {
 						<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
 						<h3>Reviews of various manga I've enjoyed</h3>
 					</div>
+					<!--
 					<h1>Contact</h1>
 					<div style="padding: 10px;">
 						<h2>Github<h2>
@@ -115,6 +117,7 @@ class Sidebar extends HTMLElement {
 						<h2>Email</h2>
 						<h3><a href="mailto:stardust-kyun@proton.me">stardust-kyun@proton.me</a></h3>
 					</div>
+					-->
 				</div>
 			</div>
 		`;
