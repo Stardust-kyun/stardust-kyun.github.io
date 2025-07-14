@@ -73,7 +73,7 @@ class Sidebar extends HTMLElement {
 					<h2 style="font-size: 24px;">Stella</h2>
 					<h3 style="font-size: 24px;">any/all</h3>
 				</div>
-				<div class="horiz" style="justify-content: center;">
+				<div style="display: flex; align-items: center; justify-content: space-between; margin: 0 10%;">
 					<a href="https://github.com/stardust-kyun/"><img src="/src/github.svg" class="svg"></img></a>
 					<a href="https://www.reddit.com/user/Stardust-kyun/"><img src="/src/reddit.svg" class="svg"></img></a>
 					<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>

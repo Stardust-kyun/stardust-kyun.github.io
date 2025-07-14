@@ -310,12 +310,12 @@ code {
 	#sidebar { 
 		order: 1; 
 		/*aspect-ratio: 1/4;*/
-		max-width: 330px;
+		flex: 0 1 330px;
 	}
 	#main { 
 		order: 2; 
 		/*aspect-ratio: 3/4;*/
-		max-width: 970px;
+		flex: 0 1 970px;
 	}
 	#pfp {
 		margin: auto;
