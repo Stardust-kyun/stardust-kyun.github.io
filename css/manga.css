@@ -59,7 +59,7 @@ manga-component {
 	color: var(--bg);
 }
 
-.mangaTagName.Suggestive {
+.mangaTagName.Suggestive, .mangaTagName.Cancelled {
 	background-color: var(--red);
 	color: var(--bg);
 }
