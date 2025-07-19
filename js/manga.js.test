@@ -92,16 +92,29 @@ customElements.define('manga-component', MangaEntry);
 
 let includeTags = [];
 let excludeTags = [];
+let filteredEntries = [];
 
+const box = document.getElementById('mangaBox');
 const entries = document.querySelectorAll('manga-component');
 const loaded = false;
 
+const updateVisible = (page) => {
+	const currentPage = page;
+	const pageLength = 10;
+	const totalPages = Math.ceil(filteredEntries.length / pageLength);
+	const start = (currentPage - 1) * pageLength;
+	const end = start + pageLength;
+	const pageEntries = filteredEntries.slice(start, end);
+
+	box.replaceChildren();
+	pageEntries.forEach(entry => box.appendChild(entry));
+}
+
 const filter = () => {
 	const query = searchInput.value.toLowerCase();
-	const box = document.getElementById('mangaBox');
 	const noResults = document.getElementById('noResults');
 	let anyVisible = false;
-	let filteredEntries = [];
+	filteredEntries = [];
 
 	entries.forEach(entry => {
 		const name = entry.dataset.name.toLowerCase();
@@ -139,7 +152,7 @@ const filter = () => {
 		filteredEntries.reverse();
 	}
 
-	filteredEntries.forEach(entry => box.appendChild(entry));
+	updateVisible(1);
 
 	if (filteredEntries.length > 0) {
 		anyVisible = true;
