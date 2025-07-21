@@ -20,7 +20,7 @@ manga-component {
 	
 }
 
-#mangaSearch {
+#mangaSearch, #pageControls {
 	display: flex;
 	flex-flow: row;
 	gap: 15px;
@@ -37,6 +37,7 @@ manga-component {
 	padding: 10px;
 	background-color: var(--bgalt);
 	border-radius: 15px;
+	white-space: nowrap;
 }
 
 .mangaButton, .mangaTagButton, .mangaSortButton, .mangaHeaderButton {
@@ -93,10 +94,6 @@ manga-component {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-}
-
-#mangaFilterButton {
-	white-space: nowrap;
 }
 
 #mangaTags {
@@ -250,6 +247,10 @@ manga-component {
 
 	.mangaWrapper {
 		flex-flow: row wrap;
+	}
+
+	#mangaSearch, #pageControls {
+		flex-wrap: wrap;
 	}
 }
 

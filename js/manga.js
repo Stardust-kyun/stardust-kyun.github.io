@@ -1,3 +1,13 @@
+// ------------------ Helpers ------------------
+
+const normalize = (content) => {
+	return content
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '_')
+		.replace(/^_+|_+$/g, '')
+		.replace(/_+/g, '_');
+}
+
 // ------------------ Manga Component ------------------
 
 class MangaEntry extends HTMLElement {
@@ -22,7 +32,7 @@ class MangaEntry extends HTMLElement {
 		const image = this.dataset.image;
 		const tags = this.dataset.tags;
 		const rating = this.dataset.rating;
-		const id = name.replaceAll(' ', '');
+		const id = normalize(name);
 		const content = this.innerHTML;
 
 		this.innerHTML = `
@@ -92,16 +102,65 @@ customElements.define('manga-component', MangaEntry);
 
 let includeTags = [];
 let excludeTags = [];
+let filteredEntries = [];
+let loaded = false;
 
+const box = document.getElementById('mangaBox');
 const entries = document.querySelectorAll('manga-component');
-const loaded = false;
+
+const pageLength = 10;
+let currentPage = 1;
+let totalPages, start, end;
+const updateVisible = () => {
+	totalPages = Math.ceil(filteredEntries.length / pageLength);
+	start = (currentPage - 1) * pageLength;
+	if (start + pageLength > filteredEntries.length) {
+		end = filteredEntries.length;
+	} else {
+		end = start + pageLength;
+	}
+	const pageEntries = filteredEntries.slice(start, end);
+
+	box.replaceChildren();
+	pageEntries.forEach(entry => box.appendChild(entry));
+	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
+}
+
+const scrollToAnchor = () => {
+	const hash = window.location.hash;
+	if (!hash || !hash.startsWith('#')) return;
+
+	const anchorId = hash.slice(1);
+	const targetEntry = filteredEntries.find(entry => {
+		const id = entry.querySelector('.mangaHeader')?.id;
+		return id === anchorId;
+	});
+
+	if (targetEntry) {
+		const index = filteredEntries.indexOf(targetEntry);
+		const page = Math.floor(index / pageLength) + 1;
+
+		if (page !== currentPage) {
+			currentPage = page;
+			updateVisible();
+
+			requestAnimationFrame(() => {
+				const anchorElement = document.getElementById(anchorId);
+				anchorElement.scrollIntoView({ behavior: 'smooth' });
+			});
+		} else {
+				const anchorElement = document.getElementById(anchorId);
+				anchorElement.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+};
 
 const filter = () => {
 	const query = searchInput.value.toLowerCase();
-	const box = document.getElementById('mangaBox');
 	const noResults = document.getElementById('noResults');
 	let anyVisible = false;
-	let filteredEntries = [];
+	filteredEntries = [];
+	currentPage = 1;
 
 	entries.forEach(entry => {
 		const name = entry.dataset.name.toLowerCase();
@@ -109,25 +168,23 @@ const filter = () => {
 		const searchMatch = name.includes(query) || alt.includes(query);
 
 		const includeMatch = includeTags.every(tag => {
-			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
+			const safeTag = normalize(tag);
 			return entry.classList.contains(safeTag);
 		});
 
 		const excludeMatch = excludeTags.some(tag => {
-			const safeTag = tag.toLowerCase().replaceAll(' ', '_');
+			const safeTag = normalize(tag);
 			return entry.classList.contains(safeTag);
 		});
 		
-		var customMatch = true;
+		let customMatch = true;
 		if (customList.length) {
 			customMatch = customList.includes(entry.dataset.name);
 		}
 	
 		if (searchMatch && includeMatch && customMatch && !excludeMatch) {
 			filteredEntries.push(entry);
-			entry.classList.add('mangaShow');
 		} else {
-			entry.classList.remove('mangaShow');
 		}
 	});
 
@@ -139,7 +196,7 @@ const filter = () => {
 		filteredEntries.reverse();
 	}
 
-	filteredEntries.forEach(entry => box.appendChild(entry));
+	updateVisible();
 
 	if (filteredEntries.length > 0) {
 		anyVisible = true;
@@ -148,16 +205,10 @@ const filter = () => {
 	box.style.display = anyVisible ? 'grid' : 'none';
 	noResults.style.display = anyVisible ? 'none' : 'block';
 
-	requestAnimationFrame(() => {
-		const hash = window.location.hash;
-		if (hash && !loaded) {
-			const target = document.querySelector(hash);
-			if (target) {
-				target.scrollIntoView({ behavior: 'smooth' });
-				loaded = true;
-			}
-		}
-	});
+	if (!loaded) {
+		scrollToAnchor();
+		loaded = true;
+	}
 }
 
 // ------------------ Search Bar ------------------
@@ -261,7 +312,6 @@ mangaHeaderButtons.forEach(button => {
 		} else {
 			customList = customList.filter(n => n !== name);
 		}
-		console.log(customList);
 		updateURLFilters();
 	});
 });
@@ -283,6 +333,21 @@ backToTop.addEventListener('click', () => {
 		top: 0,
 		behavior: 'smooth'
 	});
+});
+
+// ------------------ Page Buttons ------------------
+
+document.getElementById('pageBack').addEventListener('click', () => {
+	if (currentPage > 1) {
+		currentPage -= 1;
+		updateVisible();
+	}
+});
+document.getElementById('pageNext').addEventListener('click', () => {
+	if (currentPage < totalPages) {
+		currentPage += 1;
+		updateVisible();
+	}
 });
 
 // ------------------ URL Filters ------------------
