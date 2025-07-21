@@ -225,8 +225,9 @@ manga-component {
 #backToTop {
 	position: fixed;
 	bottom: 20px;
-	right: 40%;
-	width: 20%;
+	right: 20px;
+	width: 55px;
+	aspect-ratio: 1/1;
 	font-size: 24px;
 	border: 3px solid var(--bg);
 	opacity: 0;
@@ -251,6 +252,9 @@ manga-component {
 
 	#mangaSearch, #pageControls {
 		flex-wrap: wrap;
+		justify-content: space-between;
+		column-gap: 0px;
+		row-gap: 15px;
 	}
 }
 
