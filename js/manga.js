@@ -126,7 +126,7 @@ const updateVisible = () => {
 	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
 }
 
-const scrollToAnchor = () => {
+const jumpToAnchor = () => {
 	const hash = window.location.hash;
 	if (!hash || !hash.startsWith('#')) return;
 
@@ -143,15 +143,11 @@ const scrollToAnchor = () => {
 		if (page !== currentPage) {
 			currentPage = page;
 			updateVisible();
-
-			requestAnimationFrame(() => {
-				const anchorElement = document.getElementById(anchorId);
-				anchorElement.scrollIntoView({ behavior: 'smooth' });
-			});
-		} else {
-				const anchorElement = document.getElementById(anchorId);
-				anchorElement.scrollIntoView({ behavior: 'smooth' });
 		}
+		requestAnimationFrame(() => {
+			const anchorElement = document.getElementById(anchorId);
+			anchorElement.scrollIntoView({ behavior: 'smooth' });
+		});
 	}
 };
 
@@ -206,7 +202,7 @@ const filter = () => {
 	noResults.style.display = anyVisible ? 'none' : 'block';
 
 	if (!loaded) {
-		scrollToAnchor();
+		jumpToAnchor();
 		loaded = true;
 	}
 }
@@ -406,20 +402,4 @@ const loadURLFilters = () => {
 	filter();
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-	// Temporarily remove hash to prevent default jump
-	const originalHash = window.location.hash;
-	if (originalHash) {
-		history.replaceState(null, '', window.location.pathname + window.location.search);
-	}
-
-	loadURLFilters();
-
-	// Restore the hash and scroll manually
-	if (originalHash) {
-		setTimeout(() => {
-			history.replaceState(null, '', window.location.pathname + window.location.search + originalHash);
-			scrollToAnchor();
-		}, 0);
-	}
-});
+document.addEventListener('DOMContentLoaded', loadURLFilters);
