@@ -416,6 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		setTimeout(() => {
 			history.replaceState(null, '', window.location.pathname + window.location.search + hash);
 			jumpToAnchor();
-		}, 0);
+		}, 100);
 	}
 });
