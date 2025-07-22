@@ -402,4 +402,18 @@ const loadURLFilters = () => {
 	filter();
 };
 
-document.addEventListener('DOMContentLoaded', loadURLFilters);
+document.addEventListener('DOMContentLoaded', () => {
+	// Temporarily remove hash to prevent default jump
+	const hash = window.location.hash;
+	if (hash) {
+		history.replaceState(null, '', window.location.pathname + window.location.search);
+	}
+
+	loadURLFilters();
+
+	// Restore the hash and scroll manually
+	if (hash) {
+		history.replaceState(null, '', window.location.pathname + window.location.search + hash);
+		jumpToAnchor();
+	}
+});
