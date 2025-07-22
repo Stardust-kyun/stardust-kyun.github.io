@@ -406,4 +406,20 @@ const loadURLFilters = () => {
 	filter();
 };
 
-window.addEventListener('DOMContentLoaded', loadURLFilters);
+document.addEventListener('DOMContentLoaded', () => {
+	// Temporarily remove hash to prevent default jump
+	const originalHash = window.location.hash;
+	if (originalHash) {
+		history.replaceState(null, '', window.location.pathname + window.location.search);
+	}
+
+	loadURLFilters();
+
+	// Restore the hash and scroll manually
+	if (originalHash) {
+		setTimeout(() => {
+			history.replaceState(null, '', window.location.pathname + window.location.search + originalHash);
+			scrollToAnchor();
+		}, 0);
+	}
+});
