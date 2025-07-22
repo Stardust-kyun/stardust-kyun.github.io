@@ -413,7 +413,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Restore the hash and scroll manually
 	if (hash) {
-		history.replaceState(null, '', window.location.pathname + window.location.search + hash);
-		jumpToAnchor();
+		setTimeout(() => {
+			history.replaceState(null, '', window.location.pathname + window.location.search + hash);
+			jumpToAnchor();
+		}, 0);
 	}
 });
