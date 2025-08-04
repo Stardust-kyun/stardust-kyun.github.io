@@ -252,11 +252,19 @@ manga-component {
 
 	#mangaSearch {
 		flex-wrap: wrap;
-		gap: 15px;
 	}
 
 	#mangaSearch > * {
 		flex-grow: 1;
+	}
+
+	#mangaSearchInput {
+		width: auto;
+		flex: 70%;
+	}
+
+	#mangaSearchClear {
+		flex: 20%;
 	}
 
 	#pageName {
