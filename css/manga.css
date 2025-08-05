@@ -2,14 +2,6 @@
 	margin-top: -20px;
 }
 
-manga-component {
-	display: none;
-}
-
-.mangaShow {
-	display: block;
-}
-
 #main {
 	display: flex;
 	flex-flow: column;

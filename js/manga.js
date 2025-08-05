@@ -91,8 +91,6 @@ class MangaEntry extends HTMLElement {
 				}
 			}, 0);
 		});
-
-		this.classList.add('mangaShow');
 	}
 }
 
@@ -121,8 +119,7 @@ const updateVisible = () => {
 	}
 	const pageEntries = filteredEntries.slice(start, end);
 
-	box.replaceChildren();
-	pageEntries.forEach(entry => box.appendChild(entry));
+	box.replaceChildren(...pageEntries);
 	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
 }
 
