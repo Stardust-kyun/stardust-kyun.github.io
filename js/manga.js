@@ -13,8 +13,9 @@ const normalize = (content) => {
 class MangaEntry extends HTMLElement {
     constructor() {
         super();
-
 		this._initialized = false;
+		this._rawContent = this.innerHTML;
+
 		const tags = this.dataset.tags;
 		const tagArray = tags
 			.split(',')
@@ -33,7 +34,7 @@ class MangaEntry extends HTMLElement {
 		const tags = this.dataset.tags;
 		const rating = this.dataset.rating;
 		const id = normalize(name);
-		const content = this.innerHTML;
+		const content = this._rawContent;
 
 		this.innerHTML = `
 			<div class="mangaHeader" id=${id}>
