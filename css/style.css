@@ -282,7 +282,8 @@ code {
 	}
 
 	#main {
-		overflow: unset;
+		overflow-y: auto;
+		overflow-x: scroll;
 	}
 
 	.image {
