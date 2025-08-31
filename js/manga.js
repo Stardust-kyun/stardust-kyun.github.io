@@ -68,30 +68,38 @@ class MangaEntry extends HTMLElement {
 		}
 		createTag(`Rating: ${rating}/10`);
 
-		requestAnimationFrame(() => {
-			setTimeout(() => {
-				const mangaContent = this.querySelector('.mangaContent');
+		const imgElement = this.querySelector('img');
+
+		const runAfterImage = () => {
+			const mangaContent = this.querySelector('.mangaContent');
+			
+			if (mangaContent.scrollHeight > 500) {
+				const button = document.createElement('button');
+				button.className = 'mangaButton';
+				button.textContent = 'Show More';
+				let expanded = false;
+				button.setAttribute('aria-expanded', expanded);
+
+				mangaContent.classList.add('collapsible');
+
+				button.addEventListener('click', () => {
+					expanded = !expanded;
+					mangaContent.classList.toggle('expanded', expanded);
+					button.textContent = expanded ? 'Show Less' : 'Show More';
+					button.setAttribute('aria-expanded', expanded)
+				});
 				
-				if (mangaContent.scrollHeight > 500) {
-					const button = document.createElement('button');
-					button.className = 'mangaButton';
-					button.textContent = 'Show More';
-					let expanded = false;
-					button.setAttribute('aria-expanded', expanded);
+				mangaContent.after(button);
+			}
+		}
 
-					mangaContent.classList.add('collapsible');
-
-					button.addEventListener('click', () => {
-						expanded = !expanded;
-						mangaContent.classList.toggle('expanded', expanded);
-						button.textContent = expanded ? 'Show Less' : 'Show More';
-						button.setAttribute('aria-expanded', expanded)
-					});
-					
-					mangaContent.after(button);
-				}
-			}, 0);
-		});
+		if (imgElement.complete) {
+			runAfterImage();
+			console.log('cached');
+		} else {
+			imgElement.addEventListener('load', runAfterImage, { once: true });
+			console.log('not cached');
+		}
 	}
 }
 
