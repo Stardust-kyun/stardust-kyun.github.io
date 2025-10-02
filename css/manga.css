@@ -3,13 +3,10 @@
 }
 
 #main {
+	position: relative;
 	display: flex;
 	flex-flow: column;
 	gap: 15px;
-}
-
-#mangaFilter {
-	
 }
 
 #mangaSearch {
@@ -172,7 +169,6 @@
 	flex-flow: column;
 	gap: 10px;
 	overflow: hidden;
-	max-height: 550px;
 	transition: max-height 0.5s ease;
 	position: relative;
 }
@@ -213,11 +209,9 @@
 }
 
 #backToTop {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	width: 55px;
-	aspect-ratio: 1/1;
+	position: sticky;
+	bottom: 0;
+	align-self: center;
 	font-size: 24px;
 	border: 3px solid var(--bg);
 	opacity: 0;
@@ -272,5 +266,14 @@
 
 	.mangaTagContainer {
 		flex-flow: column;
+	}
+}
+
+@media all and (max-aspect-ratio: 1/1) {
+	#backToTop {
+		position: fixed;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }

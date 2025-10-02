@@ -74,8 +74,8 @@ class MangaEntry extends HTMLElement {
 			const mangaContent = this.querySelector('.mangaContent');
 			const mangaContentWrapper = this.querySelector('.mangaContentWrapper');
 			
-			if (mangaContent.scrollHeight > mangaContentWrapper.scrollHeight) {
-				mangaContent.style.maxHeight = "500px";
+			if (mangaContent.scrollHeight > imgElement.scrollHeight) {
+				mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
 				const button = document.createElement('button');
 				button.className = 'mangaButton';
 				button.textContent = 'Show More';
@@ -92,7 +92,7 @@ class MangaEntry extends HTMLElement {
 					if (expanded) {
 						mangaContent.style.maxHeight = "1500px";
 					} else {
-						mangaContent.style.maxHeight = "500px";
+						mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
 					}
 				});
 				
@@ -328,6 +328,7 @@ mangaHeaderButtons.forEach(button => {
 // ------------------ Back To Top ------------------
 
 const backToTop = document.getElementById('backToTop');
+const main = document.getElementById('main');
 
 window.addEventListener('scroll', () => {
 	if (window.scrollY > 200) {
@@ -336,9 +337,20 @@ window.addEventListener('scroll', () => {
 		backToTop.classList.remove('visible');
 	}
 });
+main.addEventListener('scroll', () => {
+	if (main.scrollTop > 200) {
+		backToTop.classList.add('visible');
+	} else {
+		backToTop.classList.remove('visible');
+	}
+});
 
 backToTop.addEventListener('click', () => {
 	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+	main.scrollTo({
 		top: 0,
 		behavior: 'smooth'
 	});
