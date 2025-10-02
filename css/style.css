@@ -106,6 +106,8 @@ code {
 	color: var(--fg);
 	border-radius: 5px;
 	transition: color 0.1s ease;
+	box-decoration-break: clone;
+	padding: 0 3px;
 }
 
 .spoiler:hover {

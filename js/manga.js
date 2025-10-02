@@ -72,8 +72,10 @@ class MangaEntry extends HTMLElement {
 
 		const runAfterImage = () => {
 			const mangaContent = this.querySelector('.mangaContent');
+			const mangaContentWrapper = this.querySelector('.mangaContentWrapper');
 			
-			if (mangaContent.scrollHeight > 500) {
+			if (mangaContent.scrollHeight > mangaContentWrapper.scrollHeight) {
+				mangaContent.style.maxHeight = "500px";
 				const button = document.createElement('button');
 				button.className = 'mangaButton';
 				button.textContent = 'Show More';
@@ -87,6 +89,11 @@ class MangaEntry extends HTMLElement {
 					mangaContent.classList.toggle('expanded', expanded);
 					button.textContent = expanded ? 'Show Less' : 'Show More';
 					button.setAttribute('aria-expanded', expanded)
+					if (expanded) {
+						mangaContent.style.maxHeight = "1500px";
+					} else {
+						mangaContent.style.maxHeight = "500px";
+					}
 				});
 				
 				mangaContent.after(button);

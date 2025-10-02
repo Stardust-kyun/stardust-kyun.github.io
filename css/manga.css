@@ -172,14 +172,12 @@
 	flex-flow: column;
 	gap: 10px;
 	overflow: hidden;
-	max-height: 500px;
+	max-height: 550px;
 	transition: max-height 0.5s ease;
 	position: relative;
 }
 
-.mangaContent.expanded {
-	max-height: 1500px;
-}
+
 
 .mangaContent::after {
 	content: '';
