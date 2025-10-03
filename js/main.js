@@ -39,20 +39,79 @@ class Header extends HTMLElement {
 
 	connectedCallback() {
 		this.innerHTML = `
-			<div class="horiz">
-				<img id="pfp" src="/src/pfp.png">
-				<div>
-					<h2>Stella</h2>
-					<h3>any/all</h3>
+			<div style="display: flex; width: 100%; justify-content: space-between;">
+				<img id="menu" src="/src/menu.svg" class="svg" style="cursor: pointer;"></img>
+				<img src="/src/sakuraLogo.png" style="height: 36px;"></img>
+			</div>
+			<div id="menuContent" style="max-height: 0; transition: max-height 0.5s ease">
+				<div class="box" style="display: flex; flex-flow: column; gap: 15px; overflow: scroll;">
+					<div style="display: flex; flex-flow: row;">
+						<div id="pfpContainer">
+							<img id="pfp" src="/src/pfp.png">
+						</div>
+						<div style="display: flex; flex-flow: column; justify-content: center; flex-grow: 1; gap: 15px; margin-bottom: 10px; width: 40%;">
+							<h2 style="font-size: 24px;">Stella</h2>
+							<h3 style="font-size: 24px;">any/all</h3>
+							<div style="display: grid; grid-template-columns: auto auto; row-gap: 10px;">
+								<a href="https://github.com/stardust-kyun/"><img src="/src/github.svg" class="svg"></img></a>
+								<a href="https://www.reddit.com/user/Stardust-kyun/"><img src="/src/reddit.svg" class="svg"></img></a>
+								<a href="https://discord.com/users/417133059654156299"><img src="/src/discord.svg" class="svg"></img></a>
+								<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
+							</div>
+						</div>
+					</div>
+					<div style="display: flex; flex-flow: column;">
+						<div>
+							<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
+							<div style="padding: 10px;">
+								<markdown-text>
+									*“Perhaps it's impossible to wear an identity without becoming what you pretend to be.”*
+
+									— Orson Scott Card, Ender's Game
+								</markdown-text>
+							</div>
+						</div>
+						<div>
+							<h1><a href="https://stardust-kyun.github.io/projects/">Projects</a></h1>
+							<div style="padding: 10px;">
+								<h2><a href="https://stardust-kyun.github.io/projects/awm">AwesomeWM Dotfiles</a><h2>
+								<h3>A collection of repositories for awm</h3>
+								<br>
+								<h2><a href="https://stardust-kyun.github.io/projects/awmguide/">AwesomeWM Guide</a></h2>
+								<h3>A series of tutorials for awm</h3>
+							</div>
+						</div>
+						<div>
+							<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
+							<div style="padding: 10px;">
+								<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
+								<h3>An opinionated list of the best rices of 2024</h3>
+								<br>
+								<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
+								<h3>Reviews of various manga I've enjoyed</h3>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="sakuraLogo">🌸</div>
-			<div class="horiz" id="pages">
-				<h1><a href="https://stardust-kyun.github.io/" target="_self">Home</a></h1>
-				<h1><a href="https://stardust-kyun.github.io/projects/" target="_self">Projects</a></h1>
-				<h1><a href="https://stardust-kyun.github.io/blog/" target="_self">Blog</a></h1>
-			</div>
 		`;
+
+		const menu = this.querySelector('#menu');
+		const menuContent = this.querySelector('#menuContent');
+		let expanded = false
+
+		menu.addEventListener('click', () => {
+			expanded = !expanded;
+			console.log(expanded);
+			if (expanded) {
+				menuContent.style.maxHeight = '1200px';
+				menu.src = '/src/close.svg';
+			} else {
+
+				menuContent.style.maxHeight = '0';
+				menu.src = '/src/menu.svg';
+			}
+		});
 	}
 }
 
@@ -80,54 +139,36 @@ class Sidebar extends HTMLElement {
 					<a href="mailto:stardust-kyun@proton.me"><img src="/src/email.svg" class="svg"></img></a>
 				</div>
 				<div style="display: flex; flex-flow: column;">
-				<div>
-					<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
-					<div style="padding: 10px;">
-					<markdown-text>
-						*“Perhaps it's impossible to wear an identity without becoming what you pretend to be.”*
+					<div>
+						<h1><a href="https://stardust-kyun.github.io/">Home</a></h1>
+						<div style="padding: 10px;">
+							<markdown-text>
+								*“Perhaps it's impossible to wear an identity without becoming what you pretend to be.”*
 
-						— Orson Scott Card, Ender's Game
-					</markdown-text>
-					</div>
-					</div>
-					<div>
-					<h1><a href="https://stardust-kyun.github.io/projects/">Projects</a></h1>
-					<div style="padding: 10px;">
-						<h2><a href="https://stardust-kyun.github.io/projects/awm">AwesomeWM Dotfiles</a><h2>
-						<h3>A collection of repositories for awm</h3>
-						<br>
-						<h2><a href="https://stardust-kyun.github.io/projects/awmguide/">AwesomeWM Guide</a></h2>
-						<h3>A series of tutorials for awm</h3>
-					</div>
+								— Orson Scott Card, Ender's Game
+							</markdown-text>
+						</div>
 					</div>
 					<div>
-					<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
-					<div style="padding: 10px;">
-						<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
-						<h3>An opinionated list of the best rices of 2024</h3>
-						<br>
-						<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
-						<h3>Reviews of various manga I've enjoyed</h3>
+						<h1><a href="https://stardust-kyun.github.io/projects/">Projects</a></h1>
+						<div style="padding: 10px;">
+							<h2><a href="https://stardust-kyun.github.io/projects/awm">AwesomeWM Dotfiles</a><h2>
+							<h3>A collection of repositories for awm</h3>
+							<br>
+							<h2><a href="https://stardust-kyun.github.io/projects/awmguide/">AwesomeWM Guide</a></h2>
+							<h3>A series of tutorials for awm</h3>
+						</div>
 					</div>
-					</div>
-					<!--
 					<div>
-					<h1>Contact</h1>
-					<div style="padding: 10px;">
-						<h2>Github<h2>
-						<h3><a href="https://github.com/stardust-kyun/">Stardust-kyun</a></h3>
-						<br>
-						<h2>Reddit</h2>
-						<h3><a href="https://www.reddit.com/user/Stardust-kyun/">Stardust-kyun</a></h3>
-						<br>
-						<h2>Discord</h2>
-						<h3><a href="https://discord.com/users/417133059654156299">stardustkyun</a></h3>
-						<br>
-						<h2>Email</h2>
-						<h3><a href="mailto:stardust-kyun@proton.me">stardust-kyun@proton.me</a></h3>
+						<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
+						<div style="padding: 10px;">
+							<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
+							<h3>An opinionated list of the best rices of 2024</h3>
+							<br>
+							<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
+							<h3>Reviews of various manga I've enjoyed</h3>
+						</div>
 					</div>
-					</div>
-					-->
 				</div>
 			</div>
 		`;

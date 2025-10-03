@@ -129,6 +129,16 @@ code {
 
 #pfp {
 	border-radius: 50%;
+	margin: auto;
+	width: 70%;
+}
+
+#pfpContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: -10%;
+	aspect-ratio: 1/1;
 }
 
 .svg {
@@ -141,13 +151,6 @@ code {
 	flex-direction: row;
 	align-items: center;
 	gap: 20px;
-}
-
-#sakuraLogo {
-	font-size: 36px;
-	display: flex;
-	align-items: center;
-	margin: 0 0 0 100px;
 }
 
 /* Main */
@@ -265,8 +268,10 @@ code {
 		justify-content: space-between;
 	}
 
-	#pfp {
-		height: 50px;
+	#pfpContainer {
+		width: 75%;
+		margin: 10px 0;
+		aspect-ratio: unset;
 	}
 
 	#pages {
@@ -319,17 +324,6 @@ code {
 		order: 2; 
 		/*aspect-ratio: 3/4;*/
 		flex: 0 1 970px;
-	}
-	#pfp {
-		margin: auto;
-		width: 70%;
-	}
-	#pfpContainer {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		margin-bottom: -10%;
-		aspect-ratio: 1/1;
 	}
 
 	#header { display: none; }
