@@ -141,6 +141,15 @@ code {
 	aspect-ratio: 1/1;
 }
 
+#infoContainer {
+	display: flex; 
+	flex-flow: column; 
+	justify-content: center; 
+	flex-grow: 1; 
+	gap: 15px; 
+	max-width: 30%;
+}
+
 .svg {
 	height: 36px;
 	filter: brightness(0) saturate(100%) invert(83%) sepia(0%) saturate(873%) hue-rotate(159deg) brightness(92%) contrast(109%);
@@ -269,7 +278,7 @@ code {
 	}
 
 	#pfpContainer {
-		width: 75%;
+		width: 50%;
 		margin: 10px 0;
 		aspect-ratio: unset;
 	}

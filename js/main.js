@@ -45,11 +45,11 @@ class Header extends HTMLElement {
 			</div>
 			<div id="menuContent" style="max-height: 0; transition: max-height 0.5s ease">
 				<div class="box" style="display: flex; flex-flow: column; gap: 15px; overflow: scroll;">
-					<div style="display: flex; flex-flow: row;">
+					<div style="display: flex; flex-flow: row; justify-content: center;">
 						<div id="pfpContainer">
 							<img id="pfp" src="/src/pfp.png">
 						</div>
-						<div style="display: flex; flex-flow: column; justify-content: center; flex-grow: 1; gap: 15px; margin-bottom: 10px; width: 40%;">
+						<div id="infoContainer">
 							<h2 style="font-size: 24px;">Stella</h2>
 							<h3 style="font-size: 24px;">any/all</h3>
 							<div style="display: grid; grid-template-columns: auto auto; row-gap: 10px;">
