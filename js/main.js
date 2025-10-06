@@ -44,7 +44,7 @@ class Header extends HTMLElement {
 				<img src="/src/sakuraLogo.png" style="height: 36px;"></img>
 			</div>
 			<div id="menuContent" style="max-height: 0; transition: max-height 0.5s ease">
-				<div class="box" style="display: flex; flex-flow: column; gap: 15px; overflow: scroll;">
+				<div class="box" style="display: flex; flex-flow: column; gap: 15px;">
 					<div style="display: flex; flex-flow: row; justify-content: center;">
 						<div id="pfpContainer">
 							<img id="pfp" src="/src/pfp.png">
