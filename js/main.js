@@ -41,7 +41,7 @@ class Header extends HTMLElement {
 		this.innerHTML = `
 			<div style="display: flex; width: 100%; justify-content: space-between;">
 				<img id="menu" src="/src/menu.svg" class="svg" style="cursor: pointer;"></img>
-				<a href="https://stardust-kyun.github.io/"><img src="/src/sakuraLogo.svg" class="svg" style="height: 36px;"></img></a>
+				<a href="https://stardust-kyun.github.io/"><img src="/src/sakuraLogo.png" style="height: 36px;"></img></a>
 			</div>
 			<div id="menuContent" style="max-height: 0; transition: max-height 0.5s ease">
 				<div class="box" style="display: flex; flex-flow: column; gap: 15px;">
