@@ -3,7 +3,7 @@
 const normalize = (content) => {
 	return content
 		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '_')
+		.replace(/[^a-z0-9-]+/g, '_')
 		.replace(/^_+|_+$/g, '')
 		.replace(/_+/g, '_');
 }
@@ -102,10 +102,8 @@ class MangaEntry extends HTMLElement {
 
 		if (imgElement.complete) {
 			runAfterImage();
-			console.log('cached');
 		} else {
 			imgElement.addEventListener('load', runAfterImage, { once: true });
-			console.log('not cached');
 		}
 	}
 }
@@ -117,10 +115,12 @@ customElements.define('manga-component', MangaEntry);
 let includeTags = [];
 let excludeTags = [];
 let filteredEntries = [];
+let ratingCounts = new Array(10).fill(0);
 let loaded = false;
 
 const box = document.getElementById('mangaBox');
 const entries = document.querySelectorAll('manga-component');
+const ratingBars = document.querySelectorAll('.mangaRatingBar');
 
 const pageLength = 10;
 let currentPage = 1;
@@ -137,6 +137,19 @@ const updateVisible = () => {
 
 	box.replaceChildren(...pageEntries);
 	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
+
+	ratingBars.forEach(bar => {
+		bar.style.height = '22px';
+		if (ratingCounts[bar.dataset.rating-1] != 0) {
+			bar.style.height = `${bar.scrollHeight+ratingCounts[bar.dataset.rating-1]/Math.max(...ratingCounts)*150}px`;
+			bar.style.backgroundColor = 'var(--fg)';
+			bar.style.color = 'var(--bg)';
+		} else {
+			bar.style.backgroundColor = 'var(--bg)';
+			bar.style.color = 'var(--fg)';
+		}
+		bar.innerHTML = ratingCounts[bar.dataset.rating-1];
+	});
 }
 
 const jumpToAnchor = () => {
@@ -169,6 +182,7 @@ const filter = () => {
 	const noResults = document.getElementById('noResults');
 	let anyVisible = false;
 	filteredEntries = [];
+	ratingCounts = new Array(10).fill(0);
 	currentPage = 1;
 
 	entries.forEach(entry => {
@@ -193,7 +207,7 @@ const filter = () => {
 	
 		if (searchMatch && includeMatch && customMatch && !excludeMatch) {
 			filteredEntries.push(entry);
-		} else {
+			ratingCounts[entry.dataset.rating-1] += 1;
 		}
 	});
 
