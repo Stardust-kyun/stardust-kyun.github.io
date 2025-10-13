@@ -141,6 +141,18 @@
 	background-color: var(--fg);
 }
 
+#ratingExplanation {
+	font-size: 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+#ratingExplanation.open {
+	max-height: 500px;
+	margin-top: 10px;
+}
+
 .mangaTagHeader {
 	font-size: 24px;
 	padding: 10px;

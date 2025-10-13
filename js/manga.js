@@ -272,6 +272,15 @@ filterButton.addEventListener('click', () => {
 	filterButton.textContent = isOpen ? 'Hide Filters' : 'Show Filters';
 });
 
+// ------------------ Rating Explanation Button ------------------
+
+const ratingExplanationButton = document.getElementById('ratingExplanationButton');
+const ratingExplanation = document.getElementById('ratingExplanation');
+
+ratingExplanationButton.addEventListener('click', () => {
+	const isOpen = ratingExplanation.classList.toggle('open');
+});
+
 // ------------------ Tag Buttons ------------------
 
 const tagButtons = document.querySelectorAll('.mangaTagButton');
