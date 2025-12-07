@@ -265,6 +265,25 @@ code {
 	row-gap: 20px;
 }
 
+/* Home Page */
+
+#homeContainer {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 20px;
+	padding: 10px;
+}
+
+.homeSection {
+	flex-basis: calc(50% - 10px);
+}
+
+.homeImage {
+	min-width: 0;
+	height: fit-content;
+	border-radius: 10px;
+}
+
 /* Screen */
 
 @media all and (max-aspect-ratio: 1/1) {
@@ -321,6 +340,20 @@ code {
 	#main { 
 		flex: 1 1;
 		order: 1; 
+	}
+}
+
+@media all and (max-aspect-ratio: 2/3) {
+	#homeContainer {
+		flex-flow: column;
+	}
+
+	.homeSection {
+		flex-basis: unset;
+	}
+
+	.homeImage {
+		height: unset;
 	}
 }
 
