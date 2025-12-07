@@ -11,8 +11,8 @@ const normalize = (content) => {
 // ------------------ Manga Component ------------------
 
 class MangaEntry extends HTMLElement {
-    constructor() {
-        super();
+	constructor() {
+		super();
 		this._initialized = false;
 		this._rawContent = this.innerHTML;
 
@@ -22,9 +22,9 @@ class MangaEntry extends HTMLElement {
 			.map(t => t.trim())
 			.filter(Boolean);
 		this.classList.add(...tagArray.map(tag => tag.toLowerCase().replaceAll(' ', '_')));
-    }
+	}
 
-    connectedCallback() {
+	connectedCallback() {
 		if (this._initialized) return
 		this._initialized = true;
 
@@ -103,7 +103,7 @@ class MangaEntry extends HTMLElement {
 		if (imgElement.complete) {
 			runAfterImage();
 		} else {
-			imgElement.addEventListener('load', runAfterImage, { once: true });
+			imgElement.addEventListener('load', runAfterImage);
 		}
 	}
 }
@@ -258,6 +258,11 @@ mangaSearchClear.addEventListener('click', () => {
 	tagButtons.forEach(button => button.classList.remove('included'));
 	tagButtons.forEach(button => button.classList.remove('excluded'));
 	mangaHeaderButtons.forEach(button => button.classList.remove('selected'));
+	currentSort = defaultSort;
+	mangaSortButtons.forEach(button => {
+		button.classList.remove('selected');
+		if (button.dataset.sort === currentSort) button.classList.add('selected');
+	});
 	filter();
 	updateURLFilters();
 });
@@ -349,7 +354,7 @@ mangaHeaderButtons.forEach(button => {
 });
 
 // ------------------ Back To Top ------------------
-
+/*
 const backToTop = document.getElementById('backToTop');
 const main = document.getElementById('main');
 
@@ -378,19 +383,46 @@ backToTop.addEventListener('click', () => {
 		behavior: 'smooth'
 	});
 });
-
+*/
 // ------------------ Page Buttons ------------------
 
+const scrollToTop = () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+	main.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+}
+
+document.getElementById('pageStart').addEventListener('click', () => {
+	if (currentPage > 1) {
+		currentPage = 1;
+		updateVisible();
+		scrollToTop();
+	}
+});
 document.getElementById('pageBack').addEventListener('click', () => {
 	if (currentPage > 1) {
 		currentPage -= 1;
 		updateVisible();
+		scrollToTop();
 	}
 });
 document.getElementById('pageNext').addEventListener('click', () => {
 	if (currentPage < totalPages) {
 		currentPage += 1;
 		updateVisible();
+		scrollToTop();
+	}
+});
+document.getElementById('pageEnd').addEventListener('click', () => {
+	if (currentPage < totalPages) {
+		currentPage = totalPages;
+		updateVisible();
+		scrollToTop();
 	}
 });
 

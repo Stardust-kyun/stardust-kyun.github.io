@@ -16,7 +16,7 @@
 }
 
 #mangaSearchInput {
-	width: 100%;
+	flex-grow: 1;
 }
 
 .mangaTagName, .mangaButton, .mangaTagButton, .mangaSortButton, .mangaHeaderButton {
@@ -37,6 +37,12 @@
 
 .mangaButton:hover, .mangaTagButton:hover, .mangaSortButton:hover, .mangaHeaderButton:hover {
 	filter: brightness(1.3);
+}
+
+.mangaButton {
+	min-width: 42px;
+	justify-content: center;
+	display: flex;
 }
 
 .mangaTagName.Completed {
@@ -97,7 +103,7 @@
 }
 
 #mangaTags.open {
-	max-height: 1500px;
+	max-height: 2000px;
 	margin-top: 15px;
 	padding: 10px;
 }
@@ -245,7 +251,7 @@
     color: var(--fg);
 	margin-top: 10px;
 }
-
+/*
 #backToTop {
 	position: sticky;
 	bottom: 0;
@@ -261,7 +267,7 @@
 	opacity: 1;
 	visibility: visible;
 }
-
+*/
 @media all and (max-aspect-ratio: 2/3) {
 	.mangaImage {
 		max-width: 100%;
@@ -272,21 +278,8 @@
 		flex-flow: row wrap;
 	}
 
-	#mangaSearch {
-		flex-wrap: wrap;
-	}
-
 	#mangaSearch > * {
 		flex-grow: 1;
-	}
-
-	#mangaSearchInput {
-		width: auto;
-		flex: 70%;
-	}
-
-	#mangaSearchClear {
-		flex: 20%;
 	}
 
 	#pageName {
@@ -307,11 +300,11 @@
 	}
 }
 
-@media all and (max-aspect-ratio: 1/1) {
+/*@media all and (max-aspect-ratio: 1/1) {
 	#backToTop {
 		position: fixed;
 		bottom: 20px;
 		left: 50%;
 		transform: translateX(-50%);
 	}
-}
+}*/
