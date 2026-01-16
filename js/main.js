@@ -84,8 +84,8 @@ class Header extends HTMLElement {
 						<div>
 							<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
 							<div style="padding: 10px;">
-								<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
-								<h3>An opinionated list of the best rices of 2024</h3>
+								<h2><a href="https://stardust-kyun.github.io/blog/2025">Best of 2025</a><h2>
+								<h3>An opinionated list of the best rices of 2025</h3>
 								<br>
 								<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
 								<h3>Reviews of various manga I've enjoyed</h3>
@@ -162,8 +162,8 @@ class Sidebar extends HTMLElement {
 					<div>
 						<h1><a href="https://stardust-kyun.github.io/blog/">Blog</a></h1>
 						<div style="padding: 10px;">
-							<h2><a href="https://stardust-kyun.github.io/blog/2024">Best of 2024</a><h2>
-							<h3>An opinionated list of the best rices of 2024</h3>
+							<h2><a href="https://stardust-kyun.github.io/blog/2025">Best of 2025</a><h2>
+							<h3>An opinionated list of the best rices of 2025</h3>
 							<br>
 							<h2><a href="https://stardust-kyun.github.io/blog/manga">Manga Reviews</a></h2>
 							<h3>Reviews of various manga I've enjoyed</h3>
