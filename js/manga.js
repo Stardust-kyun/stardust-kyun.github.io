@@ -26,7 +26,6 @@ class MangaEntry extends HTMLElement {
 
 	connectedCallback() {
 		if (this._initialized) return
-		this._initialized = true;
 
 		const link = this.dataset.link;
 		const name = this.dataset.name;
@@ -67,44 +66,6 @@ class MangaEntry extends HTMLElement {
 			createTag(tag);
 		}
 		createTag(`Rating: ${rating}/10`);
-
-		const imgElement = this.querySelector('img');
-
-		const runAfterImage = () => {
-			const mangaContent = this.querySelector('.mangaContent');
-			const mangaContentWrapper = this.querySelector('.mangaContentWrapper');
-			
-			if (mangaContent.scrollHeight > imgElement.scrollHeight) {
-				mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
-				const button = document.createElement('button');
-				button.className = 'mangaButton';
-				button.textContent = 'Show More';
-				let expanded = false;
-				button.setAttribute('aria-expanded', expanded);
-
-				mangaContent.classList.add('collapsible');
-
-				button.addEventListener('click', () => {
-					expanded = !expanded;
-					mangaContent.classList.toggle('expanded', expanded);
-					button.textContent = expanded ? 'Show Less' : 'Show More';
-					button.setAttribute('aria-expanded', expanded)
-					if (expanded) {
-						mangaContent.style.maxHeight = "1500px";
-					} else {
-						mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
-					}
-				});
-				
-				mangaContent.after(button);
-			}
-		}
-
-		if (imgElement.complete) {
-			runAfterImage();
-		} else {
-			imgElement.addEventListener('load', runAfterImage);
-		}
 	}
 }
 
@@ -137,6 +98,46 @@ const updateVisible = () => {
 
 	box.replaceChildren(...pageEntries);
 	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
+
+	pageEntries.forEach(entry => {
+		const checkHeight = () => {
+			const imgElement = entry.querySelector('img');
+			const mangaContent = entry.querySelector('.mangaContent');
+			const mangaContentWrapper = entry.querySelector('.mangaContentWrapper');
+
+			if (imgElement.scrollHeight == 0) {
+				window.setTimeout(checkHeight, 100);
+			}
+			else {
+				if (mangaContent.scrollHeight > imgElement.scrollHeight && entry._initialized == false) {
+					mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
+					const button = document.createElement('button');
+					button.className = 'mangaButton';
+					button.textContent = 'Show More';
+					let expanded = false;
+					button.setAttribute('aria-expanded', expanded);
+
+					mangaContent.classList.add('collapsible');
+
+					button.addEventListener('click', () => {
+						expanded = !expanded;
+						mangaContent.classList.toggle('expanded', expanded);
+						button.textContent = expanded ? 'Show Less' : 'Show More';
+						button.setAttribute('aria-expanded', expanded)
+						if (expanded) {
+							mangaContent.style.maxHeight = "1500px";
+						} else {
+							mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
+						}
+					});
+					
+					mangaContent.after(button);
+				}
+				entry._initialized = true;
+			}
+		}
+		checkHeight();
+	});
 
 	ratingBars.forEach(bar => {
 		bar.style.height = '22px';
@@ -482,6 +483,8 @@ const loadURLFilters = () => {
 	filter();
 };
 
+// ------------------ Page Load ------------------
+
 document.addEventListener('DOMContentLoaded', () => {
 	// Temporarily remove hash to prevent default jump
 	const hash = window.location.hash;
@@ -497,5 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			history.replaceState(null, '', window.location.pathname + window.location.search + hash);
 			jumpToAnchor();
 		}, 100);
+	} else {
+		scrollToTop();
 	}
 });

@@ -204,6 +204,7 @@
 .mangaImage {
     max-width: 40%;
     width: auto;
+	max-height: 500px;
 	height: min-content;
     object-fit: contain;
 	object-position: top;
@@ -221,8 +222,6 @@
 	transition: max-height 0.5s ease;
 	position: relative;
 }
-
-
 
 .mangaContent::after {
 	content: '';
