@@ -14,6 +14,7 @@ class MangaEntry extends HTMLElement {
 	constructor() {
 		super();
 		this._initialized = false;
+		this.loaded = false;
 		this._rawContent = this.innerHTML;
 
 		const tags = this.dataset.tags;
@@ -26,7 +27,8 @@ class MangaEntry extends HTMLElement {
 
 	connectedCallback() {
 		if (this._initialized) return
-
+		this._initialized = true;
+		
 		const link = this.dataset.link;
 		const name = this.dataset.name;
 		const image = this.dataset.image;
@@ -109,7 +111,7 @@ const updateVisible = () => {
 				window.setTimeout(checkHeight, 100);
 			}
 			else {
-				if (mangaContent.scrollHeight > imgElement.scrollHeight && entry._initialized == false) {
+				if (mangaContent.scrollHeight > imgElement.scrollHeight && entry.loaded == false) {
 					mangaContent.style.maxHeight = `${imgElement.scrollHeight-52}px`;
 					const button = document.createElement('button');
 					button.className = 'mangaButton';
@@ -133,7 +135,7 @@ const updateVisible = () => {
 					
 					mangaContent.after(button);
 				}
-				entry._initialized = true;
+				entry.loaded = true;
 			}
 		}
 		checkHeight();
@@ -178,6 +180,9 @@ const jumpToAnchor = () => {
 	}
 };
 
+let yuriCounter = 0;
+let yuriCountingDone = false;
+
 const filter = () => {
 	const query = searchInput.value.toLowerCase();
 	const noResults = document.getElementById('noResults');
@@ -200,6 +205,9 @@ const filter = () => {
 			const safeTag = normalize(tag);
 			return entry.classList.contains(safeTag);
 		});
+		if (!yuriCountingDone && entry.classList.contains("yuri")) {
+			yuriCounter += 1;
+		}
 		
 		let customMatch = true;
 		if (customList.length) {
@@ -211,6 +219,8 @@ const filter = () => {
 			ratingCounts[entry.dataset.rating-1] += 1;
 		}
 	});
+	yuriCountingDone = true;
+	document.getElementById('yuriCounter').innerText = `${Math.trunc(yuriCounter/entries.length*100)}% of reviews are yuri`
 
 	if (currentSort === 'alphabetical') {
 		filteredEntries.sort((a, b) => a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase()));
@@ -354,37 +364,6 @@ mangaHeaderButtons.forEach(button => {
 	});
 });
 
-// ------------------ Back To Top ------------------
-/*
-const backToTop = document.getElementById('backToTop');
-const main = document.getElementById('main');
-
-window.addEventListener('scroll', () => {
-	if (window.scrollY > 200) {
-		backToTop.classList.add('visible');
-	} else {
-		backToTop.classList.remove('visible');
-	}
-});
-main.addEventListener('scroll', () => {
-	if (main.scrollTop > 200) {
-		backToTop.classList.add('visible');
-	} else {
-		backToTop.classList.remove('visible');
-	}
-});
-
-backToTop.addEventListener('click', () => {
-	window.scrollTo({
-		top: 0,
-		behavior: 'smooth'
-	});
-	main.scrollTo({
-		top: 0,
-		behavior: 'smooth'
-	});
-});
-*/
 // ------------------ Page Buttons ------------------
 
 const scrollToTop = () => {
