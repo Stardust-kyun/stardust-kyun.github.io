@@ -45,7 +45,7 @@
 	display: flex;
 }
 
-.mangaTagName.Completed {
+.mangaTagName.Completed, .mangaTagName.Oneshot {
 	background-color: var(--blue);
 	color: var(--bg);
 }
@@ -62,6 +62,11 @@
 
 .mangaTagName.Erotica, .mangaTagName.Incest, .mangaTagName.Cancelled {
 	background-color: var(--red);
+	color: var(--bg);
+}
+
+.mangaTagName.Anthology {
+	background-color: var(--purple);
 	color: var(--bg);
 }
 
@@ -275,7 +280,7 @@
 @media all and (max-aspect-ratio: 2/3) {
 	.mangaImage {
 		max-width: 100%;
-		height: auto;
+		max-height: unset;
 	}
 
 	.mangaWrapper {
