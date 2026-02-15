@@ -282,6 +282,7 @@
 		max-width: 100%;
 		max-height: unset;
 		height: auto;
+		overflow: hidden;
 	}
 
 	.mangaWrapper {
