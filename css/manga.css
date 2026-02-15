@@ -280,7 +280,8 @@
 @media all and (max-aspect-ratio: 2/3) {
 	.mangaImage {
 		max-width: 100%;
-		max-height: min-content;
+		max-height: unset;
+		height: auto;
 	}
 
 	.mangaWrapper {
