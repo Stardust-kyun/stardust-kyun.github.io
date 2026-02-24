@@ -99,7 +99,7 @@ const updateVisible = () => {
 	const pageEntries = filteredEntries.slice(start, end);
 
 	box.replaceChildren(...pageEntries);
-	document.getElementById('pageName').innerText = start + "-" + end + " of " + filteredEntries.length;
+	document.getElementById('pageName').innerText = `${start + 1}` + "-" + end + " of " + filteredEntries.length;
 
 	pageEntries.forEach(entry => {
 		const checkHeight = () => {
@@ -220,7 +220,7 @@ const filter = () => {
 		}
 	});
 	yuriCountingDone = true;
-	document.getElementById('yuriCounter').innerText = `${Math.trunc(yuriCounter/entries.length*100)}% of reviews are yuri`
+	document.getElementById('yuriCounter').innerText = `${Math.trunc(yuriCounter/entries.length*100)}% Yuri`
 
 	if (currentSort === 'alphabetical') {
 		filteredEntries.sort((a, b) => a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase()));
