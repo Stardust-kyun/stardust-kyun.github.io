@@ -42,7 +42,7 @@ class MangaEntry extends HTMLElement {
 				<h1><a href=${link} target="_blank">${name}</a></h1>
 				<div class="headerAnchor">
 					<h1><a href=#${id}>🔗</a></h1>
-					<button class="mangaHeaderButton" data-name="${name}">⭐</button>
+					<button class="mangaHeaderButton" data-name="${name}">📌</button>
 				</div>
 			</div>
 			<div class="mangaWrapper">
